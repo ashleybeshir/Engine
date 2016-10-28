@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <SFML\Graphics.hpp>
 #include <vector>
 #include "GameState.h"
 
@@ -11,6 +12,8 @@ class GameState;
 class Engine
 {
 public:
+	sf::RenderWindow window;
+
 	void Start();
 	void Delete();
 

@@ -13,6 +13,7 @@ Engine::~Engine()
 
 void Engine::Start()
 {
+	window.create(sf::VideoMode(800, 600), "My window");
 }
 
 void Engine::Delete()
