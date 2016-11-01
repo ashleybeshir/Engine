@@ -5,7 +5,7 @@
 
 void main()
 {
-	//AssetsManager
+	
 	Engine engine;
 
 	engine.Start();

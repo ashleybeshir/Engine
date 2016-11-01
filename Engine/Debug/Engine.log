@@ -1,3 +1,12 @@
-﻿  AssetsManager.cpp
+﻿  WorldState.cpp
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(13): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+  Source.cpp
+  PlayState.cpp
+  MenuState.cpp
+  GameState.cpp
+  Entity.cpp
+  Engine.cpp
+  AssetsManager.cpp
+  Generating Code...
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)
