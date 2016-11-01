@@ -151,16 +151,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssetsManager.cpp" />
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="WorldState.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssetsManager.h" />
+    <ClInclude Include="Components.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="PlayState.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="WorldState.h" />
   </ItemGroup>

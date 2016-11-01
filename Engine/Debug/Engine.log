@@ -1,7 +1,3 @@
-﻿  Source.cpp
-  MenuState.cpp
-  GameState.cpp
-  Engine.cpp
-  Generating Code...
+﻿  AssetsManager.cpp
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)
