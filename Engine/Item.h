@@ -4,35 +4,62 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 
-enum ItemType
-{
-	Item = 0,
-	Potion,
-	Weapon,
-	Armor
-};
+namespace ITEM {
+	enum ItemType
+	{
+		Item = 0,
+		Potion,
+		Weapon,
+		Armor
+	};
+	enum PotionType
+	{
+		Health = 0,
+		Damage,
+		Mana,
+		Health_Mana
+	};
+}
 
 struct Item
 {
 	sf::String name;
-	ItemType Type;
-
+	ITEM::ItemType Type;
 };
 
 struct Potion : public Item 
 {
-	int Heal,Damage;
+	ITEM::PotionType PotionType;
+	int value;
+	Potion(const sf::String& name, ITEM::PotionType type, int value)
+	{
+		this->name = name;
+		PotionType = type;
+		this->value = value;
+	}
 };
 
 struct Armor : public Item
 {
-	kjhkjj 
-	Type{ ItemType::Armor };
+	int protection;
+	Armor(const sf::String& name, ITEM::ItemType type,int protection)
+	{
+		Type = type;
+		this->protection = protection;
+		this->name = name;
+	}
 };
 
 struct Weapon : public Item
 {
-	
+	int damage;
+	Weapon(const sf::String& name, ITEM::ItemType type, int damage)
+	{
+		Type = type;
+		this->damage = damage;
+		this->name = name;
+	}
+
 };
 
 #endif // !_ITEM_

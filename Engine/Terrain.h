@@ -4,6 +4,12 @@
 
 #include <SFML\Graphics.hpp>
 
+enum MapType 
+{
+	Wall = 0,
+	Floor,
+	Door
+};
 enum TerrainType
 {
 	Dungeon = 0,
