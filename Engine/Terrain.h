@@ -4,7 +4,7 @@
 
 #include <SFML\Graphics.hpp>
 
-enum MapType 
+enum MapType
 {
 	Wall = 0,
 	Floor,

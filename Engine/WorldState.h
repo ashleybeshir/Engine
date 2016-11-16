@@ -3,13 +3,20 @@
 #define _WORLDSTATE_
 
 #include <vector>
+#include <SFML\Graphics.hpp>
 #include "GameState.h"
 #include "Terrain.h"
+#include "PlayState.h"
 
 class WorldState : public GameState
 {
 	int seed;
 	std::vector<std::vector<TerrainType>> Terrain;
+	sf::VertexArray GTerrain;
+	sf::View view;
+	
+	sf::VertexArray Gplayer;
+	sf::Vector2i player;
 public:
 	void Start();
 	void Delete();

@@ -71,5 +71,7 @@ void Engine::Input()
 
 void Engine::Draw()
 {
+	window.clear();
 	states.back()->Draw(this);
+	window.display();
 }

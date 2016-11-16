@@ -2,6 +2,8 @@
 #include "Engine.h"
 #include "MenuState.h"
 #include "AssetsManager.h"
+#include "Entity.h"
+
 
 void main()
 {
@@ -13,6 +15,7 @@ void main()
 
 	while (engine.window.isOpen())
 	{
+		
 		engine.Run();
 		engine.Input();
 		engine.Draw();

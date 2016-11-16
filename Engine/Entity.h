@@ -10,9 +10,10 @@
 
 struct Component
 {
-	Component(){}
-	~Component(){}
+	Component() {}
+	~Component() {}
 };
+
 
 
 class Entity
@@ -21,12 +22,12 @@ class Entity
 public:
 	virtual void Update() = 0;
 	virtual void Draw(sf::RenderWindow& window) = 0;
-	Entity();
-	~Entity();
+	Entity() {};
+	~Entity() {};
 
 private:
 	template<typename T>
-	std::shared_ptr<T> GetComponent() 
+	std::shared_ptr<T> GetComponent()
 	{
 		std::type_index index(typeid(T));
 		if (Components.count(std::type_index(typeid(T))) != 0) return static_pointer_cast<T>(Components[index]);

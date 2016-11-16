@@ -6,12 +6,14 @@
 #include <SFML\Graphics.hpp>
 #include <vector>
 #include "GameState.h"
+#include <map>
 
 class GameState;
 
 class Engine
 {
 public:
+	std::map<int, int> wtd;
 	sf::RenderWindow window;
 
 	void Start();

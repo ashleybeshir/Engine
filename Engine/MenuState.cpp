@@ -50,6 +50,11 @@ void MenuState::Input(Engine * engine)
 			{
 				std::cout << "911 was a inside job" << std::endl;
 			}
+			else if(event.key.code == sf::Keyboard::F)
+			{
+				
+				engine->ChangeState(new WorldState);
+			}
 			break;
 
 			// we don't process other types of events

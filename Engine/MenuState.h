@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include "GameState.h"
+#include "WorldState.h"
 
 class MenuState : public GameState
 {
