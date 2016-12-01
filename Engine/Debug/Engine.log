@@ -1,59 +1,7 @@
-﻿Build started 16/11/2016 05:10:54.
-     1>Project "C:\Users\Ashley\documents\visual studio 2015\Projects\Engine\Engine\Engine.vcxproj" on node 2 (Build target(s)).
-     1>InitializeBuildStatus:
-         Creating "Debug\Engine.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Users\Ashley\Desktop\SFML-2.4.0\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt WorldState.cpp
-         WorldState.cpp
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(63): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(64): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(65): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(66): warning C4244: 'argument': conversion from 'size_t' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(160): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(161): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(162): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(163): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(164): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(169): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(170): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(171): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(172): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(173): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(178): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(179): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(180): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(181): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(182): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(187): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(189): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(190): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-     1>c:\users\ashley\documents\visual studio 2015\projects\engine\engine\worldstate.cpp(191): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-       ResourceCompile:
-         All outputs are up-to-date.
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Ashley\documents\visual studio 2015\Projects\Engine\Debug\Engine.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\Ashley\Desktop\SFML-2.4.0\lib" "sfml-graphics-d.lib" "sfml-window-d.lib" "sfml-system-d.lib" "sfml-main-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Ashley\documents\visual studio 2015\Projects\Engine\Debug\Engine.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Ashley\documents\visual studio 2015\Projects\Engine\Debug\Engine.lib" /MACHINE:X86 Debug\Engine.res
-         Debug\AssetsManager.obj
-         Debug\BSP.obj
-         Debug\Engine.obj
-         Debug\GameState.obj
-         Debug\Item.obj
-         Debug\MenuState.obj
-         Debug\PlayState.obj
-         Debug\Source.obj
-         Debug\Tilemap.obj
-         Debug\WorldState.obj
-         Engine.vcxproj -> C:\Users\Ashley\documents\visual studio 2015\Projects\Engine\Debug\Engine.exe
-       FinalizeBuildStatus:
-         Deleting file "Debug\Engine.tlog\unsuccessfulbuild".
-         Touching "Debug\Engine.tlog\Engine.lastbuildstate".
-     1>Done Building Project "C:\Users\Ashley\documents\visual studio 2015\Projects\Engine\Engine\Engine.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:01.36
+﻿  BSP.cpp
+c:\users\ashley\desktop\engine\engine\engine\bsp.cpp(20): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\bsp.cpp(46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\bsp.cpp(47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\bsp.cpp(48): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
+  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)

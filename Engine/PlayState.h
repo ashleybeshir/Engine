@@ -7,12 +7,11 @@
 #include "GameState.h"
 #include "Entity.h"
 #include "BSP.h"
-
 class PlayState : public GameState
 {
 	bool Dungeon_Cave; // True for Dungeon. false for cave
 	std::vector<std::unique_ptr<Entity>> Entities;
-	std::vector<BSP*> bsp;
+	BSP bsp;
 public:
 
 	void Start();

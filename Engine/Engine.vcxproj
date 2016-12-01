@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="AssetsManager.h" />
     <ClInclude Include="BSP.h" />
+    <ClInclude Include="BSPNode.h" />
     <ClInclude Include="Components.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity.h" />

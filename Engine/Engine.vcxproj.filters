@@ -86,6 +86,9 @@
     <ClInclude Include="GameState.h">
       <Filter>Header Files\HStates</Filter>
     </ClInclude>
+    <ClInclude Include="BSPNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="BSP.h">
       <Filter>Header Files</Filter>
     </ClInclude>

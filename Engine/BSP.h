@@ -2,28 +2,23 @@
 #define _BSP_
 
 #pragma once
-#include <SFML\Graphics.hpp>
+
 #include <vector>
-#include <random>
+#include "BSPNode.h"
+#include <SFML\Graphics.hpp>
 
-struct BSP
+class BSP
 {
-
-	const int min_leaf_size = 6;
-	int x, y, width, height;
-
-	BSP* LeftChild;
-	BSP* RightChild;
-	std::vector<BSP*> halls;
-
-	sf::RectangleShape room;
-
-
-	BSP(int x ,int y,int width ,int height) :x(x),y(y),width(width),height(height){}
-	bool Split();
-	void CreateRooms();
+	
+	const int min_size{6};
+	const int max_size{20};
+public:
+	std::vector<BSPNode*> nodes;
+	std::vector<sf::RectangleShape> rectangle;
+	void start();
+	bool split();
 	BSP();
 	~BSP();
 };
 
-#endif // !_BSP_
+#endif // !1
