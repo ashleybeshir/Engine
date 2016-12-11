@@ -6,8 +6,8 @@
 
 enum MapType
 {
-	Wall = 0,
-	Floor	
+	Floor = 0,
+	Wall	
 };
 
 enum GenerationType

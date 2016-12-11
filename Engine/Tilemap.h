@@ -5,6 +5,7 @@
 #include <vector>
 #include "SFML\Graphics.hpp"
 #include "Terrain.h"
+#include "CaveG.h"
 #include <random>
 
 class TileMap
@@ -13,7 +14,7 @@ class TileMap
 	sf::VertexArray vertex;
 
 	sf::Texture texture;
-
+	
 	const int TileSize{ 32 };
 public:
 	int Width, Height;

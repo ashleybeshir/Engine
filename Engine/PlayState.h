@@ -16,6 +16,7 @@ class PlayState : public GameState
 	std::vector<std::unique_ptr<Entity>> Entities;
 	sf::Texture CharTextures;
 	TileMap map;
+	sf::View view;
 public:
 
 	void Start();

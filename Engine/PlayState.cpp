@@ -10,6 +10,8 @@ PlayState::PlayState()
 
 PlayState::PlayState(GenerationType type)
 {
+	view.setCenter(sf::Vector2f(350, 300));
+	view.setSize(sf::Vector2f(800, 600));
 	if (!CharTextures.loadFromFile("monster.png"))
 	{
 
@@ -117,6 +119,10 @@ void PlayState::Input(Engine * engine)
 
 void PlayState::Draw(Engine * engine)
 {
+	sf::Vector2f pos = Entities[0]->GetComponent<GraphicC>()->sprite.getPosition();
+	
+	view.setCenter(pos);
+	engine->window.setView(view);
 	map.Draw(engine->window);
 	for (auto& e : Entities)
 	{		

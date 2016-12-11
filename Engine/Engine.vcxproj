@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetsManager.cpp" />
+    <ClCompile Include="CaveG.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -163,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetsManager.h" />
+    <ClInclude Include="CaveG.h" />
     <ClInclude Include="Components.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity.h" />

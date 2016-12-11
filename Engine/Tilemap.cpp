@@ -1,13 +1,10 @@
 #include "Tilemap.h"
 
 
-
-
-
-
-
 void TileMap::GenerateCave()
 {
+	CaveG gen;
+	
 	if (!texture.loadFromFile("ground.png"))
 	{
 
@@ -17,11 +14,12 @@ void TileMap::GenerateCave()
 	{
 		map[i].resize(100);
 	}
+	std::vector<std::vector<int>> temp = gen.GetMap();
 	for (size_t x = 0; x < map.size(); x++)
 	{
 		for (size_t y = 0; y < map[x].size(); y++)
 		{
-			map[x][y] = (MapType)(std::rand() % 2);
+			map[x][y] = (MapType)temp[x][y];
 		}
 	}
 
@@ -57,6 +55,7 @@ void TileMap::GenerateCave()
 			
 		}
 	}
+	
 }
 
 void TileMap::GenerateDungeon()
