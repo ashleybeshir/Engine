@@ -11,7 +11,7 @@
 struct Component
 {
 	Component() {}
-	~Component() {}
+	virtual ~Component() {}
 };
 
 
@@ -20,24 +20,25 @@ class Entity
 {
 	std::map<std::type_index, std::shared_ptr<Component>> Components;
 public:
-	virtual void Update() = 0;
-	virtual void Draw(sf::RenderWindow& window) = 0;
+	
 	Entity() {};
 	~Entity() {};
 
-private:
+	template<typename T, typename ...Args>
+	void AddComponent(Args... args)
+	{
+		std::type_index tid = std::type_index(typeid(T));
+		if (Components[tid] == nullptr) {
+			Components[tid] = std::make_shared<T>(args...);
+		}
+	}
 	template<typename T>
 	std::shared_ptr<T> GetComponent()
 	{
-		std::type_index index(typeid(T));
-		if (Components.count(std::type_index(typeid(T))) != 0) return static_pointer_cast<T>(Components[index]);
-		else return nullptr;
+		std::type_index tid = std::type_index(typeid(T));
+		return std::dynamic_pointer_cast<T>(Components[tid]);
 	}
-	template<typename T>
-	void AddComponent(T *t)
-	{
-		Components[std::type_index(typeid(*T))] = t;
-	}
+	
 
 };
 

@@ -7,12 +7,25 @@
 
 struct PositionC : public Component
 {
+	PositionC(int x, int y) 
+	{
+		Position.x = x;
+		Position.y = y;
+	}
 	sf::Vector2i Position;
 };
 
 struct GraphicC : public Component
 {
-	sf::VertexArray Graphics;
+	GraphicC()
+	{
+	}
+	sf::Sprite sprite;
+	
+};
+struct DirectionC : public Component
+{
+	sf::Vector2i direction;
 };
 
 struct EnergyC : public Component

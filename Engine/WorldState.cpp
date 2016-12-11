@@ -193,9 +193,9 @@ void WorldState::Input(Engine * engine)
 			else if (event.key.code == sf::Keyboard::F)
 			{
 				TerrainType tile = Terrain[player.x][player.y];
-				if (tile == TerrainType::Dungeon)
+				if (tile == TerrainType::dungeon)
 				{
-					engine->ChangeState(new PlayState(true));
+					engine->ChangeState(new PlayState(GenerationType::Cave));
 				}
 			}
 			

@@ -7,13 +7,18 @@
 enum MapType
 {
 	Wall = 0,
-	Floor,
-	Door
+	Floor	
+};
+
+enum GenerationType
+{
+	Cave = 0,
+	Dungeon
 };
 enum TerrainType
 {
-	Dungeon = 0,
-	Cave,
+	dungeon = 0,
+	cave,
 	Water,
 	Forest,
 	Sand,

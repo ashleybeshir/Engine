@@ -6,12 +6,16 @@
 #include <vector>
 #include "GameState.h"
 #include "Entity.h"
-#include "BSP.h"
+#include "Terrain.h"
+#include "Tilemap.h"
+#include "Components.h"
+
 class PlayState : public GameState
 {
-	bool Dungeon_Cave; // True for Dungeon. false for cave
+	
 	std::vector<std::unique_ptr<Entity>> Entities;
-	BSP bsp;
+	sf::Texture CharTextures;
+	TileMap map;
 public:
 
 	void Start();
@@ -26,7 +30,7 @@ public:
 	void Draw(Engine* engine);
 
 	PlayState();
-	PlayState(bool type);
+	PlayState(GenerationType type);
 	~PlayState();
 protected:
 	void AddEntity(Entity* entity);

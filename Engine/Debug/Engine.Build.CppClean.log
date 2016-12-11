@@ -1,14 +1,24 @@
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\vc140.pdb
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\vc140.idb
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\assetsmanager.obj
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\engine.obj
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\gamestate.obj
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\item.obj
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\menustate.obj
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\playstate.obj
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\source.obj
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\tilemap.obj
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\worldstate.obj
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\engine.tlog\cl.command.1.tlog
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\engine.tlog\cl.read.1.tlog
-c:\users\ashley\documents\visual studio 2015\projects\engine\engine\debug\engine.tlog\cl.write.1.tlog
+c:\users\ashley\documents\github\engine\engine\debug\vc140.pdb
+c:\users\ashley\documents\github\engine\engine\debug\vc140.idb
+c:\users\ashley\documents\github\engine\engine\debug\assetsmanager.obj
+c:\users\ashley\documents\github\engine\engine\debug\engine.obj
+c:\users\ashley\documents\github\engine\engine\debug\gamestate.obj
+c:\users\ashley\documents\github\engine\engine\debug\item.obj
+c:\users\ashley\documents\github\engine\engine\debug\menustate.obj
+c:\users\ashley\documents\github\engine\engine\debug\playstate.obj
+c:\users\ashley\documents\github\engine\engine\debug\source.obj
+c:\users\ashley\documents\github\engine\engine\debug\tilemap.obj
+c:\users\ashley\documents\github\engine\engine\debug\worldstate.obj
+c:\users\ashley\documents\github\engine\debug\engine.ilk
+c:\users\ashley\documents\github\engine\debug\engine.exe
+c:\users\ashley\documents\github\engine\debug\engine.pdb
+c:\users\ashley\documents\github\engine\engine\debug\engine.res
+c:\users\ashley\documents\github\engine\engine\debug\engine.tlog\cl.command.1.tlog
+c:\users\ashley\documents\github\engine\engine\debug\engine.tlog\cl.read.1.tlog
+c:\users\ashley\documents\github\engine\engine\debug\engine.tlog\cl.write.1.tlog
+c:\users\ashley\documents\github\engine\engine\debug\engine.tlog\link.command.1.tlog
+c:\users\ashley\documents\github\engine\engine\debug\engine.tlog\link.read.1.tlog
+c:\users\ashley\documents\github\engine\engine\debug\engine.tlog\link.write.1.tlog
+c:\users\ashley\documents\github\engine\engine\debug\engine.tlog\rc.command.1.tlog
+c:\users\ashley\documents\github\engine\engine\debug\engine.tlog\rc.read.1.tlog
+c:\users\ashley\documents\github\engine\engine\debug\engine.tlog\rc.write.1.tlog

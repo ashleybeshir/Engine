@@ -13,7 +13,7 @@ Engine::~Engine()
 
 void Engine::Start()
 {
-	window.create(sf::VideoMode(800, 600), "My window");
+	window.create(sf::VideoMode(1920, 1080), "My window");
 }
 
 void Engine::Delete()
@@ -53,7 +53,7 @@ void Engine::PopState()
 		states.pop_back();
 	}
 
-	// resume previous state
+	
 	if (!states.empty()) {
 		states.back()->Resume();
 	}

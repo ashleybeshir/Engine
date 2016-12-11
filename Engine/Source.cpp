@@ -3,7 +3,8 @@
 #include "MenuState.h"
 #include "AssetsManager.h"
 #include "Entity.h"
-
+#include "PlayState.h"
+#include "Terrain.h"
 
 void main()
 {
@@ -11,7 +12,7 @@ void main()
 	Engine engine;
 
 	engine.Start();
-	engine.PushState(new MenuState);
+	engine.PushState(new PlayState(GenerationType::Cave));
 
 	while (engine.window.isOpen())
 	{
