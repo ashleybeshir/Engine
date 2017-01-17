@@ -12,7 +12,7 @@ void main()
 	Engine engine;
 
 	engine.Start();
-	engine.PushState(new PlayState(GenerationType::Cave));
+	engine.PushState(new WorldState(50));
 
 	while (engine.window.isOpen())
 	{

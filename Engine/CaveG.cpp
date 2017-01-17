@@ -2,6 +2,41 @@
 
 
 
+void CaveG::addStairs(sf::Vector2i& Up, sf::Vector2i& Dow)
+{
+	bool down{ true }, up{ true };
+	while (true) 
+	{
+		
+		int x{ std::rand() % 99 + 1 };
+		int y{ std::rand() % 99 + 1 };
+		if (map[x][y] != 1) 
+		{
+			if (map[x][y] != 2 && down != false) 
+			{
+				std::cout << "down";
+				map[x][y] = 3;
+				Dow.x = x;
+				Dow.y = y;
+				down = false;
+			}
+			if (map[x][y] != 3 && up != false) 
+			{
+				std::cout << "up";
+				map[x][y] = 2;
+				up = false;
+				Up.x = x;
+				Up.y = y;
+			}
+			
+		}
+		if (up != true && down != true) 
+		{
+			return;
+		}
+	}
+}
+
 void CaveG::makeCavern()
 {
 	for (size_t y = 0; y <= height - 1; y++)
@@ -174,6 +209,28 @@ CaveG::CaveG()
 	WallPercentage = 45;
 	fillMap();
 	makeCavern();
+//	addStairs();
+}
+
+CaveG::CaveG(int seed)
+{
+	height = 100;
+	width = 100;
+	WallPercentage = 45;
+	fillMap();
+	makeCavern();
+	//addStairs();
+}
+
+CaveG::CaveG(sf::Vector2i& Up, sf::Vector2i& Dow)
+{
+	height = 100;
+	width = 100;
+	WallPercentage = 45;
+	fillMap();
+ 	makeCavern();
+	addStairs(Up, Dow);
+
 }
 
 

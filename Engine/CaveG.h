@@ -6,6 +6,7 @@
 #include <vector>
 #include <random>
 #include <iostream>
+#include<SFML\System\Vector2.hpp>
 
 class CaveG
 {
@@ -13,6 +14,7 @@ class CaveG
 
 	int height, width, WallPercentage;
 
+	void addStairs(sf::Vector2i& Up, sf::Vector2i& Dow);
 	void makeCavern();
 	int PlaceWall(int x, int y);
 	int GetAdjWall(int x, int y, int _x, int _y);
@@ -26,6 +28,8 @@ class CaveG
 public:
 	std::vector<std::vector<int>>& GetMap();
 	CaveG();
+	CaveG(int seed);
+	CaveG(sf::Vector2i& Up,sf::Vector2i& Dow);
 	~CaveG();
 };
 

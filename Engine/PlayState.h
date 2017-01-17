@@ -17,6 +17,8 @@ class PlayState : public GameState
 	sf::Texture CharTextures;
 	TileMap map;
 	sf::View view;
+	int seed;
+	int Clvl{0};
 public:
 
 	void Start();
@@ -31,7 +33,7 @@ public:
 	void Draw(Engine* engine);
 
 	PlayState();
-	PlayState(GenerationType type);
+	PlayState(GenerationType type ,int seed);
 	~PlayState();
 protected:
 	void AddEntity(Entity* entity);

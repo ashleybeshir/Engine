@@ -161,6 +161,7 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tilemap.cpp" />
     <ClCompile Include="WorldState.cpp" />
+    <ClCompile Include="XmlEntityLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetsManager.h" />

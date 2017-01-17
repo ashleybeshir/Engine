@@ -1,0 +1,13 @@
+
+<milo>
+	<name>Milo</name>
+	<health>100</health>
+	<energy>300</energy>
+	<damage>500</damage>
+</milo>
+<dog>
+	<name>Dog</name>
+	<health>200</health>
+	<energy>100</energy>
+	<damage>10</damage>
+</dog>

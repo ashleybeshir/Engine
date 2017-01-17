@@ -1,11 +1,13 @@
 #include "Tilemap.h"
 
 
+
+
 void TileMap::GenerateCave()
 {
-	CaveG gen;
-	
-	if (!texture.loadFromFile("ground.png"))
+	CaveG gen(StairUp,StairDown);
+
+	if (!texture.loadFromFile("cave.png"))
 	{
 
 	}
@@ -40,22 +42,35 @@ void TileMap::GenerateCave()
 
 			if (type == MapType::Floor)
 			{
-				quad[0].texCoords = sf::Vector2f(96, 32 );
-				quad[1].texCoords = sf::Vector2f((96 + 32), 32 );
-				quad[2].texCoords = sf::Vector2f((96 + 32) , (32 + 32) );
-				quad[3].texCoords = sf::Vector2f(96, (32 + 32) );
+				quad[0].texCoords = sf::Vector2f(0, 0);
+				quad[1].texCoords = sf::Vector2f((0 + 32), 0);
+				quad[2].texCoords = sf::Vector2f((0 + 32), (0 + 32));
+				quad[3].texCoords = sf::Vector2f(0, (0 + 32));
 			}
-			else
+			else if (type == MapType::Wall)
 			{
-				quad[0].texCoords = sf::Vector2f(0 , 96);
-				quad[1].texCoords = sf::Vector2f((0 + 32) , 96 );
-				quad[2].texCoords = sf::Vector2f((0 + 32) , (96 + 32));
-				quad[3].texCoords = sf::Vector2f(0 , (96 + 32));
+				quad[0].texCoords = sf::Vector2f(32, 0);
+				quad[1].texCoords = sf::Vector2f((32 + 32), 0);
+				quad[2].texCoords = sf::Vector2f((32 + 32), (0 + 32));
+				quad[3].texCoords = sf::Vector2f(32, (0 + 32));
 			}
-			
+			else if (type == MapType::StairD)
+			{
+				quad[0].texCoords = sf::Vector2f(96, 0);
+				quad[1].texCoords = sf::Vector2f((96 + 32), 0);
+				quad[2].texCoords = sf::Vector2f((96 + 32), (0 + 32));
+				quad[3].texCoords = sf::Vector2f(96, (0 + 32));
+			}
+			else if (type == MapType::StairU)
+			{
+				quad[0].texCoords = sf::Vector2f(64, 0);
+				quad[1].texCoords = sf::Vector2f((64 + 32), 0);
+				quad[2].texCoords = sf::Vector2f((64 + 32), (0 + 32));
+				quad[3].texCoords = sf::Vector2f(64, (0 + 32));
+			}
+
 		}
 	}
-	
 }
 
 void TileMap::GenerateDungeon()

@@ -8,16 +8,21 @@ PlayState::PlayState()
 	
 }
 
-PlayState::PlayState(GenerationType type)
+PlayState::PlayState(GenerationType type,int seed)
 {
+	std::srand(50);
 	view.setCenter(sf::Vector2f(350, 300));
 	view.setSize(sf::Vector2f(800, 600));
 	if (!CharTextures.loadFromFile("monster.png"))
 	{
 
 	}
+	if (type == GenerationType::Cave)
+	{
+		map.GenerateCave();
+	}
 	Entity* player = new Entity;
-	player->AddComponent<PositionC>(0,0);
+	player->AddComponent<PositionC>(map.GetStairUp().x,map.GetStairUp().y);
 	player->AddComponent<DirectionC>();
 
 	sf::Sprite sprite;
@@ -27,10 +32,7 @@ PlayState::PlayState(GenerationType type)
 	player->AddComponent<GraphicC>();
 	player->GetComponent<GraphicC>()->sprite = sprite;
 	Entities.push_back(std::unique_ptr<Entity>(player));
-	if (type == GenerationType::Cave)
-	{
-		map.GenerateCave();
-	}
+	
 }
 
 PlayState::~PlayState()
@@ -94,11 +96,11 @@ void PlayState::Input(Engine * engine)
 			if (event.key.code == sf::Keyboard::Up)
 			{
 				Entities[0]->GetComponent<DirectionC>()->direction.x = 0;
-				Entities[0]->GetComponent<DirectionC>()->direction.y = 1;
+				Entities[0]->GetComponent<DirectionC>()->direction.y = -1;
 			}else if (event.key.code == sf::Keyboard::Down)
 			{
 				Entities[0]->GetComponent<DirectionC>()->direction.x = 0;
-				Entities[0]->GetComponent<DirectionC>()->direction.y = -1;
+				Entities[0]->GetComponent<DirectionC>()->direction.y = 1;
 			}
 			else if (event.key.code == sf::Keyboard::Left)
 			{
@@ -109,6 +111,31 @@ void PlayState::Input(Engine * engine)
 			{
 				Entities[0]->GetComponent<DirectionC>()->direction.x = 1;
 				Entities[0]->GetComponent<DirectionC>()->direction.y = 0;
+			}
+			else if (event.key.code == sf::Keyboard::E)
+			{
+				int x{ Entities[0]->GetComponent<PositionC>()->Position.x }, y{ Entities[0]->GetComponent<PositionC>()->Position.y};
+				if (map.getBlock(x,y) == MapType::StairD) 
+				{
+					seed+= 1;
+					std::srand(seed);
+					map.GenerateCave();
+					Clvl += 1;
+					Entities[0]->GetComponent<PositionC>()->Position = map.GetStairUp();
+				}
+				else if (map.getBlock(x, y) == MapType::StairU)
+				{
+					if (Clvl == 0)
+					{
+						engine->PopState();
+					}
+					seed -= 1;
+					Clvl -= 1;
+					std::srand(seed);
+					map.GenerateCave();
+					Entities[0]->GetComponent<PositionC>()->Position = map.GetStairDown();
+				}
+				
 			}
 		default:
 			break;

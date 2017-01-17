@@ -195,7 +195,7 @@ void WorldState::Input(Engine * engine)
 				TerrainType tile = Terrain[player.x][player.y];
 				if (tile == TerrainType::dungeon)
 				{
-					engine->ChangeState(new PlayState(GenerationType::Cave));
+					engine->PushState(new PlayState(GenerationType::Cave,50));
 				}
 			}
 			

@@ -7,7 +7,9 @@
 enum MapType
 {
 	Floor = 0,
-	Wall	
+	Wall,
+	StairU,
+	StairD
 };
 
 enum GenerationType
