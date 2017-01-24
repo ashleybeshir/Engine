@@ -10,15 +10,18 @@
 #include "Tilemap.h"
 #include "Components.h"
 
+
 class PlayState : public GameState
 {
 	
 	std::vector<std::unique_ptr<Entity>> Entities;
+	Entity* player;
 	sf::Texture CharTextures;
 	TileMap map;
 	sf::View view;
 	int seed;
 	int Clvl{0};
+	bool input;
 public:
 
 	void Start();

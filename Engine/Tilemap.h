@@ -23,20 +23,20 @@ public:
 	
 	void GenerateDungeon();
 	void Draw(sf::RenderWindow & window);
-	sf::Vector2i& GetStairUp() 
+	inline sf::Vector2i& GetStairUp() 
 	{
 		return StairUp;
 	}
-	sf::Vector2i& GetStairDown()
+	inline sf::Vector2i& GetStairDown()
 	{
 		return StairDown;
 	}
-	bool isPassable(int x,int y)
+	inline bool isPassable(int x,int y)
 	{
 		if (map[x][y] == MapType::Wall) return false;
 		else return true;
 	}
-	MapType getBlock(int x,int y) 
+	inline MapType getBlock(int x,int y) 
 	{
 		return map[x][y];
 	}

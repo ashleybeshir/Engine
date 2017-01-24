@@ -1,6 +1,6 @@
 #include "PlayState.h"
 #include <iostream>
-
+#include "pathfinder.h"
 
 
 PlayState::PlayState()
@@ -21,14 +21,14 @@ PlayState::PlayState(GenerationType type,int seed)
 	{
 		map.GenerateCave();
 	}
-	Entity* player = new Entity;
+	player = new Entity;
 	player->AddComponent<PositionC>(map.GetStairUp().x,map.GetStairUp().y);
 	player->AddComponent<DirectionC>();
 
 	sf::Sprite sprite;
 	sprite.setTexture(CharTextures);
 	sprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
-	sprite.setPosition(0,0);
+	sprite.setPosition(map.GetStairUp().x*32, map.GetStairUp().y*32);
 	player->AddComponent<GraphicC>();
 	player->GetComponent<GraphicC>()->sprite = sprite;
 	Entities.push_back(std::unique_ptr<Entity>(player));
@@ -65,23 +65,27 @@ void PlayState::Resume()
 
 void PlayState::Run(Engine * engine)
 {
-	for (auto& e : Entities)
+	if (input == true)
 	{
-		sf::Vector2i temp = e->GetComponent<DirectionC>()->direction;
-		sf::Vector2i* pos = &e->GetComponent<PositionC>()->Position;
+		for (auto& e : Entities)
+		{
+			sf::Vector2i temp = e->GetComponent<DirectionC>()->direction;
+			sf::Vector2i* pos = &e->GetComponent<PositionC>()->Position;
 
-		pos->x = temp.x + pos->x;
-		pos->y = temp.y + pos->y;
-		sf::Sprite* g = &e->GetComponent<GraphicC>()->sprite;
+			pos->x = temp.x + pos->x;
+			pos->y = temp.y + pos->y;
+			sf::Sprite* g = &e->GetComponent<GraphicC>()->sprite;
 
-		g->setPosition(pos->x*32,pos->y*32);
+			g->setPosition(pos->x * 32, pos->y * 32);
+		}
 	}
 }
 
 void PlayState::Input(Engine * engine)
 {
-	Entities[0]->GetComponent<DirectionC>()->direction.x = 0;
-	Entities[0]->GetComponent<DirectionC>()->direction.y = 0;
+	input = false;
+	player->GetComponent<DirectionC>()->direction.x = 0;
+	player->GetComponent<DirectionC>()->direction.y = 0;
 
 	sf::Event event;
 	while (engine->window.pollEvent(event))
@@ -92,36 +96,43 @@ void PlayState::Input(Engine * engine)
 			engine->window.close();
 			break;
 		case sf::Event::KeyPressed:
-			
-			if (event.key.code == sf::Keyboard::Up)
+			if (event.key.code == sf::Keyboard::Escape) {
+				engine->window.close();
+			}
+			else if (event.key.code == sf::Keyboard::Up)
 			{
-				Entities[0]->GetComponent<DirectionC>()->direction.x = 0;
-				Entities[0]->GetComponent<DirectionC>()->direction.y = -1;
+				input = true;
+				player->GetComponent<DirectionC>()->direction.x = 0;
+				player->GetComponent<DirectionC>()->direction.y = -1;
 			}else if (event.key.code == sf::Keyboard::Down)
 			{
-				Entities[0]->GetComponent<DirectionC>()->direction.x = 0;
-				Entities[0]->GetComponent<DirectionC>()->direction.y = 1;
+				input = true;
+				player->GetComponent<DirectionC>()->direction.x = 0;
+				player->GetComponent<DirectionC>()->direction.y = 1;
 			}
 			else if (event.key.code == sf::Keyboard::Left)
 			{
-				Entities[0]->GetComponent<DirectionC>()->direction.x = -1;
-				Entities[0]->GetComponent<DirectionC>()->direction.y = 0;
+				input = true;
+				player->GetComponent<DirectionC>()->direction.x = -1;
+				player->GetComponent<DirectionC>()->direction.y = 0;
 			}
 			else if (event.key.code == sf::Keyboard::Right)
 			{
-				Entities[0]->GetComponent<DirectionC>()->direction.x = 1;
-				Entities[0]->GetComponent<DirectionC>()->direction.y = 0;
+				input = true;
+				player->GetComponent<DirectionC>()->direction.x = 1;
+				player->GetComponent<DirectionC>()->direction.y = 0;
 			}
 			else if (event.key.code == sf::Keyboard::E)
 			{
-				int x{ Entities[0]->GetComponent<PositionC>()->Position.x }, y{ Entities[0]->GetComponent<PositionC>()->Position.y};
+				input = true;
+				int x{ player->GetComponent<PositionC>()->Position.x }, y{ player->GetComponent<PositionC>()->Position.y};
 				if (map.getBlock(x,y) == MapType::StairD) 
 				{
 					seed+= 1;
 					std::srand(seed);
 					map.GenerateCave();
 					Clvl += 1;
-					Entities[0]->GetComponent<PositionC>()->Position = map.GetStairUp();
+					player->GetComponent<PositionC>()->Position = map.GetStairUp();
 				}
 				else if (map.getBlock(x, y) == MapType::StairU)
 				{
@@ -133,9 +144,14 @@ void PlayState::Input(Engine * engine)
 					Clvl -= 1;
 					std::srand(seed);
 					map.GenerateCave();
-					Entities[0]->GetComponent<PositionC>()->Position = map.GetStairDown();
+					player->GetComponent<PositionC>()->Position = map.GetStairDown();
 				}
 				
+			}
+			else if (event.key.code == sf::Keyboard::L)
+			{
+				
+				std::cout << pathfinding(map.GetStairUp(),sf::Vector2i(map.GetStairUp().x + 5, map.GetStairUp().y)) << std::endl ;
 			}
 		default:
 			break;
@@ -146,7 +162,7 @@ void PlayState::Input(Engine * engine)
 
 void PlayState::Draw(Engine * engine)
 {
-	sf::Vector2f pos = Entities[0]->GetComponent<GraphicC>()->sprite.getPosition();
+	sf::Vector2f pos = player->GetComponent<GraphicC>()->sprite.getPosition();
 	
 	view.setCenter(pos);
 	engine->window.setView(view);

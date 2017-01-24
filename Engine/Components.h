@@ -3,6 +3,7 @@
 #pragma once
 
 #include <SFML\Graphics.hpp>
+#include <string>
 #include "Entity.h"
 
 struct PositionC : public Component
@@ -31,6 +32,10 @@ struct DirectionC : public Component
 struct EnergyC : public Component
 {
 	int Energy;
+};
+struct PathC : public Component
+{
+	std::string path;
 };
 
 #endif // !_COMPONENTS_

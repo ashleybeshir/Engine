@@ -171,6 +171,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="pathfinder.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Terrain.h" />

@@ -92,6 +92,9 @@
     <ClInclude Include="CaveG.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="pathfinder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
