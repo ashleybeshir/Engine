@@ -10,7 +10,7 @@
 
 class WorldState : public GameState
 {
-	int seed;
+	int seed{0};
 	std::vector<std::vector<TerrainType>> Terrain;
 	sf::VertexArray GTerrain;
 	sf::View view;

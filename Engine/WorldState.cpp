@@ -22,7 +22,6 @@ WorldState::~WorldState()
 
 void WorldState::Start()
 {
-	std::cout << "world is generating" << std::endl;
 
 	view.setCenter(sf::Vector2f(0, 0));
 	view.setSize(sf::Vector2f(1920, 1080));
@@ -193,9 +192,20 @@ void WorldState::Input(Engine * engine)
 			else if (event.key.code == sf::Keyboard::F)
 			{
 				TerrainType tile = Terrain[player.x][player.y];
-				if (tile == TerrainType::dungeon)
+				if (tile == TerrainType::cave)
 				{
-					engine->PushState(new PlayState(GenerationType::Cave,50));
+					int _seed = player.y * 100 + player.x + seed;
+					MapNode* temp;
+					if(AssetsManager::GetInstance()->GetDungeon(_seed) == nullptr)
+					{
+						temp = new MapNode(_seed,GenerationType::Cave);
+						AssetsManager::GetInstance()->AddDungeon(temp);
+					}
+					else 
+					{
+						temp = AssetsManager::GetInstance()->GetDungeon(_seed);
+					}
+					engine->PushState(new PlayState(temp));
 				}
 			}
 			

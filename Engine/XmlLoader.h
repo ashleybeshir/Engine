@@ -2,6 +2,7 @@
 #define _XMLOADER_
 #pragma once
 #include <random>
+#include <math.h>
 #include "tinyxml2.h"
 #include "PlayState.h"
 
@@ -51,7 +52,14 @@ bool LoadXmlEntity(PlayState& play, int level, TileMap& map)
 						entity->AddComponent<GraphicC>();
 						sf::Sprite* sprite = &entity->GetComponent<GraphicC>()->sprite;
 						sprite->setTexture(AssetsManager::GetInstance()->GetRe("Entity"));
-						sprite->setTextureRect(sf::IntRect(pos * 32, (int)(pos/6)*32, 32, 32));
+						int x, y;
+						if (pos < 6) 
+						{
+							x = pos * 32;
+						}
+						else x = (pos % 6) * 32;
+						y = std::floor(pos /36) * 32;
+						sprite->setTextureRect(sf::IntRect(x,y, 32, 32));
 					}
 				}
 				int x, y;

@@ -29,6 +29,20 @@ sf::Texture & AssetsManager::GetRe(const std::string & texture)
 	return data[texture];
 }
 
+void AssetsManager::AddDungeon(MapNode * node)
+{
+	dungeons[node->GetSeed()] = node;
+}
+
+MapNode * AssetsManager::GetDungeon(int seed)
+{
+	if (dungeons.find(seed) != dungeons.end()) 
+	{
+		return dungeons[seed];
+	}else return nullptr;
+	
+}
+
 AssetsManager::AssetsManager()
 {
 }

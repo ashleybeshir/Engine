@@ -155,7 +155,7 @@
     <ClCompile Include="CaveG.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameState.cpp" />
-    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="MapNode.cpp" />
     <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -170,6 +170,8 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="MapNode.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="pathfinder.h" />
     <ClInclude Include="PlayState.h" />

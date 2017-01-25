@@ -10,26 +10,45 @@ PlayState::PlayState()
 
 PlayState::PlayState(GenerationType type,int seed)
 {
-	std::srand(50);
-	view.setCenter(sf::Vector2f(350, 300));
-	view.setSize(sf::Vector2f(800, 600));
+	
 	
 	if (type == GenerationType::Cave)
 	{
+		
+	}
+	
+	//Entities.push_back(std::unique_ptr<Entity>(player));
+	
+}
+
+PlayState::PlayState(MapNode * node)
+{
+	DungeonNode = node;
+	std::srand(node->GetSeed());
+	view.setCenter(sf::Vector2f(350, 300));
+	view.setSize(sf::Vector2f(800, 600));
+	if (node->GetType() == GenerationType::Cave) 
+	{
 		map.GenerateCave();
 	}
+	if (node->GetEntityForLvl().size() != 0) 
+	{
+		Entities = node->GetEntityForLvl();
+	}
+	else 
+	{
+		//LoadXmlEntity();
+	}
 	player = new Entity;
-	player->AddComponent<PositionC>(map.GetStairUp().x,map.GetStairUp().y);
+	player->AddComponent<PositionC>(map.GetStairUp().x, map.GetStairUp().y);
 	player->AddComponent<DirectionC>();
 
 	sf::Sprite sprite;
 	sprite.setTexture(AssetsManager::GetInstance()->GetRe("Entity"));
 	sprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
-	sprite.setPosition(map.GetStairUp().x*32, map.GetStairUp().y*32);
+	sprite.setPosition(map.GetStairUp().x * 32, map.GetStairUp().y * 32);
 	player->AddComponent<GraphicC>();
 	player->GetComponent<GraphicC>()->sprite = sprite;
-	//Entities.push_back(std::unique_ptr<Entity>(player));
-	
 }
 
 PlayState::~PlayState()
@@ -38,7 +57,7 @@ PlayState::~PlayState()
 
 void PlayState::AddEntity(Entity * entity)
 {
-	Entities.push_back(std::unique_ptr<Entity>(entity));
+	Entities.push_back(entity);
 }
 
 void PlayState::Start()
@@ -168,23 +187,23 @@ void PlayState::Input(Engine * engine)
 				int x{ player->GetComponent<PositionC>()->Position.x }, y{ player->GetComponent<PositionC>()->Position.y};
 				if (map.getBlock(x,y) == MapType::StairD) 
 				{
-					seed+= 1;
-					std::srand(seed);
+					DungeonNode->SetSeed(DungeonNode->GetSeed() + 1);
+					std::srand(DungeonNode->GetSeed());
 					map.GenerateCave();
-					Clvl += 1;
+					DungeonNode->SetLevel(DungeonNode->GetLevel() + 1);
 					player->GetComponent<PositionC>()->Position = map.GetStairUp();
 					Entities.clear();
-					LoadXmlEntity(*this,Clvl,map);
+					LoadXmlEntity(*this,DungeonNode->GetLevel(),map);
 				}
 				else if (map.getBlock(x, y) == MapType::StairU)
 				{
-					if (Clvl == 0)
+					if (DungeonNode->GetLevel() == 0)
 					{
 						engine->PopState();
 					}
-					seed -= 1;
-					Clvl -= 1;
-					std::srand(seed);
+					DungeonNode->SetSeed(DungeonNode->GetSeed() - 1);
+					DungeonNode->SetLevel(DungeonNode->GetLevel() + 1);
+					std::srand(DungeonNode->GetSeed());
 					map.GenerateCave();
 					player->GetComponent<PositionC>()->Position = map.GetStairDown();
 				}
