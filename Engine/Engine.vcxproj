@@ -162,7 +162,6 @@
     <ClCompile Include="Tilemap.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="WorldState.cpp" />
-    <ClCompile Include="XmlEntityLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetsManager.h" />
@@ -179,6 +178,7 @@
     <ClInclude Include="Tilemap.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="WorldState.h" />
+    <ClInclude Include="XmlLoader.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc" />

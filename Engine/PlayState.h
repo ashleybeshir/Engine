@@ -1,7 +1,8 @@
-#pragma once
+
 #ifndef _PLAYSTATE_
 #define _PLAYSTATE_
-#pragma
+
+#pragma once
 
 #include <vector>
 #include <string>
@@ -10,6 +11,7 @@
 #include "Terrain.h"
 #include "Tilemap.h"
 #include "Components.h"
+#include "AssetsManager.h"
 
 
 class PlayState : public GameState
@@ -17,7 +19,6 @@ class PlayState : public GameState
 	
 	std::vector<std::unique_ptr<Entity>> Entities;
 	Entity* player;
-	sf::Texture CharTextures;
 	TileMap map;
 	sf::View view;
 	int seed;
@@ -39,7 +40,6 @@ public:
 	PlayState();
 	PlayState(GenerationType type ,int seed);
 	~PlayState();
-protected:
 	void AddEntity(Entity* entity);
 };
 

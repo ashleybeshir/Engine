@@ -6,9 +6,10 @@
 #include "PlayState.h"
 #include "Terrain.h"
 
+
 void main()
 {
-	
+	AssetsManager::GetInstance();
 	Engine engine;
 
 	engine.Start();

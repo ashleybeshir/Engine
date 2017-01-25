@@ -1,26 +1,10 @@
 <entity>
-	<name>Milo</name>
-	<health>100</health>
-	<energy>300</energy>
-	<damage>500</damage>
-	<level>2</level>
-	<sprite>0</sprite>
-</entity>
-<entity>
-	<name>Dog</name>
-	<health>200</health>
-	<energy>100</energy>
-	<damage>10</damage>
-	<level>2</level>
-	<sprite>1</sprite>
-</entity>
-<entity>
 	<name>Bird</name>
 	<health>50</health>
 	<energy>400</energy>
 	<damage>3</damage>
 	<level>1</level>
-	<sprite>2</sprite>
+	<sprite>6</sprite>
 </entity>
 <entity>
 	<name>Bug</name>
@@ -28,6 +12,30 @@
 	<energy>400</energy>
 	<damage>4</damage>
 	<level>1</level>
-	<sprite>3</sprite>
+	<sprite>5</sprite>
+</entity>
+<entity>
+	<name>Nathan</name>
+	<health>2</health>
+	<energy>100</energy>
+	<damage>1</damage>
+	<level>1</level>
+	<sprite>10</sprite>
 </entity>
 
+<entity>
+	<name>Milo</name>
+	<health>100</health>
+	<energy>300</energy>
+	<damage>500</damage>
+	<level>2</level>
+	<sprite>7</sprite>
+</entity>
+<entity>
+	<name>Dog</name>
+	<health>200</health>
+	<energy>100</energy>
+	<damage>10</damage>
+	<level>2</level>
+	<sprite>8</sprite>
+</entity>

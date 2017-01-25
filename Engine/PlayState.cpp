@@ -1,7 +1,7 @@
 #include "PlayState.h"
 #include <iostream>
 #include "pathfinder.h"
-
+#include "XmlLoader.h"
 
 PlayState::PlayState()
 {
@@ -13,10 +13,7 @@ PlayState::PlayState(GenerationType type,int seed)
 	std::srand(50);
 	view.setCenter(sf::Vector2f(350, 300));
 	view.setSize(sf::Vector2f(800, 600));
-	if (!CharTextures.loadFromFile("monster.png"))
-	{
-
-	}
+	
 	if (type == GenerationType::Cave)
 	{
 		map.GenerateCave();
@@ -26,12 +23,12 @@ PlayState::PlayState(GenerationType type,int seed)
 	player->AddComponent<DirectionC>();
 
 	sf::Sprite sprite;
-	sprite.setTexture(CharTextures);
+	sprite.setTexture(AssetsManager::GetInstance()->GetRe("Entity"));
 	sprite.setTextureRect(sf::IntRect(0, 0, 32, 32));
 	sprite.setPosition(map.GetStairUp().x*32, map.GetStairUp().y*32);
 	player->AddComponent<GraphicC>();
 	player->GetComponent<GraphicC>()->sprite = sprite;
-	Entities.push_back(std::unique_ptr<Entity>(player));
+	//Entities.push_back(std::unique_ptr<Entity>(player));
 	
 }
 
@@ -67,11 +64,18 @@ void PlayState::Run(Engine * engine)
 {
 	if (input == true)
 	{
+		sf::Vector2i* temp = &player->GetComponent<DirectionC>()->direction;
+		sf::Vector2i* pos = &player->GetComponent<PositionC>()->Position;
+		pos->x = temp->x + pos->x;
+		pos->y = temp->y + pos->y;
+		sf::Sprite* g = &player->GetComponent<GraphicC>()->sprite;
+
+		g->setPosition(pos->x * 32, pos->y * 32);
 		for (auto& e : Entities)
 		{
 			sf::Vector2i* temp = &e->GetComponent<DirectionC>()->direction;
 			sf::Vector2i* pos = &e->GetComponent<PositionC>()->Position;
-			int difference{ manhattan_distance(player->GetComponent<PositionC>()->Position,*pos) };
+			/*int difference{ manhattan_distance(player->GetComponent<PositionC>()->Position,*pos) };
 			if (difference < 15 && difference != 0) 
 			{
 				std::string *path = &e->GetComponent<PathC>()->path;
@@ -107,7 +111,7 @@ void PlayState::Run(Engine * engine)
 					temp->x = 0;
 					temp->y = 0;
 				}
-			}
+			}*/
 			pos->x = temp->x + pos->x;
 			pos->y = temp->y + pos->y;
 			sf::Sprite* g = &e->GetComponent<GraphicC>()->sprite;
@@ -169,6 +173,8 @@ void PlayState::Input(Engine * engine)
 					map.GenerateCave();
 					Clvl += 1;
 					player->GetComponent<PositionC>()->Position = map.GetStairUp();
+					Entities.clear();
+					LoadXmlEntity(*this,Clvl,map);
 				}
 				else if (map.getBlock(x, y) == MapType::StairU)
 				{
@@ -186,7 +192,7 @@ void PlayState::Input(Engine * engine)
 			}
 			else if (event.key.code == sf::Keyboard::L)
 			{		
-				std::cout << pathfinding(map.GetStairUp(),sf::Vector2i(map.GetStairUp().x + 5, map.GetStairUp().y+1)) << std::endl ;
+				//std::cout << pathfinding(map.GetStairUp(),sf::Vector2i(map.GetStairUp().x + 5, map.GetStairUp().y+1)) << std::endl ;
 			}
 		default:
 			break;
@@ -202,6 +208,7 @@ void PlayState::Draw(Engine * engine)
 	view.setCenter(pos);
 	engine->window.setView(view);
 	map.Draw(engine->window);
+	engine->window.draw(player->GetComponent<GraphicC>()->sprite);
 	for (auto& e : Entities)
 	{		
 		engine->window.draw(e->GetComponent<GraphicC>()->sprite);

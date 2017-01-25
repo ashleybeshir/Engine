@@ -26,7 +26,7 @@ struct GraphicC : public Component
 };
 struct DirectionC : public Component
 {
-	sf::Vector2i direction;
+	sf::Vector2i direction{ 0,0 };
 };
 
 struct EnergyC : public Component
