@@ -160,6 +160,7 @@
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tilemap.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="WorldState.cpp" />
     <ClCompile Include="XmlEntityLoader.cpp" />
   </ItemGroup>
@@ -176,6 +177,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Tilemap.h" />
+    <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="WorldState.h" />
   </ItemGroup>
   <ItemGroup>

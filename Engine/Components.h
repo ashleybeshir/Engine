@@ -31,11 +31,39 @@ struct DirectionC : public Component
 
 struct EnergyC : public Component
 {
+	EnergyC(int energy)
+	{
+		Energy = energy;
+	}
 	int Energy;
 };
 struct PathC : public Component
 {
-	std::string path;
+	std::string path = "";
+};
+struct NameC : public Component
+{
+	NameC(std::string name)
+	{
+		this->name = name;
+	}
+	std::string name;
+};
+struct DamageC : public Component
+{
+	DamageC(int damage) 
+	{
+		this->damage = damage;
+	}
+	int damage;
+};
+struct HealthC : public Component
+{
+	HealthC(int health)
+	{
+		this->health = health;
+	}
+	int health;
 };
 
 #endif // !_COMPONENTS_

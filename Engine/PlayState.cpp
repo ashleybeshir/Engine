@@ -69,11 +69,47 @@ void PlayState::Run(Engine * engine)
 	{
 		for (auto& e : Entities)
 		{
-			sf::Vector2i temp = e->GetComponent<DirectionC>()->direction;
+			sf::Vector2i* temp = &e->GetComponent<DirectionC>()->direction;
 			sf::Vector2i* pos = &e->GetComponent<PositionC>()->Position;
-
-			pos->x = temp.x + pos->x;
-			pos->y = temp.y + pos->y;
+			int difference{ manhattan_distance(player->GetComponent<PositionC>()->Position,*pos) };
+			if (difference < 15 && difference != 0) 
+			{
+				std::string *path = &e->GetComponent<PathC>()->path;
+				if (path->compare("") != 0) 
+				{
+					if (path->at(0),'R')
+					{
+						temp->x = 1;
+						temp->y = 0;
+						path->erase(path->begin());
+					}else if(path->at(0) == 'L')
+					{
+						temp->x = -1;
+						temp->y = 0;
+						path->erase(path->begin());
+					}
+					else if (path->at(0) == 'U')
+					{
+						temp->x = 0;
+						temp->y = 1;
+						path->erase(path->begin());
+					}
+					else if (path->at(0) == 'D')
+					{
+						temp->x = 0;
+						temp->y = -1;
+						path->erase(path->begin());
+					}
+				}
+				else 
+				{
+					*path = pathfinding(*pos, player->GetComponent<PositionC>()->Position,map);
+					temp->x = 0;
+					temp->y = 0;
+				}
+			}
+			pos->x = temp->x + pos->x;
+			pos->y = temp->y + pos->y;
 			sf::Sprite* g = &e->GetComponent<GraphicC>()->sprite;
 
 			g->setPosition(pos->x * 32, pos->y * 32);

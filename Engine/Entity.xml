@@ -1,13 +1,33 @@
-
-<milo>
+<entity>
 	<name>Milo</name>
 	<health>100</health>
 	<energy>300</energy>
 	<damage>500</damage>
-</milo>
-<dog>
+	<level>2</level>
+	<sprite>0</sprite>
+</entity>
+<entity>
 	<name>Dog</name>
 	<health>200</health>
 	<energy>100</energy>
 	<damage>10</damage>
-</dog>
+	<level>2</level>
+	<sprite>1</sprite>
+</entity>
+<entity>
+	<name>Bird</name>
+	<health>50</health>
+	<energy>400</energy>
+	<damage>3</damage>
+	<level>1</level>
+	<sprite>2</sprite>
+</entity>
+<entity>
+	<name>Bug</name>
+	<health>30</health>
+	<energy>400</energy>
+	<damage>4</damage>
+	<level>1</level>
+	<sprite>3</sprite>
+</entity>
+

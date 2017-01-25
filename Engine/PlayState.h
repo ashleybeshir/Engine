@@ -4,6 +4,7 @@
 #pragma
 
 #include <vector>
+#include <string>
 #include "GameState.h"
 #include "Entity.h"
 #include "Terrain.h"

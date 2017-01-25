@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include "Terrain.h"
+#include "Tilemap.h"
 
 struct node
 {
@@ -25,7 +25,7 @@ inline int manhattan_distance(sf::Vector2i start, sf::Vector2i end)
 	return std::abs(end.x - start.x) + std::abs(end.y - start.y);
 }
 
-std::string pathfinding(sf::Vector2i start, sf::Vector2i end,std::vector<std::vector<MapType>>& map)
+std::string pathfinding(sf::Vector2i start, sf::Vector2i end,TileMap& map)
 {
 	std::vector<node> closed, open;
 	open.push_back(node(start, manhattan_distance(start, end), 0));
@@ -58,19 +58,19 @@ std::string pathfinding(sf::Vector2i start, sf::Vector2i end,std::vector<std::ve
 			
 		}
 		std::vector<node> adjancent;
-		if (map[current.pos.x - 1][ current.pos.y] != MapType::Wall)
+		if (map.isPassable(current.pos.x - 1, current.pos.y))
 		{
 			adjancent.push_back(node(sf::Vector2i(current.pos.x - 1, current.pos.y), manhattan_distance(sf::Vector2i(current.pos.x - 1, current.pos.y), end), current.G + 1));
 		}
-		if (map[current.pos.x + 1][current.pos.y] != MapType::Wall)
+		if (map.isPassable(current.pos.x + 1,current.pos.y))
 		{
 			adjancent.push_back(node(sf::Vector2i(current.pos.x + 1, current.pos.y), manhattan_distance(sf::Vector2i(current.pos.x + 1, current.pos.y), end), current.G + 1));
 		}
-		if (map[current.pos.x][current.pos.y-1] != MapType::Wall)
+		if (map.isPassable(current.pos.x,current.pos.y-1) )
 		{
 			adjancent.push_back(node(sf::Vector2i(current.pos.x, current.pos.y - 1), manhattan_distance(sf::Vector2i(current.pos.x, current.pos.y - 1), end), current.G + 1));
 		}
-		if (map[current.pos.x][current.pos.y+1] != MapType::Wall)
+		if (map.isPassable(current.pos.x,current.pos.y+1) )
 		{
 			adjancent.push_back(node(sf::Vector2i(current.pos.x, current.pos.y + 1), manhattan_distance(sf::Vector2i(current.pos.x, current.pos.y + 1), end), current.G + 1));
 		}
