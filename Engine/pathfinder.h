@@ -25,7 +25,7 @@ inline int manhattan_distance(sf::Vector2i start, sf::Vector2i end)
 	return std::abs(end.x - start.x) + std::abs(end.y - start.y);
 }
 
-std::string pathfinding(sf::Vector2i start, sf::Vector2i end/*,std::vector<std::vector<MapType>>& map*/)
+std::string pathfinding(sf::Vector2i start, sf::Vector2i end,std::vector<std::vector<MapType>>& map)
 {
 	std::vector<node> closed, open;
 	open.push_back(node(start, manhattan_distance(start, end), 0));
@@ -37,7 +37,7 @@ std::string pathfinding(sf::Vector2i start, sf::Vector2i end/*,std::vector<std::
 			int f{current.G+current.H};
 			int _f{ open[x].G + open[x].H };
 			
-			if (_f < f)
+			if (_f <= f)
 			{
 				current = open[x];
 			}
@@ -48,7 +48,6 @@ std::string pathfinding(sf::Vector2i start, sf::Vector2i end/*,std::vector<std::
 		{
 			if (open[x].pos == current.pos)
 			{
-				std::cout << current.pos.x << " " << current.pos.y << std::endl;
 				open.erase(open.begin() + x);
 				
 			}
@@ -56,37 +55,54 @@ std::string pathfinding(sf::Vector2i start, sf::Vector2i end/*,std::vector<std::
 		if (current.pos == end)
 		{
 			break;
-			std::cout << "End" << std::endl;
+			
 		}
-		
 		std::vector<node> adjancent;
-		adjancent.push_back(node(sf::Vector2i(current.pos.x - 1, current.pos.y), manhattan_distance(sf::Vector2i(current.pos.x - 1, current.pos.y), end), current.G + 1));
-		adjancent.push_back(node(sf::Vector2i(current.pos.x + 1, current.pos.y), manhattan_distance(sf::Vector2i(current.pos.x + 1, current.pos.y), end), current.G + 1));
-		adjancent.push_back(node(sf::Vector2i(current.pos.x, current.pos.y - 1), manhattan_distance(sf::Vector2i(current.pos.x, current.pos.y - 1), end), current.G + 1));
-		adjancent.push_back(node(sf::Vector2i(current.pos.x, current.pos.y + 1), manhattan_distance(sf::Vector2i(current.pos.x, current.pos.y + 1), end), current.G + 1));
+		if (map[current.pos.x - 1][ current.pos.y] != MapType::Wall)
+		{
+			adjancent.push_back(node(sf::Vector2i(current.pos.x - 1, current.pos.y), manhattan_distance(sf::Vector2i(current.pos.x - 1, current.pos.y), end), current.G + 1));
+		}
+		if (map[current.pos.x + 1][current.pos.y] != MapType::Wall)
+		{
+			adjancent.push_back(node(sf::Vector2i(current.pos.x + 1, current.pos.y), manhattan_distance(sf::Vector2i(current.pos.x + 1, current.pos.y), end), current.G + 1));
+		}
+		if (map[current.pos.x][current.pos.y-1] != MapType::Wall)
+		{
+			adjancent.push_back(node(sf::Vector2i(current.pos.x, current.pos.y - 1), manhattan_distance(sf::Vector2i(current.pos.x, current.pos.y - 1), end), current.G + 1));
+		}
+		if (map[current.pos.x][current.pos.y+1] != MapType::Wall)
+		{
+			adjancent.push_back(node(sf::Vector2i(current.pos.x, current.pos.y + 1), manhattan_distance(sf::Vector2i(current.pos.x, current.pos.y + 1), end), current.G + 1));
+		}
 		
 		for (int i = 0; i < 4; i++)
 		{
+			bool _open{ false }, _closed{true};
 			
 			for (int x = 0; x < closed.size(); x++)
 			{
 				if (adjancent[i].pos == closed[x].pos)
 				{
-					continue;
+					_closed = false;
 				}
 			}
-			if (open.empty()) open.push_back(adjancent[i]);
-			for (int y = 0; y < open.size(); y++)
-			{
-				if (open[y].pos != adjancent[i].pos)
+			if (_closed) {
+				if (open.empty()) open.push_back(adjancent[i]);
+				for (int y = 0; y < open.size(); y++)
 				{
-					open.push_back(adjancent[i]);
+					if (open[y].pos == adjancent[i].pos)
+					{
+						_open = true;					
+					}
 					
 				}
-				else
+				if (!_open) {
+					open.push_back(adjancent[i]);	
+				}
+				else 
 				{
 					int _f = adjancent[i].G + adjancent[i].H;
-					if (_f < (current.G + current.H))
+					if (_f <= (current.G + current.H))
 					{
 						current = adjancent[i];
 					}
@@ -96,7 +112,6 @@ std::string pathfinding(sf::Vector2i start, sf::Vector2i end/*,std::vector<std::
 
 	} while (!open.empty());
 	std::string path;
-	std::cout << closed.size() << std::endl;
 	for (int x = 0; x < closed.size(); x++)
 	{
 		if ((x + 1) < closed.size())

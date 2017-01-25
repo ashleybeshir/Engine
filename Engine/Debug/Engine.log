@@ -1,2 +1,11 @@
-﻿  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
-  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)
+﻿  PlayState.cpp
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(35): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(47): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(71): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(80): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(105): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(107): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\playstate.cpp(31): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\playstate.cpp(79): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Engine.vcxproj -> C:\Users\ashley\Documents\GitHub\Engine\Debug\Engine.exe
+  Engine.vcxproj -> C:\Users\ashley\Documents\GitHub\Engine\Debug\Engine.pdb (Full PDB)

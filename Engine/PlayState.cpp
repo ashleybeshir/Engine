@@ -149,9 +149,8 @@ void PlayState::Input(Engine * engine)
 				
 			}
 			else if (event.key.code == sf::Keyboard::L)
-			{
-				
-				std::cout << pathfinding(map.GetStairUp(),sf::Vector2i(map.GetStairUp().x + 5, map.GetStairUp().y)) << std::endl ;
+			{		
+				std::cout << pathfinding(map.GetStairUp(),sf::Vector2i(map.GetStairUp().x + 5, map.GetStairUp().y+1)) << std::endl ;
 			}
 		default:
 			break;
