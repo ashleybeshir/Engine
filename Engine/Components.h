@@ -39,7 +39,11 @@ struct EnergyC : public Component
 };
 struct PathC : public Component
 {
-	std::string path = "";
+	PathC() 
+	{
+		path = "";
+	}
+	std::string path;
 };
 struct NameC : public Component
 {

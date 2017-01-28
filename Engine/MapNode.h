@@ -24,8 +24,8 @@ public:
 	void SetSeed(int seed) { Seed = seed; }
 	void SetLevel(int lvl) { CurrentLevel = lvl; }
 	int GetLevel() { return CurrentLevel; }
-	std::vector<Entity*>* GetEntityForLvl();
-	std::vector<Entity*>* GetEntityForLvl(int lvl);
+	std::vector<Entity*>& GetEntityForLvl();
+	std::vector<Entity*>& GetEntityForLvl(int lvl);
 	GenerationType GetType() { return type; }
 	MapNode();
 	MapNode(int seed,GenerationType type,int numberoflevels):Seed(seed),type(type),NumberOfLevels(numberoflevels)

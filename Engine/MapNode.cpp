@@ -2,14 +2,14 @@
 
 
 
-std::vector<Entity*>* MapNode::GetEntityForLvl()
+std::vector<Entity*>& MapNode::GetEntityForLvl()
 {
-	return &LvLEntities[CurrentLevel];
+	return LvLEntities[CurrentLevel];
 }
 
-std::vector<Entity*>* MapNode::GetEntityForLvl(int lvl)
+std::vector<Entity*>& MapNode::GetEntityForLvl(int lvl)
 {
-	return &LvLEntities[lvl];
+	return LvLEntities[lvl];
 }
 
 MapNode::MapNode()

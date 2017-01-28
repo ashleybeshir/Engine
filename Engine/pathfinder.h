@@ -58,24 +58,37 @@ std::string pathfinding(sf::Vector2i start, sf::Vector2i end,TileMap& map)
 			
 		}
 		std::vector<node> adjancent;
-		if (map.isPassable(current.pos.x - 1, current.pos.y))
+		if (current.pos.x != 0 ) 
 		{
-			adjancent.push_back(node(sf::Vector2i(current.pos.x - 1, current.pos.y), manhattan_distance(sf::Vector2i(current.pos.x - 1, current.pos.y), end), current.G + 1));
+			if (map.isPassable(current.pos.x - 1, current.pos.y))
+			{
+				adjancent.push_back(node(sf::Vector2i(current.pos.x - 1, current.pos.y), manhattan_distance(sf::Vector2i(current.pos.x - 1, current.pos.y), end), current.G + 1));
+			}
 		}
-		if (map.isPassable(current.pos.x + 1,current.pos.y))
+		if (current.pos.x != 99)
 		{
-			adjancent.push_back(node(sf::Vector2i(current.pos.x + 1, current.pos.y), manhattan_distance(sf::Vector2i(current.pos.x + 1, current.pos.y), end), current.G + 1));
+			if (map.isPassable(current.pos.x + 1, current.pos.y))
+			{
+				adjancent.push_back(node(sf::Vector2i(current.pos.x + 1, current.pos.y), manhattan_distance(sf::Vector2i(current.pos.x + 1, current.pos.y), end), current.G + 1));
+			}
+		}	
+		if (current.pos.y != 0)
+		{
+			if (map.isPassable(current.pos.x, current.pos.y - 1))
+			{
+				adjancent.push_back(node(sf::Vector2i(current.pos.x, current.pos.y - 1), manhattan_distance(sf::Vector2i(current.pos.x, current.pos.y - 1), end), current.G + 1));
+			}
 		}
-		if (map.isPassable(current.pos.x,current.pos.y-1) )
+		if (current.pos.y != 99)
 		{
-			adjancent.push_back(node(sf::Vector2i(current.pos.x, current.pos.y - 1), manhattan_distance(sf::Vector2i(current.pos.x, current.pos.y - 1), end), current.G + 1));
-		}
-		if (map.isPassable(current.pos.x,current.pos.y+1) )
-		{
-			adjancent.push_back(node(sf::Vector2i(current.pos.x, current.pos.y + 1), manhattan_distance(sf::Vector2i(current.pos.x, current.pos.y + 1), end), current.G + 1));
+			if (map.isPassable(current.pos.x, current.pos.y + 1))
+			{
+				adjancent.push_back(node(sf::Vector2i(current.pos.x, current.pos.y + 1), manhattan_distance(sf::Vector2i(current.pos.x, current.pos.y + 1), end), current.G + 1));
+			}
+
 		}
 		
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < adjancent.size(); i++)
 		{
 			bool _open{ false }, _closed{true};
 			
@@ -135,6 +148,7 @@ std::string pathfinding(sf::Vector2i start, sf::Vector2i end,TileMap& map)
 			}
 		}
 	}
+	
 	return path;
 }
 
