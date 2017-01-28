@@ -198,7 +198,7 @@ void WorldState::Input(Engine * engine)
 					MapNode* temp;
 					if(AssetsManager::GetInstance()->GetDungeon(_seed) == nullptr)
 					{
-						temp = new MapNode(_seed,GenerationType::Cave);
+						temp = new MapNode(_seed,GenerationType::Cave,std::rand()%15+4);
 						AssetsManager::GetInstance()->AddDungeon(temp);
 					}
 					else 

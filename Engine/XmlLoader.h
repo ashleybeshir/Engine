@@ -6,7 +6,7 @@
 #include "tinyxml2.h"
 #include "PlayState.h"
 
-bool LoadXmlEntity(PlayState& play, int level, TileMap& map)
+bool LoadXmlEntity(std::vector<Entity*>* entities, int level, TileMap& map)
 {
 	int number = std::rand() % (level + 10) + 1;
 
@@ -70,7 +70,7 @@ bool LoadXmlEntity(PlayState& play, int level, TileMap& map)
 				} while (!map.isPassable(x, y));
 				entity->AddComponent<PositionC>(x, y);
 				entity->AddComponent<DirectionC>();
-				play.AddEntity(entity);
+				entities->push_back(entity);
 				number -= 1;
 			}
 		}

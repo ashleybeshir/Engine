@@ -1,32 +1,45 @@
 ﻿  WorldState.cpp
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(62): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(63): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(64): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(65): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(159): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(160): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(161): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(162): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(163): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(168): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(169): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(170): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(171): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(172): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(177): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(178): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(179): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(180): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(181): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(186): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(187): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(189): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(190): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
-  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(62): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(63): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(64): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(65): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(159): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(160): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(161): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(162): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(163): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(168): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(169): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(170): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(171): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(172): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(177): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(178): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(179): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(180): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(181): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(186): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(187): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(189): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\worldstate.cpp(190): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  PlayState.cpp
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(35): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(47): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(82): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(91): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(115): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\pathfinder.h(117): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\xmlloader.h(13): warning C4800: 'tinyxml2::XMLDocument *': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\ashley\documents\github\engine\engine\xmlloader.h(61): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\documents\github\engine\engine\playstate.cpp(45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\playstate.cpp(86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\documents\github\engine\engine\playstate.cpp(132): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  Engine.vcxproj -> C:\Users\ashley\Documents\GitHub\Engine\Debug\Engine.exe
+  Engine.vcxproj -> C:\Users\ashley\Documents\GitHub\Engine\Debug\Engine.pdb (Full PDB)

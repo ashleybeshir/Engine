@@ -17,7 +17,7 @@
 class PlayState : public GameState
 {
 	MapNode* DungeonNode;
-	std::vector<Entity*> Entities;
+	//std::vector<Entity*> Entities;
 	Entity* player;
 	TileMap map;
 	sf::View view;
@@ -39,7 +39,7 @@ public:
 	PlayState(GenerationType type ,int seed);
 	PlayState(MapNode* node);
 	~PlayState();
-	void AddEntity(Entity* entity);
+	
 };
 
 
