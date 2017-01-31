@@ -1,0 +1,93 @@
+<potion>
+	<lvl>0</lvl>
+	<name>Health Potion</name>
+	<amount>3</amount>
+	<turns>5</turns>
+	<type>consume<type>
+</potion>
+<potion>
+	<lvl>2</lvl>
+	<name>Health Potion+</name>
+	<amount>6</amount>
+	<turns>5</turns>
+	<type>consume<type>
+</potion>
+<potion>
+	<lvl>5</lvl>
+	<name>Health Potion++</name>
+	<amount>9</amount>
+	<turns>5</turns>
+	<type>consume<type>
+</potion>
+<potion>
+	<lvl>0</lvl>
+	<name>Mana Potion</name>
+	<amount>3</amount>
+	<turns>5</turns>
+	<type>consume<type>
+</potion>
+<potion>
+	<lvl>2</lvl>
+	<name>Mana Potion+</name>
+	<amount>6</amount>
+	<turns>5</turns>
+	<type>consume<type>
+</potion>
+<potion>
+	<lvl>5</lvl>
+	<name>Mana Potion++</name>
+	<amount>9</amount>
+	<turns>5</turns>
+	<type>consume<type>
+</potion>
+<potion>
+	<lvl>0</lvl>
+	<name>Poison Potion</name>
+	<amount>3</amount>
+	<turns>5</turns>
+	<type>throw<type>
+</potion>
+<potion>
+	<lvl>2</lvl>
+	<name>Poison Potion+</name>
+	<amount>6</amount>
+	<turns>5</turns>
+	<type>throw<type>
+</potion>
+<potion>
+	<lvl>5</lvl>
+	<name>Poison Potion++</name>
+	<amount>9</amount>
+	<turns>5</turns>
+	<type>throw<type>
+</potion>
+<weapon>
+	<lvl>0</lvl>
+	<name>Wooden Sword</name>
+	<damage>8</damage>
+</weapon>
+<weapon>
+	<lvl>2</lvl>
+	<name>Cooper Sword</name>
+	<damage>15</damage>
+</weapon>
+<weapon>
+	<lvl>5</lvl>
+	<name>Silver Sword</name>
+	<damage>17</damage>
+</weapon>
+<armor>
+	<lvl>0</lvl>
+	<name>Wool Armor</name>
+	<amount>2</amount>
+</armor>
+<armor>
+	<lvl>1</lvl>
+	<name>Cooper Armor</name>
+	<amount>7</amount>
+</armor>
+<armor>
+	<lvl>3</lvl>
+	<name>Pedigree Armor</name>
+	<amount>20</amount>
+</armor>

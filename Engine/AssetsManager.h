@@ -11,6 +11,7 @@ class AssetsManager
 {
 	std::map<sf::String, sf::Texture> data;
 	std::map<int, MapNode*> dungeons;
+	sf::Font* font;
 	static AssetsManager* p_instance;
 public:
 	static AssetsManager* GetInstance();
@@ -18,6 +19,10 @@ public:
 	sf::Texture& GetRe(const std::string& texture);
 	void AddDungeon(MapNode* node);
 	MapNode* GetDungeon(int seed);
+	sf::Font* GetFont() 
+	{
+		return font;
+	}
 	AssetsManager(AssetsManager const&) = delete;
 	void operator=(AssetsManager const&) = delete;
 	AssetsManager();
