@@ -10,7 +10,7 @@
 void main()
 {
 	AssetsManager::GetInstance();
-	Engine engine;
+	/*Engine engine;
 
 	engine.Start();
 	engine.PushState(new WorldState(50));
@@ -21,5 +21,5 @@ void main()
 		engine.Run();
 		engine.Input();
 		engine.Draw();
-	}
+	}*/
 }
