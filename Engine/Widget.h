@@ -8,8 +8,8 @@ struct Widget : public sf::Drawable
 {
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states){}
 	virtual bool check(int x,int y) {}
-	virtual bool clicked(int x,int y){}
-	guitype type;
+	virtual sf::String const* clicked(int x,int y){} //might get a pointer error 
+	
 };
 
 

@@ -1,5 +1,6 @@
-﻿  tinyxml2.cpp
-  WorldState.cpp
+﻿  WorldState.cpp
+c:\users\ashley\desktop\engine\engine\engine\item.h(40): error C2039: 'value': is not a member of 'Potion'
+  c:\users\ashley\desktop\engine\engine\engine\item.h(31): note: see declaration of 'Potion'
 c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
@@ -29,13 +30,18 @@ c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(187): warning C4244:
 c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(189): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(190): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  tinyxml2.cpp
   Tilemap.cpp
 c:\users\ashley\desktop\engine\engine\engine\tilemap.cpp(38): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\tilemap.cpp(39): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\tilemap.cpp(40): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\tilemap.cpp(41): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
   Source.cpp
+c:\users\ashley\desktop\engine\engine\engine\item.h(40): error C2039: 'value': is not a member of 'Potion'
+  c:\users\ashley\desktop\engine\engine\engine\item.h(31): note: see declaration of 'Potion'
   PlayState.cpp
+c:\users\ashley\desktop\engine\engine\engine\item.h(40): error C2039: 'value': is not a member of 'Potion'
+  c:\users\ashley\desktop\engine\engine\engine\item.h(31): note: see declaration of 'Potion'
 c:\users\ashley\desktop\engine\engine\engine\pathfinder.h(35): warning C4018: '<': signed/unsigned mismatch
 c:\users\ashley\desktop\engine\engine\engine\pathfinder.h(47): warning C4018: '<': signed/unsigned mismatch
 c:\users\ashley\desktop\engine\engine\engine\pathfinder.h(91): warning C4018: '<': signed/unsigned mismatch
@@ -45,11 +51,18 @@ c:\users\ashley\desktop\engine\engine\engine\pathfinder.h(128): warning C4018: '
 c:\users\ashley\desktop\engine\engine\engine\pathfinder.h(130): warning C4018: '<': signed/unsigned mismatch
 c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(13): warning C4800: 'tinyxml2::XMLDocument *': forcing value to bool 'true' or 'false' (performance warning)
 c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(61): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(85): warning C4800: 'tinyxml2::XMLDocument *': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(142): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(176): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(210): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(139): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   MenuState.cpp
+c:\users\ashley\desktop\engine\engine\engine\item.h(40): error C2039: 'value': is not a member of 'Potion'
+  c:\users\ashley\desktop\engine\engine\engine\item.h(31): note: see declaration of 'Potion'
   MapNode.cpp
+  GUI.cpp
   GameState.cpp
   Engine.cpp
   CaveG.cpp
@@ -59,6 +72,3 @@ c:\users\ashley\desktop\engine\engine\engine\caveg.cpp(148): warning C4018: '<':
 c:\users\ashley\desktop\engine\engine\engine\caveg.cpp(150): warning C4018: '<': signed/unsigned mismatch
   AssetsManager.cpp
   Generating Code...
-  LINK : C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe not found or not built by the last incremental link; performing full link
-  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
-  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)

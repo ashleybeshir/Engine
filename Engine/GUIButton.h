@@ -38,17 +38,18 @@ struct Button : public Widget
 			return false;
 		}
 	}
-	bool clicked(int x,int y) override
+	sf::String const* clicked(int x,int y) override
 	{
-		if (x <= x *size_x && x >= size_x * x - size_x && y <= y *size_y && y >= size_y * y - size_y)
+		
+		if (x <= shape.getPosition().x + size_x && x >= shape.getPosition().x && y <= shape.getPosition().y + size_y && y >= shape.getPosition().y)
 		{
 			shape.setFillColor(Clicked);
-			return true;
+			return & text.getString();
 		}
 		else
 		{
 			shape.setFillColor(Normal);
-			return false;
+			return nullptr;
 		}
 	}
 };
