@@ -9,6 +9,7 @@ AssetsManager * AssetsManager::GetInstance()
 		p_instance = new AssetsManager;
 		p_instance->GetInstance()->LoadTexture("Cave","cave.png");
 		p_instance->GetInstance()->LoadTexture("Entity", "monster.png");
+		p_instance->GetInstance()->LoadTexture("Items","item.png");
 	}
 	return p_instance;
 	// TODO: insert return statement here

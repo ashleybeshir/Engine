@@ -4,6 +4,8 @@
 
 #include <SFML\Graphics.hpp>
 #include <string>
+#include <vector>
+#include "Item.h"
 #include "Entity.h"
 
 struct PositionC : public Component
@@ -69,7 +71,12 @@ struct HealthC : public Component
 	}
 	int health;
 };
-
+struct InventoryC : public Component 
+{
+	std::vector<Item*> inventory;
+	Item* hand;
+	Item* armor;
+};
 #endif // !_COMPONENTS_
 
 

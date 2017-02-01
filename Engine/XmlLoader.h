@@ -79,4 +79,140 @@ bool LoadXmlEntity(std::vector<Entity*>& entities, int level, TileMap& map)
 	return true;
 }
 
+bool LoadXmlItems(std::vector<Item*>& items,int level, TileMap& map) 
+{
+	int number = std::rand() % (level + 10) + 1;
+	tinyxml2::XMLDocument doc = new tinyxml2::XMLDocument();
+	doc.LoadFile("item.xml");
+	while (number > 0) 
+	{
+		bool skip{true};
+		for (tinyxml2::XMLElement* root = doc.RootElement(); root != NULL; root = root->NextSiblingElement())
+		{
+			Potion* potion;
+			Armor* armor;
+			Weapon* weapon;
+			if (strcmp(root->Value(),"potion") == 0)
+			{
+				potion = new Potion();
+			}
+			else if (strcmp(root->Value(), "armor")== 0)
+			{
+				armor = new Armor();
+			}
+			else if (strcmp(root->Value(), "weapon") == 0)
+			{
+				weapon = new Weapon();
+			}
+			for (tinyxml2::XMLElement* child = root->FirstChildElement(); child != NULL; child = child->NextSiblingElement())
+			{
+				if (strcmp(root->Value(), "potion") == 0)
+				{
+					if (strcmp(child->Value(), "level") == 0)
+					{
+						if (atoi(child->GetText()) != level)
+						{
+							skip = false;
+						}
+						
+					}
+					if (strcmp(child->Value(), "name") == 0)
+					{
+						potion->name = child->GetText();
+					}
+					if (strcmp(child->Value(), "amount") == 0)
+					{
+						potion->amount = atoi(child->GetText());
+					}
+					if (strcmp(child->Value(), "perturn") == 0)
+					{
+						potion->turns = atoi(child->GetText());
+					}
+					if (strcmp(child->Value(), "sprite") == 0)
+					{
+						
+						int pos = atoi(child->GetText());
+						potion->sprite.setTexture(AssetsManager::GetInstance()->GetRe("Entity"));
+						int x, y;
+						if (pos < 6)
+						{
+							x = pos * 32;
+						}
+						else x = (pos % 6) * 32;
+						y = std::floor(pos / 36) * 32;
+						potion->sprite.setTextureRect(sf::IntRect(x, y, 32, 32));
+					}
+
+				}
+				else if (strcmp(root->Value(), "armor") == 0)
+				{
+					if (strcmp(child->Value(), "level") == 0)
+					{
+						if (atoi(child->GetText()) != level)
+						{
+							skip = false;
+						}
+
+					}
+					if (strcmp(child->Value(), "name") == 0)
+					{
+						armor->name = child->GetText();
+					}
+					if (strcmp(child->Value(), "amount") == 0)
+					{
+						armor->protection = atoi(child->GetText());
+					}
+					if (strcmp(child->Value(), "sprite") == 0)
+					{
+
+						int pos = atoi(child->GetText());
+						armor->sprite.setTexture(AssetsManager::GetInstance()->GetRe("Entity"));
+						int x, y;
+						if (pos < 6)
+						{
+							x = pos * 32;
+						}
+						else x = (pos % 6) * 32;
+						y = std::floor(pos / 36) * 32;
+						armor->sprite.setTextureRect(sf::IntRect(x, y, 32, 32));
+					}
+				}
+				else if (strcmp(root->Value(), "weapon") == 0)
+				{
+					if (strcmp(child->Value(), "level") == 0)
+					{
+						if (atoi(child->GetText()) != level)
+						{
+							skip = false;
+						}
+
+					}
+					if (strcmp(child->Value(), "name") == 0)
+					{
+						weapon->name = child->GetText();
+					}
+					if (strcmp(child->Value(), "amount") == 0)
+					{
+						weapon->damage = atoi(child->GetText());
+					}
+					
+					if (strcmp(child->Value(), "sprite") == 0)
+					{
+
+						int pos = atoi(child->GetText());
+						weapon->sprite.setTexture(AssetsManager::GetInstance()->GetRe("Entity"));
+						int x, y;
+						if (pos < 6)
+						{
+							x = pos * 32;
+						}
+						else x = (pos % 6) * 32;
+						y = std::floor(pos / 36) * 32;
+						weapon->sprite.setTextureRect(sf::IntRect(x, y, 32, 32));
+					}
+				}
+			}
+		}
+	}
+}
 #endif
