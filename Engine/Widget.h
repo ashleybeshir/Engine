@@ -4,11 +4,19 @@
 #include "GUI.h"
 #include <SFML\Graphics.hpp>
 
+enum class GUITYPE
+{
+	button,
+	label,
+	console
+};
+
 struct Widget : public sf::Drawable
 {
-	virtual void draw(sf::RenderTarget& target, sf::RenderStates states){}
-	virtual bool check(int x,int y) {}
-	virtual sf::String const* clicked(int x,int y){} //might get a pointer error 
+	GUITYPE type;
+	
+	virtual bool check(int x, int y) { return false; }
+	virtual sf::String const* clicked(int x, int y) { return nullptr; } //might get a pointer error 
 	
 };
 

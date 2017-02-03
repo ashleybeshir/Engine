@@ -6,11 +6,22 @@
 #include <map>
 #include <iostream>
 #include "MapNode.h"
+struct ColorSheet
+{
+	sf::Color Normal, InView, Clicked;
+	ColorSheet(sf::Color normal, sf::Color inView, sf::Color clicked)
+	{
+		Normal = normal;
+		InView = inView;
+		Clicked = clicked;
+	}
+};
 
 class AssetsManager
 {
 	std::map<sf::String, sf::Texture> data;
 	std::map<int, MapNode*> dungeons;
+	std::map<int, ColorSheet*> colorsheets;
 	sf::Font* font;
 	static AssetsManager* p_instance;
 public:
@@ -22,6 +33,10 @@ public:
 	sf::Font* GetFont() 
 	{
 		return font;
+	}
+	ColorSheet* GetColorSheet(int type) 
+	{
+		return colorsheets[type];
 	}
 	AssetsManager(AssetsManager const&) = delete;
 	void operator=(AssetsManager const&) = delete;

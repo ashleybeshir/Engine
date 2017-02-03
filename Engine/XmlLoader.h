@@ -81,7 +81,7 @@ bool LoadXmlEntity(std::vector<Entity*>& entities, int level, TileMap& map)
 
 bool LoadXmlItems(std::vector<Item*>& items,int level, TileMap& map) 
 {
-	int number = std::rand() % (level + 10) + 1;
+	/*int number = std::rand() % (level + 10) + 1;
 	tinyxml2::XMLDocument doc = new tinyxml2::XMLDocument();
 	doc.LoadFile("item.xml");
 	while (number > 0) 
@@ -118,7 +118,7 @@ bool LoadXmlItems(std::vector<Item*>& items,int level, TileMap& map)
 					}
 					if (strcmp(child->Value(), "name") == 0)
 					{
-						potion->name = child->GetText();
+						//potion->name = child->GetText();
 					}
 					if (strcmp(child->Value(), "amount") == 0)
 					{
@@ -213,6 +213,7 @@ bool LoadXmlItems(std::vector<Item*>& items,int level, TileMap& map)
 				}
 			}
 		}
-	}
+	}*/
+	return false;
 }
 #endif

@@ -29,7 +29,7 @@ struct Console : public Widget
 			log.push_back(text);
 		}
 	}
-	void draw(sf::RenderTarget& target, sf::RenderStates states) override
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(shape);
 		for (auto& a : log) 

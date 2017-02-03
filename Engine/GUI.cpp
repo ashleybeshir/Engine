@@ -4,16 +4,21 @@
 
 void GUI::AddWidget(const std::string string, Widget * widget)
 {
-	widgets[string] = widget;
+	if (widget->type == GUITYPE::button)
+	{
+		Button * button = dynamic_cast<Button*>(widget);
+		button->shape.setPosition(Res_x*button->x,Res_y*button->y);
+		button->text.setPosition(Res_x*button->x, Res_y*button->y);
+		widgets[string] = button;
+	}
+	//widgets[string] = widget;
 }
 
-Widget * GUI::GetWidget(const std::string string)
-{
-	return widgets[string];
-}
+
 
 GUI::GUI()
 {
+	
 }
 
 

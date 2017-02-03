@@ -18,7 +18,7 @@ struct Label : public Widget
 		text.setCharacterSize(24); 
 		text.setColor(color);
 	}
-	void draw(sf::RenderTarget& target, sf::RenderStates states) override
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(text);
 	}

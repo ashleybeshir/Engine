@@ -37,7 +37,7 @@ struct Potion : public Item
 	{
 		this->name = name;
 		PotionType = type;
-		this->value = value;
+		//this->value = value;
 	}
 };
 

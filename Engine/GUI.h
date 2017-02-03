@@ -6,15 +6,20 @@
 #include <SFML\Graphics.hpp>
 #include <string>
 #include "Widget.h"
-
+#include "GUIButton.h"
 
 class GUI
 {
 	std::map<std::string, Widget*> widgets;
+	
 	int Res_x, Res_y;
 public:
 	void AddWidget(const std::string string, Widget* widget);
-	Widget* GetWidget(const std::string string);
+	template<typename T>
+	T* GetWidget(const std::string string)
+	{
+		return std::dynamic_pointer_cast<T>(widgets[string]);
+	}
 	//Widget* GetButtom
 	void draw(sf::RenderWindow * window) 
 	{
@@ -41,6 +46,7 @@ public:
 		}
 	}
 	GUI();
+	GUI(int x,int y):Res_x(x),Res_y(y){}
 	~GUI();
 };
 

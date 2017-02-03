@@ -5,22 +5,39 @@
 #include <string>
 #include "Widget.h"
 #include "AssetsManager.h"
+
 struct Button : public Widget
 {
 	sf::Text text;
 	sf::RectangleShape shape;
-	sf::Color Normal, InView, Clicked;
-
+	int colortype;
 	float x, y;
-	int size_x, size_y;
-	Button(const std::string string,float x,float y,sf::Color normal,sf::Color inview,sf::Color clicked)
+	int size_x{ 100 }, size_y{100};
+	Button(const std::string string,float x,float y)
 	{
+		type = GUITYPE::button;
 		text.setFont(*AssetsManager::GetInstance()->GetFont());
 		text.setString(string);
 		text.setCharacterSize(24);
-		text.setColor(sf::Color::White);
+		//text.setColor(sf::Color::White);
+		text.setFillColor(sf::Color::White);
+		//text.setPosition();
+		shape.setSize(sf::Vector2f(size_x, size_y));
+		shape.setFillColor(AssetsManager::GetInstance()->GetColorSheet(colortype)->Normal);
 	}
-	void draw(sf::RenderTarget& target, sf::RenderStates states) override
+	Button(const std::string string, float x, float y,int _type)
+	{
+		type = GUITYPE::button;
+		colortype = _type;
+		text.setFont(*AssetsManager::GetInstance()->GetFont());
+		text.setString(string);
+		text.setCharacterSize(24);
+		text.setFillColor(sf::Color::White);
+		shape.setSize(sf::Vector2f(size_x,size_y));
+		shape.setFillColor(AssetsManager::GetInstance()->GetColorSheet(colortype)->Normal);
+	}
+	
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(shape);
 		target.draw(text);
@@ -29,12 +46,12 @@ struct Button : public Widget
 	{
 		if (x <= x *size_x && x >= size_x * x -size_x && y <= y *size_y && y >= size_y * y - size_y)
 		{
-			shape.setFillColor(InView);
+			shape.setFillColor(AssetsManager::GetInstance()->GetColorSheet(colortype)->InView);
 			return true;
 		}
 		else
 		{
-			shape.setFillColor(Normal);
+			shape.setFillColor(AssetsManager::GetInstance()->GetColorSheet(colortype)->Normal);
 			return false;
 		}
 	}
@@ -43,12 +60,12 @@ struct Button : public Widget
 		
 		if (x <= shape.getPosition().x + size_x && x >= shape.getPosition().x && y <= shape.getPosition().y + size_y && y >= shape.getPosition().y)
 		{
-			shape.setFillColor(Clicked);
+			shape.setFillColor(AssetsManager::GetInstance()->GetColorSheet(colortype)->Clicked);
 			return & text.getString();
 		}
 		else
 		{
-			shape.setFillColor(Normal);
+			shape.setFillColor(AssetsManager::GetInstance()->GetColorSheet(colortype)->Normal);
 			return nullptr;
 		}
 	}
