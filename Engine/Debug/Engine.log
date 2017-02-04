@@ -1,5 +1,16 @@
-﻿  Source.cpp
-c:\users\ashley\desktop\engine\engine\engine\guibutton.h(25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guibutton.h(36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  GUI.cpp
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(27): warning C4018: '>': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  Source.cpp
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(27): warning C4018: '>': signed/unsigned mismatch
+  Generating Code...
+c:\users\ashley\desktop\engine\engine\engine\widget.h(23): warning C4172: returning address of local variable or temporary
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)

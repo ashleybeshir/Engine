@@ -7,11 +7,12 @@
 #include <string>
 #include "Widget.h"
 #include "GUIButton.h"
-
+#include <iostream>
+#include "GUIConsole.h"
 class GUI
 {
 	std::map<std::string, Widget*> widgets;
-	
+	Widget* holder;
 	int Res_x, Res_y;
 public:
 	void AddWidget(const std::string string, Widget* widget);
@@ -27,6 +28,7 @@ public:
 		{
 			window->draw(*e.second);
 		}
+		
 	}
 	void check(int x,int y) 
 	{
@@ -35,15 +37,20 @@ public:
 			e.second->check(x,y);
 		}
 	}
-	sf::String const* clicked(int x,int y) 
+	bool clicked(int x,int y) 
 	{
 		for (auto& e : widgets) 
 		{
-			if(e.second->clicked(x,y) != nullptr)
+			if(e.second->clicked(x,y))
 			{
-				return e.second->clicked(x, y);
+				holder = e.second;
+				return true;
 			}
 		}
+	}
+	sf::String const& GetString()
+	{
+		return holder->GetString();
 	}
 	GUI();
 	GUI(int x,int y):Res_x(x),Res_y(y){}

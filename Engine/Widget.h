@@ -4,6 +4,9 @@
 #include "GUI.h"
 #include <SFML\Graphics.hpp>
 
+#define Button_X 50
+#define Button_Y 25
+
 enum class GUITYPE
 {
 	button,
@@ -16,8 +19,8 @@ struct Widget : public sf::Drawable
 	GUITYPE type;
 	
 	virtual bool check(int x, int y) { return false; }
-	virtual sf::String const* clicked(int x, int y) { return nullptr; } //might get a pointer error 
-	
+	virtual bool clicked(int x, int y) { return false; } //might get a pointer error 
+	virtual sf::String const& GetString() { return ""; }
 };
 
 

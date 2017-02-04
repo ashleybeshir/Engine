@@ -7,14 +7,15 @@
 #include "Terrain.h"
 #include "GUI.h"
 #include "GUIButton.h"
+#include "GUIConsole.h"
 
 void main()
 {
 	AssetsManager::GetInstance();
-	GUI gui(200,200);
-	Button* button = new Button("the",0,0);
+	GUI gui(800,800);
+	Console* button = new Console(0,0.5f);
 	gui.AddWidget("test",button);
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -22,6 +23,13 @@ void main()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
+			else if(event.type == sf::Event::KeyPressed)
+			{
+				if (event.key.code == sf::Keyboard::L) {
+					button->AddLog("hello world");
+				}
+			}
+			
 		}
 
 		window.clear();

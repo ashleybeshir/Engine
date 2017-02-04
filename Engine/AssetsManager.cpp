@@ -10,11 +10,14 @@ AssetsManager * AssetsManager::GetInstance()
 		p_instance->GetInstance()->LoadTexture("Cave","cave.png");
 		p_instance->GetInstance()->LoadTexture("Entity", "monster.png");
 		p_instance->GetInstance()->LoadTexture("Items","item.png");
-		p_instance->GetInstance()->colorsheets[0] = new ColorSheet(sf::Color::Black, sf::Color::Blue, sf::Color::Magenta);
-		if (p_instance->GetInstance()->GetFont()->loadFromFile("arvin.ttf"))
+		p_instance->GetInstance()->colorsheets[0].Normal = sf::Color::Green;
+		p_instance->GetInstance()->colorsheets[0].InView = sf::Color::Blue;
+		p_instance->GetInstance()->colorsheets[0].Clicked = sf::Color::Red;
+		if (!p_instance->GetInstance()->GetFont().loadFromFile("arvin.ttf"))
 		{
-
+			std::cout << "couldnt load font" << std::endl;
 		}
+
 	}
 	return p_instance;
 	// TODO: insert return statement here

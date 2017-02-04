@@ -9,6 +9,7 @@
 struct ColorSheet
 {
 	sf::Color Normal, InView, Clicked;
+	ColorSheet(){}
 	ColorSheet(sf::Color normal, sf::Color inView, sf::Color clicked)
 	{
 		Normal = normal;
@@ -21,8 +22,8 @@ class AssetsManager
 {
 	std::map<sf::String, sf::Texture> data;
 	std::map<int, MapNode*> dungeons;
-	std::map<int, ColorSheet*> colorsheets;
-	sf::Font* font;
+	std::map<int, ColorSheet> colorsheets;
+	sf::Font font;
 	static AssetsManager* p_instance;
 public:
 	static AssetsManager* GetInstance();
@@ -30,11 +31,11 @@ public:
 	sf::Texture& GetRe(const std::string& texture);
 	void AddDungeon(MapNode* node);
 	MapNode* GetDungeon(int seed);
-	sf::Font* GetFont() 
+	sf::Font& GetFont() 
 	{
 		return font;
 	}
-	ColorSheet* GetColorSheet(int type) 
+	ColorSheet& GetColorSheet(int type) 
 	{
 		return colorsheets[type];
 	}
