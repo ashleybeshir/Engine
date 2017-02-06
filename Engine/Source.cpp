@@ -8,12 +8,13 @@
 #include "GUI.h"
 #include "GUIButton.h"
 #include "GUIConsole.h"
-
+#include "GUIList.h"
+#include <string>
 void main()
 {
 	AssetsManager::GetInstance();
 	GUI gui(800,800);
-	Console* button = new Console(0,0.5f);
+	MenuList* button = new MenuList(0,0,10);
 	gui.AddWidget("test",button);
 	sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
 	while (window.isOpen())
@@ -23,19 +24,35 @@ void main()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
-			else if(event.type == sf::Event::KeyPressed)
+			else if (event.type == sf::Event::KeyPressed)
 			{
 				if (event.key.code == sf::Keyboard::L) {
-					button->AddLog("hello world");
+					button->AddButton("hello world");
+				}
+				else if (event.key.code == sf::Keyboard::K) {
+					button->AddButton("pain in the fucking ass");
+				}
+
+			}
+			else if (event.type == sf::Event::MouseMoved) 
+			{
+				sf::Vector2i position = sf::Mouse::getPosition(window);
+				gui.check(position.x,position.y);
+			}
+			else if (event.type == sf::Event::MouseButtonPressed)
+			{
+				sf::Vector2i position = sf::Mouse::getPosition(window);
+				if (gui.clicked(position.x, position.y)) {
+					std::string temp = gui.GetString().toAnsiString();
+					std::cout << temp << std::endl;
 				}
 			}
-			
-		}
 
-		window.clear();
-		gui.draw(&window);
-		//window.draw(shape);
-		window.display();
+			window.clear(sf::Color::Red);
+			gui.draw(&window);
+			//window.draw(shape);
+			window.display();
+		}
 	}
 	/*Engine engine;
 

@@ -37,8 +37,9 @@ struct Button : public Widget
 		text.setString(string);
 		text.setCharacterSize(24);
 		text.setFillColor(sf::Color::White);
-		shape.setSize(sf::Vector2f(size_x,size_y));
 		shape.setFillColor(AssetsManager::GetInstance()->GetColorSheet(colortype).Normal);
+		shape.setSize(sf::Vector2f(size_x,size_y));
+		
 	}
 	
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -76,6 +77,17 @@ struct Button : public Widget
 	sf::String const& GetString() override
 	{
 		return text.getString();
+	}
+	void SetString(const std::string string) 
+	{
+		text.setString(string);
+		//shape.setSize(sf::Vector2f(string.size() * 5 , shape.getSize().y));
+	}
+	void ReSize(int x,int y) 
+	{
+		size_x = x;
+		size_y = y;
+		shape.setSize(sf::Vector2f(x,y));
 	}
 };
 

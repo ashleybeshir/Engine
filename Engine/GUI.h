@@ -9,6 +9,8 @@
 #include "GUIButton.h"
 #include <iostream>
 #include "GUIConsole.h"
+#include "GUIList.h"
+
 class GUI
 {
 	std::map<std::string, Widget*> widgets;

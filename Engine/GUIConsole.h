@@ -16,34 +16,33 @@ struct Console : public Widget
 	int LogLimit{5};
 	float x, y;
 	int size_x{300}, size_y{ 100 };
-	Console(float x,float y):x(x),y(y)
+	Console(float x,float y,int loglimit):x(x),y(y),LogLimit(loglimit)
 	{
 		type = GUITYPE::console;
+		size_y = 24 * loglimit;
 		shape.setSize(sf::Vector2f(size_x,size_y));
-		shape.setFillColor(sf::Color(156,156,156,20));
+		shape.setFillColor(sf::Color(156,156,156,35));
+		log.resize(LogLimit);
+		for (size_t i = 0; i < log.size(); i++)
+		{
+			log[i].setFont(AssetsManager::GetInstance()->GetFont());
+			log[i].setCharacterSize(24);
+			log[i].setFillColor(sf::Color::White);
+		}
+		size_y = 24 * loglimit;
 	}
 	void AddLog(const std::string string)
 	{
-		if (log.size() > LogLimit)
+		for (int i = 0; i <log.size();i++) 
 		{
-			log.erase(log.begin() + 0);
-			sf::Text text;
-			text.setFont(AssetsManager::GetInstance()->GetFont());
-			text.setString(string);
-			text.setCharacterSize(24);
-			text.setFillColor(sf::Color::White);
-			text.setPosition(shape.getPosition().x + 5, 3 + (shape.getPosition().y + size_y - 24) - log.size() * 14);
-			log.push_back(text);
-		}
-		else
-		{
-			sf::Text text;
-			text.setFont(AssetsManager::GetInstance()->GetFont());
-			text.setString(string);
-			text.setCharacterSize(24);
-			text.setFillColor(sf::Color::White);
-			text.setPosition(shape.getPosition().x + 5, 3 + (shape.getPosition().y + size_y - 24) - log.size() * 14);
-			log.push_back(text);
+			if (i+1 != log.size()) 
+			{
+				log[i].setString(log[i + 1].getString());
+			}
+			else
+			{
+				log[log.size() - 1].setString(string);
+			}
 		}
 	}
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
