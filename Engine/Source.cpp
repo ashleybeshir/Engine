@@ -9,12 +9,13 @@
 #include "GUIButton.h"
 #include "GUIConsole.h"
 #include "GUIList.h"
+#include "GUIInput.h"
 #include <string>
 void main()
 {
 	AssetsManager::GetInstance();
 	GUI gui(800,800);
-	MenuList* button = new MenuList(0,0,10);
+	TextInput* button = new TextInput(0.5f,0.5f);
 	gui.AddWidget("test",button);
 	sf::RenderWindow window(sf::VideoMode(800, 800), "SFML works!");
 	while (window.isOpen())
@@ -24,15 +25,13 @@ void main()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
+			else if (event.type == sf::Event::TextEntered)
+			{
+				if (event.text.unicode < 128) button->AddToString(static_cast<char>(event.text.unicode));
+			}
 			else if (event.type == sf::Event::KeyPressed)
 			{
-				if (event.key.code == sf::Keyboard::L) {
-					button->AddButton("hello world");
-				}
-				else if (event.key.code == sf::Keyboard::K) {
-					button->AddButton("pain in the fucking ass");
-				}
-
+				
 			}
 			else if (event.type == sf::Event::MouseMoved) 
 			{

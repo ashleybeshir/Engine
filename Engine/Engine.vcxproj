@@ -174,6 +174,7 @@
     <ClInclude Include="GUI.h" />
     <ClInclude Include="GUIButton.h" />
     <ClInclude Include="GUIConsole.h" />
+    <ClInclude Include="GUIInput.h" />
     <ClInclude Include="GUILabel.h" />
     <ClInclude Include="GUIList.h" />
     <ClInclude Include="Item.h" />

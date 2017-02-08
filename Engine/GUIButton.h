@@ -25,7 +25,7 @@ struct Button : public Widget
 		//text.setPosition();
 		
 		shape.setSize(sf::Vector2f(size_x, size_y));
-		shape.setPosition(400,400); 
+		//shape.setPosition(400,400); 
 		shape.setFillColor(AssetsManager::GetInstance()->GetColorSheet(colortype).Normal);
 		//shape.setFillColor(sf::Color::White);
 	}

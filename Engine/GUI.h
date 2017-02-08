@@ -10,6 +10,7 @@
 #include <iostream>
 #include "GUIConsole.h"
 #include "GUIList.h"
+#include "GUIInput.h"
 
 class GUI
 {

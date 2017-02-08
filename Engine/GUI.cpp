@@ -37,6 +37,13 @@ void GUI::AddWidget(const std::string string, Widget * widget)
 		}
 		widgets[string] = list;
 	}
+	else if (widget->type == GUITYPE::input)
+	{
+		TextInput* input = dynamic_cast<TextInput*>(widget);
+		input->shape.setPosition(input->x * Res_x,input->y*Res_y);
+		input->text.setPosition(input->x*Res_x,input->y*Res_y);
+		widgets[string] = input;
+	}
 	//widgets[string] = widget;
 }
 

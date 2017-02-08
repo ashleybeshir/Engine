@@ -12,7 +12,8 @@ enum class GUITYPE
 	button,
 	label,
 	console,
-	list
+	list,
+	input
 };
 
 struct Widget : public sf::Drawable
