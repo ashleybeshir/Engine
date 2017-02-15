@@ -4,8 +4,8 @@
 #include "GUI.h"
 #include <SFML\Graphics.hpp>
 
-#define Button_X 100
-#define Button_Y 25
+#define Button_X 130
+#define Button_Y 30
 
 enum class GUITYPE
 {

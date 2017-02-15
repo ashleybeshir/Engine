@@ -1,5 +1,6 @@
 #ifndef _MAPNODE_
 #define _MAPNODE_
+#pragma once
 
 #include <random>
 #include <vector>
@@ -7,13 +8,15 @@
 #include "Tilemap.h"
 #include "Entity.h"
 #include "Terrain.h"
+#include "Item.h"
 
-#pragma once
+
 class MapNode
 {
 	GenerationType type;
 	//std::vector<std::vector<std::unique_ptr<Entity>>> LvLEntities;
 	std::vector<std::vector<Entity*>>  LvLEntities;
+	std::vector<std::vector<Item*>> LvlItems;
 	bool completed{false};
 	int Seed;
 	int CurrentLevel{0};
@@ -26,6 +29,8 @@ public:
 	int GetLevel() { return CurrentLevel; }
 	std::vector<Entity*>& GetEntityForLvl();
 	std::vector<Entity*>& GetEntityForLvl(int lvl);
+	std::vector<Item*>& GetItemForLvl();
+	std::vector<Item*>& GetItemForLvl(int lvl);
 	GenerationType GetType() { return type; }
 	MapNode();
 	MapNode(int seed,GenerationType type,int numberoflevels):Seed(seed),type(type),NumberOfLevels(numberoflevels)

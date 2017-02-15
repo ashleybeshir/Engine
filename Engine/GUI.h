@@ -11,7 +11,7 @@
 #include "GUIConsole.h"
 #include "GUIList.h"
 #include "GUIInput.h"
-
+#include "GUILabel.h"
 class GUI
 {
 	std::map<std::string, Widget*> widgets;
@@ -54,6 +54,10 @@ public:
 	sf::String const& GetString()
 	{
 		return holder->GetString();
+	}
+	void Clear() 
+	{
+		widgets.clear();
 	}
 	GUI();
 	GUI(int x,int y):Res_x(x),Res_y(y){}

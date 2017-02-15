@@ -10,6 +10,7 @@ class Engine;
 class GameState
 {
 public:
+	Engine* engine;
 	virtual void Start() = 0;
 	virtual void Delete() = 0;
 

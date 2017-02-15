@@ -35,11 +35,15 @@ struct TextInput : Widget
 	}
 	void AddToString(char chr)
 	{
-		if (text.getString().getSize() < 20 && chr != ' ') {
+  		if (text.getString().getSize() < 20 && chr != ' ') {
 			sf::String string{ text.getString() };
 			string += chr;
 			text.setString(string);
 		}
+	}
+	~TextInput()
+	{
+		delete this;
 	}
 };
 

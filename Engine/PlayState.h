@@ -17,7 +17,6 @@
 class PlayState : public GameState
 {
 	MapNode* DungeonNode;
-	//std::vector<Entity*> Entities;
 	Entity* player;
 	TileMap map;
 	sf::View view;

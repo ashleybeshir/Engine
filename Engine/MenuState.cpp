@@ -1,5 +1,5 @@
 #include "MenuState.h"
-
+#include "GUIButton.h"
 
 
 MenuState::MenuState()
@@ -13,7 +13,13 @@ MenuState::~MenuState()
 
 void MenuState::Start()
 {
-	
+	Button* newbutton = new Button("New Game",0.45,0.2);
+	Button* loadbutton = new Button("Load Game",0.45,0.3);
+	Button* exitbutton = new Button("Exit Game",0.45,0.4);
+	engine->gui->AddWidget("new",newbutton);
+	engine->gui->AddWidget("load",loadbutton);
+	engine->gui->AddWidget("exit",exitbutton);
+
 }
 
 void MenuState::Delete()
@@ -45,27 +51,50 @@ void MenuState::Input(Engine * engine)
 			break;
 
 			// key pressed
-		case sf::Event::KeyPressed:
-			if (event.key.code == sf::Keyboard::A)
+		}
+		if (event.type == sf::Event::KeyPressed) 
+		{
+			if (event.key.code == sf::Keyboard::A) 
 			{
-				std::cout << "911 was a inside job" << std::endl;
-			}
-			else if(event.key.code == sf::Keyboard::F)
-			{
+				std::string temp = label->GetString();
 				
-				engine->ChangeState(new WorldState);
+				engine->ChangeState(new WorldState(stoi(temp)));
 			}
-			break;
-
-			// we don't process other types of events
-		default:
-			break;
+		}else if (event.type == sf::Event::MouseButtonPressed)
+		{
+			sf::Vector2i position = sf::Mouse::getPosition();
+			if (engine->gui->clicked(position.x, position.y))
+			{
+				std::string string = engine->gui->GetString();
+				if (!newgame) {
+					if (string.compare("New Game") == 0)
+					{
+						engine->gui->Clear();
+						newgame = true;
+						label = new TextInput(0.4,0.5);
+						engine->gui->AddWidget("label",label);
+						text = new Label(0.4,0.30,"write a number for the seed",sf::Color::White);
+						engine->gui->AddWidget("text",text);
+					}
+					else if (string.compare("Exit Game") == 0)
+					{
+						engine->window.close();
+					}
+				}
+			}
+		}else if(event.type == sf::Event::MouseMoved)
+		{
+			sf::Vector2i _position = sf::Mouse::getPosition();
+			engine->gui->check(_position.x, _position.y);
+		}else if(event.type == sf::Event::TextEntered)
+		{
+			if (event.text.unicode < 128)
+				label->AddToString(static_cast<char>(event.text.unicode));
 		}
 	}
 }
 
 void MenuState::Draw(Engine * engine)
 {
-	engine->window.clear();
-	engine->window.display();
+	
 }

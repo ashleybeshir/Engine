@@ -9,7 +9,7 @@
 struct ColorSheet
 {
 	sf::Color Normal, InView, Clicked;
-	ColorSheet(){}
+	ColorSheet() {}
 	ColorSheet(sf::Color normal, sf::Color inView, sf::Color clicked)
 	{
 		Normal = normal;
@@ -31,11 +31,11 @@ public:
 	sf::Texture& GetRe(const std::string& texture);
 	void AddDungeon(MapNode* node);
 	MapNode* GetDungeon(int seed);
-	sf::Font& GetFont() 
+	sf::Font& GetFont()
 	{
 		return font;
 	}
-	ColorSheet& GetColorSheet(int type) 
+	ColorSheet& GetColorSheet(int type)
 	{
 		return colorsheets[type];
 	}
@@ -46,6 +46,3 @@ public:
 };
 
 #endif // !_ASSETSMANAGER_
-
-
-

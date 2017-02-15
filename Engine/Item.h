@@ -21,7 +21,7 @@ namespace ITEM {
 	};
 }
 
-struct Item
+struct Item : sf::Sprite
 {
 	sf::String name;
 	sf::Sprite sprite;
@@ -32,7 +32,7 @@ struct Potion : public Item
 {
 	ITEM::PotionType PotionType;
 	int amount,turns;
-	Potion();
+	
 	Potion(const sf::String& name, ITEM::PotionType type, int value)
 	{
 		this->name = name;
@@ -44,7 +44,7 @@ struct Potion : public Item
 struct Armor : public Item
 {
 	int protection;
-	Armor();
+	
 	Armor(const sf::String& name, ITEM::ItemType type, int protection)
 	{
 		Type = type;
@@ -56,7 +56,7 @@ struct Armor : public Item
 struct Weapon : public Item
 {
 	int damage;
-	Weapon();
+	
 	Weapon(const sf::String& name, ITEM::ItemType type, int damage)
 	{
 		Type = type;

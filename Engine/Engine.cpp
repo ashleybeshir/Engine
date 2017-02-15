@@ -14,6 +14,8 @@ Engine::~Engine()
 void Engine::Start()
 {
 	window.create(sf::VideoMode(1920, 1080), "My window");
+	gui = new GUI(1920,1080);
+	
 }
 
 void Engine::Delete()
@@ -28,9 +30,11 @@ void Engine::ChangeState(GameState * state)
 		states.pop_back();
 		
 	}
-
+	gui->Clear();
 	states.push_back(state);
+	states.back()->engine = this;
 	states.back()->Start();
+	
 }
 
 void Engine::PushState(GameState * state)
@@ -38,9 +42,11 @@ void Engine::PushState(GameState * state)
 	if (!states.empty()) {
 		states.back()->Pause();
 	}
-
+	gui->Clear();
 	states.push_back(state);
+	states.back()->engine = this;
 	states.back()->Start();
+	
 }
 
 
@@ -73,5 +79,6 @@ void Engine::Draw()
 {
 	window.clear();
 	states.back()->Draw(this);
+	gui->draw(&window);
 	window.display();
 }

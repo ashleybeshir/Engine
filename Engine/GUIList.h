@@ -126,6 +126,13 @@ struct MenuList : public Widget
 	{
 		return list[selected_button];
 	}
+	~MenuList()
+	{
+		delete left;
+		delete right;
+		buttons.clear();
+		delete this;
+	}
 };
 
 #endif // !_GUILIST_

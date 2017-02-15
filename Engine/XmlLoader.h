@@ -68,6 +68,7 @@ bool LoadXmlEntity(std::vector<Entity*>& entities, int level, TileMap& map)
 					x = std::rand() % 99 + 1;
 					y = std::rand() % 99 + 1;
 				} while (!map.isPassable(x, y));
+				if (!map.isPassable(x, y)) std::cout << "weird" << std::endl;
 				entity->AddComponent<PositionC>(x, y);
 				entity->AddComponent<DirectionC>();
 				entity->AddComponent<PathC>();

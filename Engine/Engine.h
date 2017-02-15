@@ -7,6 +7,8 @@
 #include <vector>
 #include "GameState.h"
 #include <map>
+#include "GUI.h"
+#include "AssetsManager.h"
 
 class GameState;
 
@@ -15,6 +17,7 @@ class Engine
 public:
 	std::map<int, int> wtd;
 	sf::RenderWindow window;
+	GUI* gui;
 
 	void Start();
 	void Delete();

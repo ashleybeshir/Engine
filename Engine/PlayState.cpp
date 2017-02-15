@@ -192,13 +192,15 @@ void PlayState::Input(Engine * engine)
 					if (!(DungeonNode->GetLevel()+1 >= DungeonNode->GetNumberOfLevels()) ) {
 						DungeonNode->SetSeed(DungeonNode->GetSeed() + 1);
 						std::srand(DungeonNode->GetSeed());
-						if (DungeonNode->GetEntityForLvl(DungeonNode->GetLevel() + 1).empty())
+						DungeonNode->SetLevel(DungeonNode->GetLevel() + 1);
+						map.GenerateCave();
+						if (DungeonNode->GetEntityForLvl(DungeonNode->GetLevel()).empty())
 						{
-							LoadXmlEntity(DungeonNode->GetEntityForLvl(DungeonNode->GetLevel() + 1), DungeonNode->GetLevel()+1,map);
+							LoadXmlEntity(DungeonNode->GetEntityForLvl(DungeonNode->GetLevel()), DungeonNode->GetLevel(),map);
 							
 						}
-						map.GenerateCave();
-						DungeonNode->SetLevel(DungeonNode->GetLevel() + 1);
+						
+						
 						player->GetComponent<PositionC>()->Position = map.GetStairUp();
 						
 					}
@@ -226,6 +228,7 @@ void PlayState::Input(Engine * engine)
 				player->GetComponent<DirectionC>()->direction.x = 0;
 				player->GetComponent<DirectionC>()->direction.y = 0;
 			}
+			
 		case sf::Event::MouseWheelScrolled:
 			if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
 			{

@@ -28,6 +28,8 @@ struct Button : public Widget
 		//shape.setPosition(400,400); 
 		shape.setFillColor(AssetsManager::GetInstance()->GetColorSheet(colortype).Normal);
 		//shape.setFillColor(sf::Color::White);
+		shape.setOutlineColor(sf::Color(139,139,139));
+		shape.setOutlineThickness(3);
 	}
 	Button(const std::string string, float x, float y,int _type)
 	{
@@ -39,7 +41,8 @@ struct Button : public Widget
 		text.setFillColor(sf::Color::White);
 		shape.setFillColor(AssetsManager::GetInstance()->GetColorSheet(colortype).Normal);
 		shape.setSize(sf::Vector2f(size_x,size_y));
-		
+		shape.setOutlineColor(sf::Color(139, 139, 139));
+		shape.setOutlineThickness(3);
 	}
 	
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
@@ -88,6 +91,10 @@ struct Button : public Widget
 		size_x = x;
 		size_y = y;
 		shape.setSize(sf::Vector2f(x,y));
+	}
+	~Button()
+	{
+		delete this;
 	}
 };
 

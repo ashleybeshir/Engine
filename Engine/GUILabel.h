@@ -11,16 +11,27 @@ struct Label : public Widget
 	float x, y;
 	int pos_x, pos_y;
 	sf::Text text;
-	Label(float x,float y,int pos_x,int pos_y,const std::string string,sf::Color color) 
+	Label(float x,float y,const std::string string,sf::Color color) : x(x),y(y)
 	{
-		text.setFont(*AssetsManager::GetInstance()->GetFont());
+		type = GUITYPE::label;
+		text.setFont(AssetsManager::GetInstance()->GetFont());
 		text.setString(string);
 		text.setCharacterSize(24); 
-		text.setColor(color);
+		text.setFillColor(color);
+		
 	}
+	
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
 	{
 		target.draw(text);
+	}
+	void SetText(sf::String string)
+	{
+		text.setString(string);
+	}
+	~Label()
+	{
+		delete this;
 	}
 };
 

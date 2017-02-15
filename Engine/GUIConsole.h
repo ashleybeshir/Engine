@@ -53,6 +53,10 @@ struct Console : public Widget
 			target.draw(a);
 		}
 	}
+	~Console()
+	{
+		delete this;
+	}
 };
 
 #endif // !_GUICONSOLE_

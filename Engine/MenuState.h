@@ -9,6 +9,9 @@
 
 class MenuState : public GameState
 {
+	bool newgame{ false };
+	TextInput* label;
+	Label* text;
 public:
 	void Start();
 	void Delete();
