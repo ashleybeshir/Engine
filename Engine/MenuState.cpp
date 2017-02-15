@@ -88,8 +88,8 @@ void MenuState::Input(Engine * engine)
 			engine->gui->check(_position.x, _position.y);
 		}else if(event.type == sf::Event::TextEntered)
 		{
-			if (event.text.unicode < 128)
-				label->AddToString(static_cast<char>(event.text.unicode));
+			
+			label->AddToString(static_cast<char>(event.text.unicode));
 		}
 	}
 }

@@ -33,14 +33,25 @@ struct TextInput : Widget
 	{
 		return text.getString();
 	}
-	void AddToString(char chr)
+	void AddToString(char num)
 	{
-  		if (text.getString().getSize() < 20 && chr != ' ') {
-			sf::String string{ text.getString() };
-			string += chr;
-			text.setString(string);
+  		if (text.getString().getSize() < 20 && num != ' ') {
+			if (num == 8)
+			{
+				
+				std::string temp = text.getString();
+				temp.erase(temp.begin() + temp.size()-1);
+				text.setString(temp);
+			}
+			else if (num < 128)
+			{
+				sf::String string{ text.getString() };
+				string += num;
+				text.setString(string);
+			}
 		}
 	}
+	
 	~TextInput()
 	{
 		delete this;

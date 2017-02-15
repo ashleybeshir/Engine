@@ -29,6 +29,7 @@ struct Label : public Widget
 	{
 		text.setString(string);
 	}
+	
 	~Label()
 	{
 		delete this;
