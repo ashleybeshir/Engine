@@ -31,7 +31,9 @@ std::string pathfinding(sf::Vector2i start, sf::Vector2i end,TileMap& map)
 	open.push_back(node(start, manhattan_distance(start, end), 0));
 	node current;
 	current = open[0];
+	
 	do {	
+		std::cout << current.pos.x << " " << current.pos.y << std::endl;
 		for (int x = 0; x < open.size(); x++)
 		{
 			int f{current.G+current.H};
@@ -85,18 +87,19 @@ std::string pathfinding(sf::Vector2i start, sf::Vector2i end,TileMap& map)
 			{
 				adjancent.push_back(node(sf::Vector2i(current.pos.x, current.pos.y + 1), manhattan_distance(sf::Vector2i(current.pos.x, current.pos.y + 1), end), current.G + 1));
 			}
-
 		}
 		
 		for (int i = 0; i < adjancent.size(); i++)
 		{
 			bool _open{ false }, _closed{true};
 			
+
 			for (int x = 0; x < closed.size(); x++)
 			{
 				if (adjancent[i].pos == closed[x].pos)
 				{
 					_closed = false;
+					break;
 				}
 			}
 			if (_closed) {
@@ -105,20 +108,23 @@ std::string pathfinding(sf::Vector2i start, sf::Vector2i end,TileMap& map)
 				{
 					if (open[y].pos == adjancent[i].pos)
 					{
-						_open = true;					
+						_open = true;			
+						break;
 					}
 					
 				}
 				if (!_open) {
 					open.push_back(adjancent[i]);	
+					current = adjancent[i];
 				}
 				else 
 				{
-					int _f = adjancent[i].G + adjancent[i].H;
+					/*int _f = adjancent[i].G + adjancent[i].H;
 					if (_f <= (current.G + current.H))
 					{
 						current = adjancent[i];
-					}
+					}*/
+					
 				}
 			}
 		}

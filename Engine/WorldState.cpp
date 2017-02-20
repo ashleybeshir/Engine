@@ -22,7 +22,7 @@ WorldState::~WorldState()
 
 void WorldState::Start()
 {
-
+	texture = &AssetsManager::GetInstance()->GetRe("Map");
 	view.setCenter(sf::Vector2f(0, 0));
 	view.setSize(sf::Vector2f(1920, 1080));
 
@@ -34,11 +34,11 @@ void WorldState::Start()
 	Gplayer[1].position = sf::Vector2f((player.x+1) * 32, player.y * 32);
 	Gplayer[2].position = sf::Vector2f((player.x+1) * 32, (player.y+1) * 32);
 	Gplayer[3].position = sf::Vector2f(player.x * 32, (player.y+1) * 32);
-
-	Gplayer[0].color = sf::Color::White;
-	Gplayer[1].color = sf::Color::White;
-	Gplayer[2].color = sf::Color::White;
-	Gplayer[3].color = sf::Color::White;
+	
+	Gplayer[0].texCoords = sf::Vector2f(0,0);
+	Gplayer[1].texCoords = sf::Vector2f(32,0);
+	Gplayer[2].texCoords = sf::Vector2f(32,32);
+	Gplayer[3].texCoords = sf::Vector2f(0,32);
 
 	Terrain.resize(50);
 	for (size_t i = 0; i < Terrain.size(); i++) Terrain[i].resize(50);
@@ -47,7 +47,20 @@ void WorldState::Start()
 	{
 		for (size_t y = 0; y < Terrain[x].size(); y++)
 		{
-			Terrain[x][y] = (TerrainType)(0  + (rand() % (int)(5 - 0  + 1)));
+			int temp = rand() % 100;
+			if (temp <= 1)
+			{
+				Terrain[x][y] = TerrainType::dungeon;
+			}else if(temp <= 3)
+			{
+				Terrain[x][y] = TerrainType::cave;
+			}
+			else if (temp <= 30) 
+			{
+				Terrain[x][y] = TerrainType::Forest;
+			}
+			else Terrain[x][y] = TerrainType::Ground;
+			
 		}
 	}
 
@@ -67,44 +80,29 @@ void WorldState::Start()
 			TerrainType tileNumber = Terrain[x][y];
 			switch (tileNumber)
 			{
-			case Ground:
-				quad[0].color = sf::Color(51,25,0);
-				quad[1].color = sf::Color(51, 25, 0);
-				quad[2].color = sf::Color(51, 25, 0);
-				quad[3].color = sf::Color(51, 25, 0);
-				break;
-			case Sand:
-				quad[0].color = sf::Color(204,204, 0);
-				quad[1].color = sf::Color(204,204, 0);
-				quad[2].color = sf::Color(204,204, 0);
-				quad[3].color = sf::Color(204,204, 0);
-				break;
 			case Forest:
-				quad[0].color = sf::Color(0, 204, 0);
-				quad[1].color = sf::Color(0, 204, 0);
-				quad[2].color = sf::Color(0, 204, 0);
-				quad[3].color = sf::Color(0, 204, 0);
-				break;
-			case Water:
-				quad[0].color = sf::Color(255, 255, 0);
-				quad[1].color = sf::Color(255, 255, 0);
-				quad[2].color = sf::Color(255, 255, 0);
-				quad[3].color = sf::Color(255, 255, 0);
+				quad[0].texCoords = sf::Vector2f(0, 192);
+				quad[1].texCoords = sf::Vector2f(32, 192);
+				quad[2].texCoords = sf::Vector2f(32, 224);
+				quad[3].texCoords = sf::Vector2f(0, 224);
 				break;
 			case Cave:
-				quad[0].color = sf::Color(96, 96, 96);
-				quad[1].color = sf::Color(96, 96, 96);
-				quad[2].color = sf::Color(96, 96, 96);
-				quad[3].color = sf::Color(96, 96, 96);
+				quad[0].texCoords = sf::Vector2f(192, 576);
+				quad[1].texCoords = sf::Vector2f(224, 576);
+				quad[2].texCoords = sf::Vector2f(224, 608);
+				quad[3].texCoords = sf::Vector2f(192, 608);
 				break;
 			case Dungeon:
-				quad[0].color = sf::Color(204, 0, 0);
-				quad[1].color = sf::Color(204, 0, 0);
-				quad[2].color = sf::Color(204, 0, 0);
-				quad[3].color = sf::Color(204, 0, 0);
+				quad[0].texCoords = sf::Vector2f(192, 416);
+				quad[1].texCoords = sf::Vector2f(224, 416);
+				quad[2].texCoords = sf::Vector2f(224, 448);
+				quad[3].texCoords = sf::Vector2f(192, 448);
 				break;
 			default:
-				std::cout << tileNumber << std::endl;
+				quad[0].texCoords = sf::Vector2f(0, 32);
+				quad[1].texCoords = sf::Vector2f(32, 32);
+				quad[2].texCoords = sf::Vector2f(32, 64);
+				quad[3].texCoords = sf::Vector2f(0, 64);
 				break;
 			}
 		}
@@ -151,7 +149,7 @@ void WorldState::Input(Engine * engine)
 		case sf::Event::KeyPressed:
 			if (event.key.code == sf::Keyboard::A)
 			{
-				std::cout << "911 was a inside job" << std::endl;
+				
 			}else
 			if (event.key.code == sf::Keyboard::Up)
 			{
@@ -189,7 +187,7 @@ void WorldState::Input(Engine * engine)
 				Gplayer[3].position = sf::Vector2f(player.x * 32, (player.y + 1) * 32);
 				view.setCenter(player.x * 32, player.y * 32);
 			}
-			else if (event.key.code == sf::Keyboard::F)
+			else if (event.key.code == sf::Keyboard::Return)
 			{
 				TerrainType tile = Terrain[player.x][player.y];
 				if (tile == TerrainType::cave)
@@ -235,6 +233,6 @@ void WorldState::Input(Engine * engine)
 void WorldState::Draw(Engine * engine)
 {
 	engine->window.setView(view);
-	engine->window.draw(GTerrain);
-	engine->window.draw(Gplayer);
+	engine->window.draw(GTerrain,texture);
+	engine->window.draw(Gplayer,tplayer);
 }

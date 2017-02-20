@@ -47,13 +47,7 @@ void TileMap::GenerateCave()
 				quad[2].texCoords = sf::Vector2f((0 + 32), (0 + 32));
 				quad[3].texCoords = sf::Vector2f(0, (0 + 32));
 			}
-			else if (type == MapType::Wall)
-			{
-				quad[0].texCoords = sf::Vector2f(32, 0);
-				quad[1].texCoords = sf::Vector2f((32 + 32), 0);
-				quad[2].texCoords = sf::Vector2f((32 + 32), (0 + 32));
-				quad[3].texCoords = sf::Vector2f(32, (0 + 32));
-			}
+			
 			else if (type == MapType::StairD)
 			{
 				quad[0].texCoords = sf::Vector2f(96, 0);
@@ -67,6 +61,34 @@ void TileMap::GenerateCave()
 				quad[1].texCoords = sf::Vector2f((64 + 32), 0);
 				quad[2].texCoords = sf::Vector2f((64 + 32), (0 + 32));
 				quad[3].texCoords = sf::Vector2f(64, (0 + 32));
+			}
+			else if (type == MapType::Wall)
+			{
+				if(x != 0 && y != 0 && x != 99 && y != 99)
+				{
+					if (map[x-1][y] == MapType::Floor || map[x+1][y] == MapType::Floor || map[x][y-1] == MapType::Floor || map[x][y+1] == MapType::Floor)
+					{
+						
+						quad[0].texCoords = sf::Vector2f(128, 0);
+						quad[1].texCoords = sf::Vector2f((128 + 32), 0);
+						quad[2].texCoords = sf::Vector2f((128 + 32), (0 + 32));
+						quad[3].texCoords = sf::Vector2f(128, (0 + 32));
+					}
+					else
+					{
+						quad[0].texCoords = sf::Vector2f(32, 0);
+						quad[1].texCoords = sf::Vector2f((32 + 32), 0);
+						quad[2].texCoords = sf::Vector2f((32 + 32), (0 + 32));
+						quad[3].texCoords = sf::Vector2f(32, (0 + 32));
+					}
+				}
+				else 
+				{
+					quad[0].texCoords = sf::Vector2f(32, 0);
+					quad[1].texCoords = sf::Vector2f((32 + 32), 0);
+					quad[2].texCoords = sf::Vector2f((32 + 32), (0 + 32));
+					quad[3].texCoords = sf::Vector2f(32, (0 + 32));
+				}
 			}
 
 		}

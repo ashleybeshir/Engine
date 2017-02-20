@@ -18,6 +18,8 @@ class WorldState : public GameState
 	
 	sf::VertexArray Gplayer;
 	sf::Vector2i player;
+	sf::Texture* texture;
+	sf::Texture* tplayer{ &AssetsManager::GetInstance()->GetRe("Entity") };
 public:
 	void Start();
 	void Delete();

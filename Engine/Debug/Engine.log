@@ -1,40 +1,7 @@
-﻿  Engine.cpp
-c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(36): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Generating Code...
-  Compiling...
-  MenuState.cpp
-c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(36): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\menustate.cpp(16): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\desktop\engine\engine\engine\menustate.cpp(17): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\desktop\engine\engine\engine\menustate.cpp(18): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\desktop\engine\engine\engine\menustate.cpp(74): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\desktop\engine\engine\engine\menustate.cpp(76): warning C4305: 'argument': truncation from 'double' to 'float'
-  Generating Code...
-c:\users\ashley\desktop\engine\engine\engine\gui.h(53): warning C4715: 'GUI::clicked': not all control paths return a value
-c:\users\ashley\desktop\engine\engine\engine\widget.h(25): warning C4172: returning address of local variable or temporary
-  Skipping... (no relevant changes detected)
-  WorldState.cpp
-  Source.cpp
-  PlayState.cpp
-  GameState.cpp
-  GUI.cpp
+﻿  Tilemap.cpp
+c:\users\ashley\desktop\engine\engine\engine\tilemap.cpp(38): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\tilemap.cpp(39): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\tilemap.cpp(40): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\tilemap.cpp(41): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)

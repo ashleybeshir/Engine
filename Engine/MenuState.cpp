@@ -54,7 +54,7 @@ void MenuState::Input(Engine * engine)
 		}
 		if (event.type == sf::Event::KeyPressed) 
 		{
-			if (event.key.code == sf::Keyboard::A) 
+			if (event.key.code == sf::Keyboard::Return) 
 			{
 				std::string temp = label->GetString();
 				
@@ -88,7 +88,6 @@ void MenuState::Input(Engine * engine)
 			engine->gui->check(_position.x, _position.y);
 		}else if(event.type == sf::Event::TextEntered)
 		{
-			
 			label->AddToString(static_cast<char>(event.text.unicode));
 		}
 	}
