@@ -82,46 +82,48 @@ void PlayState::Run(Engine * engine)
 		pos->x = temp->x + pos->x;
 		pos->y = temp->y + pos->y;
 		sf::Sprite* graphics = &player->GetComponent<GraphicC>()->sprite;
-
 		graphics->setPosition(pos->x * 32, pos->y * 32);
+
 		for (auto& e : Entities)
 		{
 			sf::Vector2i* _temp = &e->GetComponent<DirectionC>()->direction;
 			sf::Vector2i* _pos = &e->GetComponent<PositionC>()->Position;
-			int difference{ manhattan_distance(player->GetComponent<PositionC>()->Position,*_pos) };
-			if (difference < 10 && difference != 0) 
+			int difference{ heuristic(player->GetComponent<PositionC>()->Position,*_pos) };
+			if (difference < 10 /*&& difference != 0*/) 
 			{
 				std::string *path = &e->GetComponent<PathC>()->path;
 				
 				if (path->empty()) 
 				{
-					*path = pathfinding(*_pos, player->GetComponent<PositionC>()->Position, map);
+					*path = pathfinding(Location(_pos->x,_pos->y), Location(player->GetComponent<PositionC>()->Position.x, player->GetComponent<PositionC>()->Position.y), map);
 					_temp->x = 0;
 					_temp->y = 0;
 				}
-				if (path->at(0) == 'R')
-				{
-					_temp->x = 1;
-					_temp->y = 0;
-					path->erase(path->begin());
-				}
-				else if (path->at(0) == 'L')
-				{
-					_temp->x = -1;
-					_temp->y = 0;
-					path->erase(path->begin());
-				}
-				else if (path->at(0) == 'U')
-				{
-					_temp->x = 0;
-					_temp->y = 1;
-					path->erase(path->begin());
-				}
-				else if (path->at(0) == 'D')
-				{
-					_temp->x = 0;
-					_temp->y = -1;
-					path->erase(path->begin());
+				else {
+					if (path->at(0) == 'R')
+					{
+						_temp->x = 1;
+						_temp->y = 0;
+						path->erase(path->begin());
+					}
+					else if (path->at(0) == 'L')
+					{
+						_temp->x = -1;
+						_temp->y = 0;
+						path->erase(path->begin());
+					}
+					else if (path->at(0) == 'U')
+					{
+						_temp->x = 0;
+						_temp->y = -1;
+						path->erase(path->begin());
+					}
+					else if (path->at(0) == 'D')
+					{
+						_temp->x = 0;
+						_temp->y = 1;
+						path->erase(path->begin());
+					}
 				}
 			}
 			if (_temp->x + _pos->x == pos->x && _temp->y + _pos->y == pos->y)
@@ -129,6 +131,7 @@ void PlayState::Run(Engine * engine)
 				std::cout << "player got spanked " << std::endl;
 				_temp->x = 0;
 				_temp->y = 0;
+				e->GetComponent<PathC>()->path = "";
 			}
 			else
 			{
@@ -139,6 +142,7 @@ void PlayState::Run(Engine * engine)
 				Egraphics->setPosition(_pos->x * 32, _pos->y * 32);
 			}
 		}
+
 	}
 }
 
@@ -224,9 +228,16 @@ void PlayState::Input(Engine * engine)
 			}
 			else if (event.key.code == sf::Keyboard::L)
 			{		
+				
 				input = true;
 				player->GetComponent<DirectionC>()->direction.x = 0;
 				player->GetComponent<DirectionC>()->direction.y = 0;
+				/*sf::Vector2i temp{ player->GetComponent<PositionC>()->Position };
+				sf::Vector2i temp2;
+				temp2.x = temp.x + 5;
+				temp2.y = temp.y ;
+				std::cout << temp.x << " P " << temp.y << std::endl;
+				pathfinding(Location(temp.x,temp.y),Location(temp2.x,temp2.y),map);*/
 			}
 			
 		case sf::Event::MouseWheelScrolled:
