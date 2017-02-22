@@ -21,6 +21,10 @@ struct Room
 	Room(int x, int y, int sizex, int sizey) :x(x), y(y), sizex(sizex), sizey(sizey)
 	{
 	}
+  ~Room()
+  {
+	  
+  }
 	
 };
 class bspG

@@ -1,13 +1,11 @@
-﻿  Source.cpp
-c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(36): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
-  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)
+﻿  bspTree.cpp
+c:\users\ashley\documents\github\engine\engine\bsptree.cpp(38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\documents\github\engine\engine\bsptree.cpp(60): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\documents\github\engine\engine\bsptree.cpp(117): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\bsptree.cpp(121): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\bsptree.cpp(123): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\bsptree.cpp(182): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\bsptree.cpp(184): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\documents\github\engine\engine\bsptree.cpp(113): warning C4715: 'randomdelete': not all control paths return a value
+  Engine.vcxproj -> C:\Users\ashley\Documents\GitHub\Engine\Debug\Engine.exe
+  Engine.vcxproj -> C:\Users\ashley\Documents\GitHub\Engine\Debug\Engine.pdb (Full PDB)

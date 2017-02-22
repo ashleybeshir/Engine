@@ -93,13 +93,13 @@ void PlayState::Run(Engine * engine)
 			{
 				std::string *path = &e->GetComponent<PathC>()->path;
 				
-				if (path->empty()) 
-				{
+				
 					*path = path::pathfinding(Location(_pos->x,_pos->y), Location(player->GetComponent<PositionC>()->Position.x, player->GetComponent<PositionC>()->Position.y), map);
 					_temp->x = 0;
 					_temp->y = 0;
-				}
-				else {
+					
+				
+				
 					if (path->at(0) == 'R')
 					{
 						_temp->x = 1;
@@ -124,7 +124,7 @@ void PlayState::Run(Engine * engine)
 						_temp->y = 1;
 						path->erase(path->begin());
 					}
-				}
+				
 			}
 			if (_temp->x + _pos->x == pos->x && _temp->y + _pos->y == pos->y)
 			{

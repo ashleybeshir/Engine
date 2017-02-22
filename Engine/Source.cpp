@@ -5,10 +5,14 @@
 #include "bspTree.h"
 void main()
 {
-	/*std::srand(900);
+	std::srand(50);
 	bspG tree;
 	tree.split();
-	sf::RenderWindow window(sf::VideoMode(120, 120), "SFML works!");
+	while (true)
+	{
+
+	}
+	/*sf::RenderWindow window(sf::VideoMode(120, 120), "SFML works!");
 	std::vector<sf::RectangleShape> shapes;
 	sf::RectangleShape temp;
 	temp.setPosition(sf::Vector2f(0,0));
@@ -46,7 +50,7 @@ void main()
 	}
 	*/
 	
-	AssetsManager::GetInstance();
+	/*AssetsManager::GetInstance();
 	
 	
 	Engine engine;
@@ -59,5 +63,5 @@ void main()
 		engine.Run();
 		engine.Input();
 		engine.Draw();
-	}
+	}*/
 }

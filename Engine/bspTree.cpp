@@ -4,11 +4,15 @@
 double r2()
 {
 	double r{ (double)rand() / (double)RAND_MAX };
-	while (!(r >= 0.25 && r <= 0.75))
+	while (!(r >= 0.18 && r <= 0.85))
 	{
 		r = (double)rand() / (double)RAND_MAX;
 	}
 	return r;
+}
+double r()
+{
+	return (double)rand() / (double)RAND_MAX;
 }
 
 void Split(Room* current)
@@ -62,10 +66,10 @@ void Split(Room* current)
 }
 void InOrder(Room* room, std::vector<Room*>& temp)
 {
-	if (room != nullptr)
+	if (room != nullptr )
 	{
 		InOrder(room->childx, temp);
-		if (room->childx == nullptr || room->childy == nullptr)
+		if (room->childx == nullptr && room->childy == nullptr)
 		{
 			temp.push_back(room);
 		}
@@ -73,14 +77,39 @@ void InOrder(Room* room, std::vector<Room*>& temp)
 	}
 
 }
-void randomdelete(std::vector<Room*>& room) 
+bool randomdelete(/*std::vector<Room*>& room*/Room* room) 
 {
-	for (int i=0;i < room.size();i++) 
+	if (room != nullptr) 
+	{
+		if (room->childx == nullptr && room->childy == nullptr)
+		{
+			return true;
+		}
+
+		if(randomdelete(room->childx))
+		{
+			delete room->childx;
+			room->childx = nullptr;
+			return false;
+		}
+		
+		if(randomdelete(room->childy))
+		{
+			delete room->childy;
+			room->childy = nullptr;
+			return false;
+		}
+		
+		
+	}
+	
+	
+	/*for (int i=0;i < room.size();i++) 
 	{
 		if (r2() > 0.8) continue;
 		delete room[i];
 		room.erase(room.begin()+i);
-	}
+	}*/
 }
 void generatemap(std::vector<Room*>& room, std::vector<std::vector<int>>& map)
 {
@@ -111,7 +140,7 @@ void generatemap(std::vector<Room*>& room, std::vector<std::vector<int>>& map)
 }
 void createCorridors(std::vector<Room*>& room,std::vector<std::vector<int>>& map)
 {
-	for (int i=0;i < room.size();i++) 
+	/*for (int i=0;i < room.size();i++) 
 	{
 		if (i + 1 < room.size()) 
 		{
@@ -138,7 +167,7 @@ void createCorridors(std::vector<Room*>& room,std::vector<std::vector<int>>& map
 			}
 			
 		}
-	}
+	}*/
 }
 	
 
@@ -146,10 +175,10 @@ void bspG::split()
 {
 	root = new Room(0, 0, 100, 100);
 	Split(root);
+	randomdelete(root);
 	InOrder(root, temp);
-	randomdelete(temp);
 	generatemap(temp,map);
-	createCorridors(temp,map);
+	//createCorridors(temp,map);
 	for (int x=0;x < map.size();x++) 
 	{
 		for (int y=0;y < map.size();y++) 
