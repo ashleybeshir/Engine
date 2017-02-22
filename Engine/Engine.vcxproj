@@ -152,12 +152,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetsManager.cpp" />
+    <ClCompile Include="bspTree.cpp" />
     <ClCompile Include="CaveG.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="MapNode.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="pathfinder.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tilemap.cpp" />
@@ -166,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetsManager.h" />
+    <ClInclude Include="bspTree.h" />
     <ClInclude Include="CaveG.h" />
     <ClInclude Include="Components.h" />
     <ClInclude Include="Engine.h" />

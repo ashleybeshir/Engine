@@ -95,7 +95,7 @@ void PlayState::Run(Engine * engine)
 				
 				if (path->empty()) 
 				{
-					*path = pathfinding(Location(_pos->x,_pos->y), Location(player->GetComponent<PositionC>()->Position.x, player->GetComponent<PositionC>()->Position.y), map);
+					*path = path::pathfinding(Location(_pos->x,_pos->y), Location(player->GetComponent<PositionC>()->Position.x, player->GetComponent<PositionC>()->Position.y), map);
 					_temp->x = 0;
 					_temp->y = 0;
 				}
