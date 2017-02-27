@@ -11,14 +11,6 @@ PlayState::PlayState()
 PlayState::PlayState(GenerationType type,int seed)
 {
 	
-	
-	if (type == GenerationType::Cave)
-	{
-		
-	}
-	
-	//Entities.push_back(std::unique_ptr<Entity>(player));
-	
 }
 
 PlayState::PlayState(MapNode * node)
@@ -31,6 +23,7 @@ PlayState::PlayState(MapNode * node)
 	{
 		map.GenerateCave();
 	}
+	else map.GenerateDungeon();
 	if (node->GetEntityForLvl().empty()) 
 	{
 		LoadXmlEntity(node->GetEntityForLvl(),node->GetLevel(),map);
@@ -84,12 +77,12 @@ void PlayState::Run(Engine * engine)
 		sf::Sprite* graphics = &player->GetComponent<GraphicC>()->sprite;
 		graphics->setPosition(pos->x * 32, pos->y * 32);
 
-		for (auto& e : Entities)
+		/*for (auto& e : Entities)
 		{
 			sf::Vector2i* _temp = &e->GetComponent<DirectionC>()->direction;
 			sf::Vector2i* _pos = &e->GetComponent<PositionC>()->Position;
 			int difference{ heuristic(player->GetComponent<PositionC>()->Position,*_pos) };
-			if (difference < 10 /*&& difference != 0*/) 
+			if (difference < 10) 
 			{
 				std::string *path = &e->GetComponent<PathC>()->path;
 				
@@ -141,7 +134,7 @@ void PlayState::Run(Engine * engine)
 
 				Egraphics->setPosition(_pos->x * 32, _pos->y * 32);
 			}
-		}
+		}*/
 
 	}
 }
@@ -187,7 +180,7 @@ void PlayState::Input(Engine * engine)
 				player->GetComponent<DirectionC>()->direction.x = 1;
 				player->GetComponent<DirectionC>()->direction.y = 0;
 			}
-			else if (event.key.code == sf::Keyboard::E)
+			else if (event.key.code == sf::Keyboard::Return)
 			{
 				input = true;
 				int x{ player->GetComponent<PositionC>()->Position.x }, y{ player->GetComponent<PositionC>()->Position.y};
@@ -197,7 +190,11 @@ void PlayState::Input(Engine * engine)
 						DungeonNode->SetSeed(DungeonNode->GetSeed() + 1);
 						std::srand(DungeonNode->GetSeed());
 						DungeonNode->SetLevel(DungeonNode->GetLevel() + 1);
-						map.GenerateCave();
+						if (DungeonNode->GetType() == GenerationType::Cave)
+						{
+							map.GenerateCave();
+						}
+						else map.GenerateDungeon();
 						if (DungeonNode->GetEntityForLvl(DungeonNode->GetLevel()).empty())
 						{
 							LoadXmlEntity(DungeonNode->GetEntityForLvl(DungeonNode->GetLevel()), DungeonNode->GetLevel(),map);
@@ -220,7 +217,11 @@ void PlayState::Input(Engine * engine)
 						DungeonNode->SetSeed(DungeonNode->GetSeed() - 1);
 						DungeonNode->SetLevel(DungeonNode->GetLevel() - 1);
 						std::srand(DungeonNode->GetSeed());
-						map.GenerateCave();
+						if (DungeonNode->GetType() == GenerationType::Cave)
+						{
+							map.GenerateCave();
+						}
+						else map.GenerateDungeon();
 						player->GetComponent<PositionC>()->Position = map.GetStairDown();
 					}
 				}
@@ -232,6 +233,8 @@ void PlayState::Input(Engine * engine)
 				input = true;
 				player->GetComponent<DirectionC>()->direction.x = 0;
 				player->GetComponent<DirectionC>()->direction.y = 0;
+				int temp = map.getBlock(player->GetComponent<PositionC>()->Position.x, player->GetComponent<PositionC>()->Position.y);
+				std::cout << temp << " block" << std::endl;
 				/*sf::Vector2i temp{ player->GetComponent<PositionC>()->Position };
 				sf::Vector2i temp2;
 				temp2.x = temp.x + 5;
@@ -269,6 +272,6 @@ void PlayState::Draw(Engine * engine)
 	engine->window.draw(player->GetComponent<GraphicC>()->sprite);
 	for (auto& e : DungeonNode->GetEntityForLvl())
 	{	
-		engine->window.draw(e->GetComponent<GraphicC>()->sprite);
+		//engine->window.draw(e->GetComponent<GraphicC>()->sprite);
 	}
 }

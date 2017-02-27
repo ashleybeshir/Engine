@@ -7,16 +7,20 @@
 #include "Terrain.h"
 #include "CaveG.h"
 #include <random>
+#include "bspTree.h"
+ #include "AssetsManager.h"
 
 class TileMap
 {
 	std::vector<std::vector<MapType>> map;
 	sf::VertexArray vertex;
 
-	sf::Texture texture;
+	sf::Texture* texture;
 	sf::Vector2i StairUp, StairDown;
 
 	const int TileSize{ 32 };
+
+	
 public:
 	int Width, Height;
 	void GenerateCave();

@@ -204,6 +204,20 @@ void WorldState::Input(Engine * engine)
 						temp = AssetsManager::GetInstance()->GetDungeon(_seed);
 					}
 					engine->PushState(new PlayState(temp));
+				}else if(tile == TerrainType::dungeon)
+				{
+					int _seed = player.y * 100 + player.x + seed;
+					MapNode* temp;
+					if (AssetsManager::GetInstance()->GetDungeon(_seed) == nullptr)
+					{
+						temp = new MapNode(_seed, GenerationType::Dungeon, std::rand() % 15 + 4);
+						AssetsManager::GetInstance()->AddDungeon(temp);
+					}
+					else
+					{
+						temp = AssetsManager::GetInstance()->GetDungeon(_seed);
+					}
+					engine->PushState(new PlayState(temp));
 				}
 			}
 			

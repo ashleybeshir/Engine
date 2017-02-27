@@ -6,6 +6,7 @@
 #include <map>
 #include <iostream>
 #include "MapNode.h"
+
 struct ColorSheet
 {
 	sf::Color Normal, InView, Clicked;

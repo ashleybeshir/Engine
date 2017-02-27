@@ -1,11 +1,12 @@
 #ifndef _MAPNODE_
 #define _MAPNODE_
+
 #pragma once
 
 #include <random>
 #include <vector>
 #include <memory>
-#include "Tilemap.h"
+//#include "Tilemap.h"
 #include "Entity.h"
 #include "Terrain.h"
 #include "Item.h"

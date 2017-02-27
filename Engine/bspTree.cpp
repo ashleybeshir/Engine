@@ -3,18 +3,65 @@
 
 double r2()
 {
-	double r{ (double)rand() / (double)RAND_MAX };
+	double r{ (double)std::rand() / (double)RAND_MAX };
 	while (!(r >= 0.18 && r <= 0.85))
 	{
-		r = (double)rand() / (double)RAND_MAX;
+		r = (double)std::rand() / (double)RAND_MAX;
 	}
 	return r;
 }
 double r()
 {
-	return (double)rand() / (double)RAND_MAX;
+	return (double)std::rand() / (double)RAND_MAX;
 }
-
+void walls(std::vector<std::vector<int>>& map)
+{
+	for (int x=0;x < 100;x++) 
+	{
+		for(int y=0;y < 100;y++)
+		{
+			if (x != 0 && y != 0 && x != 99 && y != 99)
+			{
+				if (map[x][y] == 1)
+				{
+					if (map[x + 1][y] == 0)
+					{
+						map[x + 1][y] = 2;
+					}
+					if (map[x - 1][y] == 0)
+					{
+						map[x - 1][y] = 2;
+					}
+					if (map[x][y + 1] == 0)
+					{
+						map[x][y + 1] = 2;
+					}
+					if (map[x][y - 1] == 0)
+					{
+						map[x][y - 1] = 2;
+					}
+					if(map[x-1][y - 1] == 0)
+					{
+						map[x-1][y - 1] = 2;
+					}
+					if (map[x + 1][y + 1] == 0)
+					{
+						map[x + 1][y + 1] = 2;
+					}
+					if (map[x - 1][y + 1] == 0)
+					{
+						map[x - 1][y + 1] = 2;
+					}
+					if (map[x + 1][y - 1] == 0)
+					{
+						map[x + 1][y - 1] = 2;
+					}
+				}
+			}
+			else map[x][y] = 2;
+		}
+	}
+}
 void Split(Room* current)
 {
 	double rand = r2();
@@ -71,47 +118,32 @@ void InOrder(Room* room, std::vector<Room*>& temp)
 		InOrder(room->childx, temp);
 		if (room->childx == nullptr && room->childy == nullptr)
 		{
-			temp.push_back(room);
+			if (r() < 0.2) {
+				temp.push_back(room);
+			}
 		}
 		InOrder(room->childy, temp);
 	}
 
 }
-bool randomdelete(/*std::vector<Room*>& room*/Room* room) 
+void randomdelete(std::vector<Room*>& room) 
 {
-	if (room != nullptr) 
+	/*for (int i=0;i < room.size();) 
 	{
-		if (room->childx == nullptr && room->childy == nullptr)
+		if (r() < 0.7) 
 		{
-			return true;
-		}
-
-		if(randomdelete(room->childx))
+			delete room[i];
+			room.erase(room.begin() + i);
+		}else
 		{
-			delete room->childx;
-			room->childx = nullptr;
-			return false;
+			i++;
 		}
-		
-		if(randomdelete(room->childy))
-		{
-			delete room->childy;
-			room->childy = nullptr;
-			return false;
-		}
-		
-		
-	}
-	
-	
-	/*for (int i=0;i < room.size();i++) 
-	{
-		if (r2() > 0.8) continue;
-		delete room[i];
-		room.erase(room.begin()+i);
 	}*/
+
+	
+	
 }
-void generatemap(std::vector<Room*>& room, std::vector<std::vector<int>>& map)
+void generatemap(std::vector<Room*>& room, std::vector<std::vector<int>>& map, std::vector<Room*>& cor)
 {
 	map.resize(100);
 	for (int i=0;i < map.size();i++)
@@ -125,6 +157,7 @@ void generatemap(std::vector<Room*>& room, std::vector<std::vector<int>>& map)
 			map[x][i] = 0;
 		}
 	}
+	
 	for (auto& c : room)
 	{
 		for (int x = c->x; x <= c->sizex+c->x; x++)
@@ -132,68 +165,191 @@ void generatemap(std::vector<Room*>& room, std::vector<std::vector<int>>& map)
 			for (int y = c->y; y <= c->sizey+c->y; y++)
 			{
 				map[x][y] = 1;
-				
 			}
 		}
 		
 	}
+	for (auto& c : cor)
+	{
+		for (int x = c->x; x <= c->sizex + c->x; x++)
+		{
+			for (int y = c->y; y <= c->sizey + c->y; y++)
+			{
+				map[x][y] = 1;
+
+			}
+		}
+
+	}
 }
-void createCorridors(std::vector<Room*>& room,std::vector<std::vector<int>>& map)
+void createCorridors(std::vector<Room*>& room, std::vector<Room*>& cor)
 {
-	/*for (int i=0;i < room.size();i++) 
+	for (int i=0;i < room.size();i++) 
 	{
 		if (i + 1 < room.size()) 
 		{
 			int lengthx = room[i]->x + room[i]->sizex;
 			int lengthy = room[i]->y + room[i]->sizey;
-
-			if (lengthy > room[i + 1]->y)
+			int _lengthx = room[i+1]->x + room[i+1]->sizex;
+			int _lengthy = room[i+1]->y + room[i+1]->sizey;
+			if (room[i]->y < room[i+1]->y) 
 			{
-				if (room[i]->x - room[i + 1]->x < 0)
+				if (room[i+1]->x >= room[i]->x && room[i + 1]->x <= lengthx)
 				{
-					int y = lengthy -(lengthy - (room[i + 1]->y + room[i+1]->sizey));
-					for (size_t x = 0; x <= std::abs(lengthx - room[i + 1]->x); x++)
-					{
-						map[x+lengthx][y] = 8;
-					}
-				}else
+					Room* ho = new Room(room[i+1]->x,lengthy,0,std::abs(room[i + 1]->y-lengthy));
+					cor.push_back(ho);
+				}else if(room[i]->x >= room[i+1]->x && room[i]->x <= _lengthx)
 				{
-					int y = lengthy - (lengthy - (room[i + 1]->y + room[i + 1]->sizey));
-					for (size_t x = 0; x <= std::abs(lengthx - room[i + 1]->x); x++)
-					{
-						map[x + (room[i+1]->sizex+room[i+1]->x)][y] = 8;
-					}
+					Room* ho = new Room(room[i]->x, lengthy, 0, std::abs(room[i + 1]->y - lengthy));
+					cor.push_back(ho);
 				}
 			}
+			if(room[i]->y > room[i + 1]->y)
+			{
+				if (room[i + 1]->x >= room[i]->x && room[i + 1]->x <= lengthx)
+				{
+					Room* ho = new Room(room[i + 1]->x, _lengthy, 0, std::abs(room[i + 1]->y - lengthy));
+					cor.push_back(ho);
+				}
+				else if (room[i]->x >= room[i + 1]->x && room[i]->x <= _lengthx)
+				{
+					Room* ho = new Room(room[i]->x, _lengthy, 0, std::abs(room[i + 1]->y - lengthy));
+					cor.push_back(ho);
+				}
+			}
+			if (room[i]->x < room[i + 1]->x)
+			{
 			
+				if (room[i]->y >= room[i + 1]->y && room[i]->y <= _lengthy )
+				{
+					Room* hol = new Room(lengthx,room[i]->y,std::abs(lengthx - room[i+1]->x),0);
+					cor.push_back(hol);
+				}else if(lengthy >= room[i + 1]->y && lengthy <= _lengthy)
+				{
+					Room* hol = new Room(lengthx, lengthy, std::abs(lengthx - room[i + 1]->x), 0);
+					cor.push_back(hol);
+				}else if(room[i+1]->y >= room[i]->y && _lengthy <= lengthy )
+				{
+					Room* hol = new Room(lengthx, _lengthy, std::abs(lengthx - room[i + 1]->x), 0);
+					cor.push_back(hol);
+				}
+			}else if(room[i]->x > room[i + 1]->x)
+			{
+				if (room[i]->y >= room[i + 1]->y && room[i]->y <= _lengthy)
+				{
+					Room* hol = new Room(_lengthx, room[i]->y, std::abs(lengthx - room[i + 1]->x), 0);
+					cor.push_back(hol);
+				}
+				else if (lengthy >= room[i + 1]->y && lengthy <= _lengthy)
+				{
+					Room* hol = new Room(_lengthx, lengthy, std::abs(lengthx - room[i + 1]->x), 0);
+					cor.push_back(hol);
+				}
+				else if (room[i + 1]->y >= room[i]->y && _lengthy <= lengthy)
+				{
+					Room* hol = new Room(_lengthx, _lengthy, std::abs(lengthx - room[i + 1]->x), 0);
+					cor.push_back(hol);
+				}
+			}
+			if(room[i]->x < room[i+1]->x && lengthx < room[i+1]->x && room[i]->y < room[i+1]->y && lengthy < room[i + 1]->y)
+			{
+				Room* first = new Room(lengthx,lengthy,0,std::abs(room[i+1]->y - lengthy));
+				Room* second = new Room(lengthx,lengthy+(std::abs(room[i + 1]->y - lengthy)),std::abs(lengthx-room[i+1]->x),0);
+				cor.push_back(first);
+				cor.push_back(second);
+			}else if(room[i]->x > room[i + 1]->x && lengthx > _lengthx && room[i]->y < room[i + 1]->y && lengthy < room[i + 1]->y)
+			{
+				Room* first = new Room(room[i]->x, lengthy, 0, std::abs(room[i + 1]->y - lengthy));
+				Room* second = new Room(_lengthx, lengthy + (std::abs(room[i + 1]->y - lengthy)), std::abs(_lengthx - room[i]->x), 0);
+				cor.push_back(first);
+				cor.push_back(second);
+			}
+			if (room[i]->x < room[i + 1]->x && lengthx < room[i + 1]->x && room[i]->y > room[i + 1]->y && lengthy > _lengthy)
+			{
+				
+				Room* first = new Room(lengthx, _lengthy, 0, std::abs(room[i]->y -_lengthy));
+				Room* second = new Room(lengthx, _lengthy , std::abs(lengthx - room[i + 1]->x), 0);
+				cor.push_back(first);
+				cor.push_back(second);
+			}
+			else if (room[i]->x > room[i + 1]->x && lengthx > _lengthx && room[i]->y > room[i + 1]->y && lengthy > _lengthy)
+			{
+				
+				Room* first = new Room(room[i]->x, _lengthy, 0, std::abs(room[i]->y - _lengthy));
+				Room* second = new Room(_lengthx, _lengthy , std::abs(_lengthx - room[i]->x), 0);
+				cor.push_back(first);
+				cor.push_back(second);
+			}
+
 		}
-	}*/
+	}
 }
 	
 
 void bspG::split()
 {
 	root = new Room(0, 0, 100, 100);
-	Split(root);
-	randomdelete(root);
+	Split(root); 
 	InOrder(root, temp);
-	generatemap(temp,map);
-	//createCorridors(temp,map);
-	for (int x=0;x < map.size();x++) 
+	randomdelete(temp);
+	createCorridors(temp,cor);
+	generatemap(temp, map,cor);
+	walls(map);
+	bool stair1{ true };
+	bool stair2{ true };
+	while (stair1 || stair2) 
 	{
-		for (int y=0;y < map.size();y++) 
+		int x, y;
+		if (stair1) 
 		{
-			std::cout << map[y][x];
+			x = std::rand() % 99+1;
+			y= std::rand() % 99 + 1;
+			if (map[x][y] == 1 ) 
+			{
+				map[x][y] = 3;
+				stair1 = false;
+			}
 		}
-		std::cout << std::endl;
+		if (stair2) 
+		{
+			x = std::rand() % 99 + 1;
+			y = std::rand() % 99 + 1;
+			if (map[x][y] == 1)
+			{
+				map[x][y] = 4;
+				stair2 = false;
+			}
+		}
 	}
+	
 }
 
 bspG::bspG()
 {
 }
 
-
+void delete_tree(Room* _root)
+{
+	if (_root != nullptr)
+	{
+		delete_tree(_root->childx);
+		delete_tree(_root->childy);
+		delete(_root);
+		if (_root->childx != nullptr)
+			_root->childy = nullptr;
+		if (_root->childx != nullptr)
+			_root->childy = nullptr;
+		_root = nullptr;
+	}
+}
 bspG::~bspG()
 {
+	delete_tree(root);
+	
+	for(int i=0;i < cor.size();i++)
+	{
+		delete cor[i];
+	}
+	map.clear();
+	
 }

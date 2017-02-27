@@ -1,11 +1,11 @@
 ﻿  bspTree.cpp
-c:\users\ashley\documents\github\engine\engine\bsptree.cpp(38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ashley\documents\github\engine\engine\bsptree.cpp(60): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ashley\documents\github\engine\engine\bsptree.cpp(117): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\bsptree.cpp(121): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\bsptree.cpp(123): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\bsptree.cpp(182): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\bsptree.cpp(184): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\bsptree.cpp(113): warning C4715: 'randomdelete': not all control paths return a value
-  Engine.vcxproj -> C:\Users\ashley\Documents\GitHub\Engine\Debug\Engine.exe
-  Engine.vcxproj -> C:\Users\ashley\Documents\GitHub\Engine\Debug\Engine.pdb (Full PDB)
+c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(85): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(107): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(149): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(153): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(155): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(187): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(189): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(349): warning C4018: '<': signed/unsigned mismatch
+  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
+  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)
