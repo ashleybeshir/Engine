@@ -38,7 +38,7 @@ void redo(sf::VertexArray& graph,bspG* tree)
 void main()
 {
 	//50
-	/*int seed = 2290;
+   /* int seed = 320;
 	std::srand(seed);
 	bspG* tree = new bspG;
 	tree->split();
@@ -85,9 +85,33 @@ void main()
 		window.draw(temp);
 		window.draw(graph);
 		window.display();
+	}
+	
+	*/
+	/*sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Fullscreen);
+	sf::View guiview{ sf::Vector2f(960, 540), sf::Vector2f(1920, 1080) };
+	MenuList* list = new MenuList(0,0,8);
+	list->AddButton("fucksake");
+	GUI lol;
+	lol.AddWidget("lis",list);
+	while (window.isOpen())
+	{
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+			else if (event.type == sf::Event::KeyPressed)
+			{
+				
+			}
+		}
+
+		window.clear();
+		window.setView(guiview);
+		lol.draw(&window);
+		window.display();
 	}*/
-	
-	
 	AssetsManager::GetInstance();
 	
 	
@@ -101,5 +125,5 @@ void main()
 		engine.Run();
 		engine.Input();
 		engine.Draw();
-	}
+	} 
 }

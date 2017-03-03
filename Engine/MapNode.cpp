@@ -12,12 +12,12 @@ std::vector<Entity*>& MapNode::GetEntityForLvl(int lvl)
 	return LvLEntities[lvl];
 }
 
-std::vector<Item*>& MapNode::GetItemForLvl()
+std::vector<ItemBag>& MapNode::GetItemForLvl()
 {
 	return LvlItems[CurrentLevel];
 }
 
-std::vector<Item*>& MapNode::GetItemForLvl(int lvl)
+std::vector<ItemBag>& MapNode::GetItemForLvl(int lvl)
 {
 	return LvlItems[lvl];
 }

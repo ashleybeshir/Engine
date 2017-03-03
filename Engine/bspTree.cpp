@@ -58,7 +58,7 @@ void walls(std::vector<std::vector<int>>& map)
 					}
 				}
 			}
-			else map[x][y] = 2;
+			else if (map[x][y] == 0) map[x][y] = 2;
 		}
 	}
 }

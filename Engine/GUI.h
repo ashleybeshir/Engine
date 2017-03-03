@@ -59,6 +59,11 @@ public:
 	{
 		widgets.clear();
 	}
+	void DeleteWidget(std::string string)
+	{
+		auto temp = widgets.find(string);
+		widgets.erase(temp);
+	}
 	GUI();
 	GUI(int x,int y):Res_x(x),Res_y(y){}
 	~GUI();

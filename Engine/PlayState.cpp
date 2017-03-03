@@ -28,6 +28,10 @@ PlayState::PlayState(MapNode * node)
 	{
 		LoadXmlEntity(node->GetEntityForLvl(),node->GetLevel(),map);
 	}
+	if (node->GetItemForLvl().empty())
+	{
+		LoadXmlItems(node->GetItemForLvl(),node->GetLevel(),map);
+	}
 	player = new Entity;
 	player->AddComponent<PositionC>(map.GetStairUp().x, map.GetStairUp().y);
 	player->AddComponent<DirectionC>();
@@ -38,6 +42,7 @@ PlayState::PlayState(MapNode * node)
 	sprite.setPosition(map.GetStairUp().x * 32, map.GetStairUp().y * 32);
 	player->AddComponent<GraphicC>();
 	player->GetComponent<GraphicC>()->sprite = sprite;
+	player->AddComponent<InventoryC>();
 }
 
 PlayState::~PlayState()
@@ -77,12 +82,13 @@ void PlayState::Run(Engine * engine)
 		sf::Sprite* graphics = &player->GetComponent<GraphicC>()->sprite;
 		graphics->setPosition(pos->x * 32, pos->y * 32);
 
-		/*for (auto& e : Entities)
+		for (auto& e : Entities)
 		{
 			sf::Vector2i* _temp = &e->GetComponent<DirectionC>()->direction;
 			sf::Vector2i* _pos = &e->GetComponent<PositionC>()->Position;
-			int difference{ heuristic(player->GetComponent<PositionC>()->Position,*_pos) };
-			if (difference < 10) 
+			int difference{ heuristic(*pos,*_pos) };
+			
+			if (difference < 10 && difference != 0) 
 			{
 				std::string *path = &e->GetComponent<PathC>()->path;
 				
@@ -121,7 +127,6 @@ void PlayState::Run(Engine * engine)
 			}
 			if (_temp->x + _pos->x == pos->x && _temp->y + _pos->y == pos->y)
 			{
-				std::cout << "player got spanked " << std::endl;
 				_temp->x = 0;
 				_temp->y = 0;
 				e->GetComponent<PathC>()->path = "";
@@ -134,7 +139,7 @@ void PlayState::Run(Engine * engine)
 
 				Egraphics->setPosition(_pos->x * 32, _pos->y * 32);
 			}
-		}*/
+		}
 
 	}
 }
@@ -148,12 +153,11 @@ void PlayState::Input(Engine * engine)
 	sf::Event event;
 	while (engine->window.pollEvent(event))
 	{
-		switch (event.type)
-		{
-		case sf::Event::Closed:
+		if (sf::Event::Closed == event.type) {
 			engine->window.close();
-			break;
-		case sf::Event::KeyPressed:
+			
+		}
+		else if (sf::Event::KeyPressed == event.type) {
 			if (event.key.code == sf::Keyboard::Escape) {
 				engine->window.close();
 			}
@@ -162,7 +166,8 @@ void PlayState::Input(Engine * engine)
 				input = true;
 				player->GetComponent<DirectionC>()->direction.x = 0;
 				player->GetComponent<DirectionC>()->direction.y = -1;
-			}else if (event.key.code == sf::Keyboard::Down)
+			}
+			else if (event.key.code == sf::Keyboard::Down)
 			{
 				input = true;
 				player->GetComponent<DirectionC>()->direction.x = 0;
@@ -183,10 +188,10 @@ void PlayState::Input(Engine * engine)
 			else if (event.key.code == sf::Keyboard::Return)
 			{
 				input = true;
-				int x{ player->GetComponent<PositionC>()->Position.x }, y{ player->GetComponent<PositionC>()->Position.y};
-				if (map.getBlock(x,y) == MapType::StairD) 
+				int x{ player->GetComponent<PositionC>()->Position.x }, y{ player->GetComponent<PositionC>()->Position.y };
+				if (map.getBlock(x, y) == MapType::StairD)
 				{
-					if (!(DungeonNode->GetLevel()+1 >= DungeonNode->GetNumberOfLevels()) ) {
+					if (!(DungeonNode->GetLevel() + 1 >= DungeonNode->GetNumberOfLevels())) {
 						DungeonNode->SetSeed(DungeonNode->GetSeed() + 1);
 						std::srand(DungeonNode->GetSeed());
 						DungeonNode->SetLevel(DungeonNode->GetLevel() + 1);
@@ -197,15 +202,19 @@ void PlayState::Input(Engine * engine)
 						else map.GenerateDungeon();
 						if (DungeonNode->GetEntityForLvl(DungeonNode->GetLevel()).empty())
 						{
-							LoadXmlEntity(DungeonNode->GetEntityForLvl(DungeonNode->GetLevel()), DungeonNode->GetLevel(),map);
-							
+							LoadXmlEntity(DungeonNode->GetEntityForLvl(DungeonNode->GetLevel()), DungeonNode->GetLevel(), map);
+
 						}
-						
-						
+						else if (DungeonNode->GetItemForLvl(DungeonNode->GetLevel()).empty())
+						{
+							LoadXmlItems(DungeonNode->GetItemForLvl(DungeonNode->GetLevel()), DungeonNode->GetLevel(), map);
+						}
+
+
 						player->GetComponent<PositionC>()->Position = map.GetStairUp();
-						
+
 					}
-					
+
 				}
 				else if (map.getBlock(x, y) == MapType::StairU)
 				{
@@ -225,16 +234,15 @@ void PlayState::Input(Engine * engine)
 						player->GetComponent<PositionC>()->Position = map.GetStairDown();
 					}
 				}
-				
+
 			}
 			else if (event.key.code == sf::Keyboard::L)
-			{		
-				
+			{
+
 				input = true;
 				player->GetComponent<DirectionC>()->direction.x = 0;
 				player->GetComponent<DirectionC>()->direction.y = 0;
 				int temp = map.getBlock(player->GetComponent<PositionC>()->Position.x, player->GetComponent<PositionC>()->Position.y);
-				std::cout << temp << " block" << std::endl;
 				/*sf::Vector2i temp{ player->GetComponent<PositionC>()->Position };
 				sf::Vector2i temp2;
 				temp2.x = temp.x + 5;
@@ -242,8 +250,42 @@ void PlayState::Input(Engine * engine)
 				std::cout << temp.x << " P " << temp.y << std::endl;
 				pathfinding(Location(temp.x,temp.y),Location(temp2.x,temp2.y),map);*/
 			}
-			
-		case sf::Event::MouseWheelScrolled:
+			else if (event.key.code == sf::Keyboard::G)
+			{
+				input = true;
+				sf::Vector2i loc = player->GetComponent<PositionC>()->Position;
+				std::shared_ptr<InventoryC> inv = player->GetComponent<InventoryC>();
+				for (int i = 0; i < DungeonNode->GetItemForLvl().size(); i++)
+				{
+					if (DungeonNode->GetItemForLvl()[i].location == loc)
+					{
+						Item * item = DungeonNode->GetItemForLvl()[i].items;
+						inv->inventory.push_back(item);
+						DungeonNode->GetItemForLvl().erase(DungeonNode->GetItemForLvl().begin() + i);
+					}
+				}
+			}
+			else if (event.key.code == sf::Keyboard::W)
+			{
+				if (!_list)
+				{
+					list = new MenuList(0, 0, 8);
+					std::shared_ptr<InventoryC> inv = player->GetComponent<InventoryC>();
+					for (auto& c : inv->inventory)
+					{
+						list->AddButton(c->name);
+					}
+					engine->gui->AddWidget("inv", list);
+					_list = true;
+				}
+				else {
+					_list = false;
+					delete list;
+				}
+
+			}
+		}
+		else if (sf::Event::MouseWheelScrolled == event.type) {
 			if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
 			{
 
@@ -256,11 +298,32 @@ void PlayState::Input(Engine * engine)
 					view.zoom(1.1f);
 				}
 			}
-		default:
-			break;
-
+			
 		}
+		else if (sf::Event::MouseButtonPressed == event.type) {
+			if (event.mouseButton.button == sf::Mouse::Left)
+			{
+				sf::Vector2i pixelPos = sf::Mouse::getPosition(engine->window);
+				sf::Vector2f worldPos = engine->window.mapPixelToCoords(pixelPos, engine->guiview);
+				if (_list)
+				{
+					if (engine->gui->clicked(worldPos.x, worldPos.y))
+					{
+					}
+				}
+			}
+			
+		}
+		else if (sf::Event::MouseMoved == event.type) {
+			sf::Vector2i pixelPos = sf::Mouse::getPosition(engine->window);
+			sf::Vector2f worldPos = engine->window.mapPixelToCoords(pixelPos, engine->guiview);
+			engine->gui->check(worldPos.x, worldPos.y);
+			
+		}
+		
+		
 	}
+	
 }
 
 void PlayState::Draw(Engine * engine)
@@ -269,9 +332,15 @@ void PlayState::Draw(Engine * engine)
 	view.setCenter(pos);
 	engine->window.setView(view);
 	map.Draw(engine->window);
+	for (auto& e : DungeonNode->GetItemForLvl())
+	{
+		engine->window.draw(e.items->sprite);
+	}
 	engine->window.draw(player->GetComponent<GraphicC>()->sprite);
+
 	for (auto& e : DungeonNode->GetEntityForLvl())
 	{	
-		//engine->window.draw(e->GetComponent<GraphicC>()->sprite);
+		engine->window.draw(e->GetComponent<GraphicC>()->sprite);
 	}
+	
 }

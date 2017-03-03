@@ -130,8 +130,11 @@ struct MenuList : public Widget
 	{
 		delete left;
 		delete right;
-		buttons.clear();
-		delete this;
+		for(auto& c : buttons)
+		{
+			delete c;
+		}
+		//delete this;
 	}
 };
 

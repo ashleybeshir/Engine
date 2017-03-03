@@ -38,6 +38,7 @@ public:
 	inline bool isPassable(int x,int y)
 	{
 		if (map[x][y] == MapType::Wall) return false;
+		else if (map[x][y] == MapType::Empty) return false;
 		else return true;
 	}
 	inline MapType getBlock(int x,int y) 

@@ -94,8 +94,9 @@ struct Button : public Widget
 	}
 	~Button()
 	{
-		delete this;
+		//delete this;
 	}
+	
 };
 
 #endif // !1

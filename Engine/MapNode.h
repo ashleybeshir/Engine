@@ -10,14 +10,23 @@
 #include "Entity.h"
 #include "Terrain.h"
 #include "Item.h"
+#include <map>
 
-
+struct ItemBag
+{
+	ItemBag(Item* _items,sf::Vector2i loc)
+	{
+		items = _items;
+		location = loc;
+	}
+	Item* items;
+	sf::Vector2i location;
+};
 class MapNode
 {
 	GenerationType type;
-	//std::vector<std::vector<std::unique_ptr<Entity>>> LvLEntities;
 	std::vector<std::vector<Entity*>>  LvLEntities;
-	std::vector<std::vector<Item*>> LvlItems;
+	std::vector<std::vector<ItemBag>> LvlItems;
 	bool completed{false};
 	int Seed;
 	int CurrentLevel{0};
@@ -30,13 +39,14 @@ public:
 	int GetLevel() { return CurrentLevel; }
 	std::vector<Entity*>& GetEntityForLvl();
 	std::vector<Entity*>& GetEntityForLvl(int lvl);
-	std::vector<Item*>& GetItemForLvl();
-	std::vector<Item*>& GetItemForLvl(int lvl);
+	std::vector<ItemBag>& GetItemForLvl();
+	std::vector<ItemBag>& GetItemForLvl(int lvl);
 	GenerationType GetType() { return type; }
 	MapNode();
 	MapNode(int seed,GenerationType type,int numberoflevels):Seed(seed),type(type),NumberOfLevels(numberoflevels)
 	{
 		LvLEntities.resize(numberoflevels);
+		LvlItems.resize(numberoflevels);
 	}
 	~MapNode();
 };

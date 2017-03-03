@@ -1,11 +1,139 @@
-﻿  bspTree.cpp
-c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(85): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(107): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(149): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(153): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(155): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(187): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(189): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\bsptree.cpp(349): warning C4018: '<': signed/unsigned mismatch
+﻿  WorldState.cpp
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(14): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(34): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(75): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(76): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(77): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(78): warning C4244: 'argument': conversion from 'std::size_t' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(157): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(158): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(159): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(160): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(161): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(166): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(167): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(168): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(169): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(170): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(175): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(176): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(177): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(178): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(179): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(184): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(185): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(186): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(187): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\worldstate.cpp(188): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Source.cpp
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\source.cpp(16): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\source.cpp(17): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\source.cpp(18): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\source.cpp(19): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
+  PlayState.cpp
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(25): warning C4800: 'tinyxml2::XMLDocument *': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(69): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(100): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(117): warning C4800: 'tinyxml2::XMLDocument *': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(177): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(205): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(233): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(286): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(298): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(309): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(83): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(140): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(258): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(310): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(320): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  MenuState.cpp
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\menustate.cpp(16): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\menustate.cpp(17): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\menustate.cpp(18): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\menustate.cpp(74): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\menustate.cpp(76): warning C4305: 'argument': truncation from 'double' to 'float'
+  GameState.cpp
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  GUI.cpp
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\gui.cpp(32): warning C4018: '<': signed/unsigned mismatch
+  Engine.cpp
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(36): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+c:\users\ashley\desktop\engine\engine\engine\gui.h(53): warning C4715: 'GUI::clicked': not all control paths return a value
+c:\users\ashley\desktop\engine\engine\engine\widget.h(25): warning C4172: returning address of local variable or temporary
+c:\users\ashley\desktop\engine\engine\engine\gui.h(53): warning C4715: 'GUI::clicked': not all control paths return a value
+c:\users\ashley\desktop\engine\engine\engine\widget.h(25): warning C4172: returning address of local variable or temporary
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)

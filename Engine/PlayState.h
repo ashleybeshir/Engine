@@ -14,13 +14,17 @@
 #include "AssetsManager.h"
 #include "MapNode.h"
 
+
 class PlayState : public GameState
 {
 	MapNode* DungeonNode;
 	Entity* player;
 	TileMap map;
 	sf::View view;
+	
+	MenuList* list;
 	bool input;
+	bool _list{false};
 public:
 
 	void Start();

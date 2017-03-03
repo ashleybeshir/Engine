@@ -9,9 +9,12 @@ AssetsManager * AssetsManager::GetInstance()
 		p_instance = new AssetsManager;
 		p_instance->GetInstance()->LoadTexture("Cave","cave.png");
 		p_instance->GetInstance()->LoadTexture("Entity", "monster.png");
-		//p_instance->GetInstance()->LoadTexture("Items","item.png");
+		p_instance->GetInstance()->LoadTexture("Item","items.png");
 		p_instance->GetInstance()->LoadTexture("Map", "Ground.png");
 		p_instance->GetInstance()->LoadTexture("dungeon", "dungeon.png");
+		p_instance->GetInstance()->LoadTexture("potion", "potion.png");
+		p_instance->GetInstance()->LoadTexture("armor", "armor.png");
+		p_instance->GetInstance()->LoadTexture("weapon", "weapon.png");
 		p_instance->GetInstance()->colorsheets[0].Normal = sf::Color::Green;
 		p_instance->GetInstance()->colorsheets[0].InView = sf::Color::Blue;
 		p_instance->GetInstance()->colorsheets[0].Clicked = sf::Color::Red;

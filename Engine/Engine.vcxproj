@@ -181,7 +181,6 @@
     <ClInclude Include="GUILabel.h" />
     <ClInclude Include="GUIList.h" />
     <ClInclude Include="Item.h" />
-    <ClInclude Include="ItemManager.h" />
     <ClInclude Include="MapNode.h" />
     <ClInclude Include="MenuState.h" />
     <ClInclude Include="pathfinder.h" />

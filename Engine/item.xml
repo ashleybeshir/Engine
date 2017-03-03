@@ -1,6 +1,38 @@
-<potion>
-<lvl>0</lvl>
-<name></name>
-<amount></amount>
-<perturn></perturn>
+<potion>	
+	<lvl>0</lvl>
+	<name>Very Cheap Health</name>
+	<amount>5</amount>
+	<perturn>1</perturn>
+	<sprite>0</sprite>
 </potion>
+<potion>	
+	<lvl>1</lvl>
+	<name>Cheap Health</name>
+	<amount>10</amount>
+	<perturn>1</perturn>
+	<sprite>1</sprite>
+</potion>
+<armor>
+	<lvl>0</lvl>
+	<name>Cloth Armor</name>
+	<amount>4</amount>
+	<sprite>0</sprite>
+</armor>
+<armor>
+	<lvl>1</lvl>
+	<name>Premium Cloth Armor</name>
+	<amount>10</amount>
+	<sprite>1</sprite>
+</armor>
+<weapon>
+	<lvl>0</lvl>
+	<name>Broken Sword</name>
+	<amount>3</amount>
+	<sprite>0</sprite>
+</weapon>
+<weapon>
+	<lvl>1</lvl>
+	<name>Damaged Sword</name>
+	<amount>10</amount>
+	<sprite>1</sprite>
+</weapon>
