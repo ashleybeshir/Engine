@@ -25,6 +25,7 @@ class PlayState : public GameState
 	MenuList* list;
 	bool input;
 	bool _list{false};
+	bool wear{ false }, drop{ false };
 public:
 
 	void Start();

@@ -13,7 +13,7 @@ Engine::~Engine()
 
 void Engine::Start()
 {
-	window.create(sf::VideoMode(1920, 1080), "My window", sf::Style::Fullscreen);
+	window.create(sf::VideoMode(1920, 1080), "My window"/*, sf::Style::Fullscreen*/);
 	gui = new GUI(1920,1080);
 	
 }

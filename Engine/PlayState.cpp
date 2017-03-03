@@ -277,10 +277,13 @@ void PlayState::Input(Engine * engine)
 					}
 					engine->gui->AddWidget("inv", list);
 					_list = true;
+					wear = true;
 				}
 				else {
 					_list = false;
 					delete list;
+					engine->gui->DeleteWidget("inv");
+					wear = false;
 				}
 
 			}
@@ -307,8 +310,71 @@ void PlayState::Input(Engine * engine)
 				sf::Vector2f worldPos = engine->window.mapPixelToCoords(pixelPos, engine->guiview);
 				if (_list)
 				{
-					if (engine->gui->clicked(worldPos.x, worldPos.y))
+					if (list->clicked(worldPos.x, worldPos.y))
 					{
+						if(wear)
+						{
+							sf::String find_item = list->GetString();
+							std::shared_ptr<InventoryC> inv = player->GetComponent<InventoryC>();
+							for(int i=0;i < inv->inventory.size();i++)
+							{
+								if (inv->inventory[i]->name == find_item)
+								{
+									if(inv->inventory[i]->Type == ITEM::ItemType::Armor)
+									{
+										if (inv->armor == nullptr)
+										{
+											inv->armor = inv->inventory[i];
+											inv->inventory.erase(inv->inventory.begin()+i);
+											wear = false;
+											break;
+										}else
+										{
+											inv->inventory.push_back(inv->armor);
+											inv->armor = inv->inventory[i];
+											inv->inventory.erase(inv->inventory.begin() + i);
+											wear = false;
+											break;
+										}
+										
+									}else if(inv->inventory[i]->Type == ITEM::ItemType::Weapon)
+									{
+										if (inv->hand == nullptr)
+										{
+											inv->hand = inv->inventory[i];
+											inv->inventory.erase(inv->inventory.begin() + i);
+											wear = false;
+											break;
+										}
+										else
+										{
+											inv->inventory.push_back(inv->hand);
+											inv->hand = inv->inventory[i];
+											inv->inventory.erase(inv->inventory.begin() + i);
+											wear = false;
+											break;
+										}
+									}
+								}
+							}
+							wear = false;
+						}else if(drop)
+						{
+							sf::String find_item = list->GetString();
+							std::shared_ptr<InventoryC> inv = player->GetComponent<InventoryC>();
+							sf::Vector2i player_pos = player->GetComponent<PositionC>()->Position;
+							for (int i=0;i < inv->inventory.size();i++) 
+							{
+								if (inv->inventory[i]->name == find_item)
+								{
+									ItemBag bag(inv->inventory[i],player_pos);
+									DungeonNode->GetItemForLvl().push_back(bag);
+									inv->inventory.erase(inv->inventory.begin()+i);
+									drop = false;
+									break;
+								}
+							}
+						}
 					}
 				}
 			}

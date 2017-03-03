@@ -74,8 +74,8 @@ struct HealthC : public Component
 struct InventoryC : public Component 
 {
 	std::vector<Item*> inventory;
-	Item* hand;
-	Item* armor;
+	Item* hand{nullptr};
+	Item* armor{nullptr};
 };
 #endif // !_COMPONENTS_
 
