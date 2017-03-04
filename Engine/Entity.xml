@@ -36,7 +36,7 @@
 	<name>Milo</name>
 	<health>10</health>
 	<energy>300</energy>
-	<damage>500</damage>
+	<damage>5</damage>
 	<level>2</level>
 	<sprite>7</sprite>
 </entity>

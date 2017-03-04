@@ -58,6 +58,10 @@ void PlayState::Start()
 	
 	console = new Console(0, 0, 9);
 	PHealth = new Label(0,0.20,"Health: ",sf::Color::White);
+	PArmor = new Label(0, 0.22, "Armor: ", sf::Color::White);
+	PDamage = new Label(0, 0.24, "Damage: ", sf::Color::White);
+	engine->gui->AddWidget("armor", PArmor);
+	engine->gui->AddWidget("damage", PDamage);
 	engine->gui->AddWidget("health",PHealth);
 	engine->gui->AddWidget("console", console);
 	
@@ -105,12 +109,16 @@ void PlayState::Run(Engine * engine)
 					}
 					else {
 						console->AddLog("Damage done to enemy " + std::to_string(static_cast<Weapon*>(inv->hand)->damage));
-						//console->AddLog("Remaining health: " + std::to_string(*health));
+						sf::Sound sound;
+						sound.setBuffer(AssetsManager::GetInstance()->GetSound("Hit"));
+						sound.play();
 					}
 
 				}else
 				{
 					console->AddLog("U need a weapon to do damage");
+					
+				
 				}
 				
 				pos_check = false;
@@ -171,31 +179,65 @@ void PlayState::Run(Engine * engine)
 				e->GetComponent<PathC>()->path = "";
 				int damage = e->GetComponent<DamageC>()->damage;
 				int *health = &player->GetComponent<HealthC>()->health;
-				*health -= damage;
-				if (*health > 0) 
+				if(player->GetComponent<InventoryC>()->armor != nullptr)
 				{
-					console->AddLog("you have been damaged for: "+std::to_string(damage));
+					int armor = static_cast<Armor*>(player->GetComponent<InventoryC>()->armor)->protection;
+					damage = damage - (damage - (damage * armor / 100));
+					*health -= damage;
+				}
+				else {
+					*health -= damage;
+				}
+				console->AddLog("you have been damaged for: "+std::to_string(damage));
+				sound.setBuffer(AssetsManager::GetInstance()->GetSound("Hurt"));
+				sound.play();
+				if(*health <= 0)
+				{
+
 				}
 			}
 			else
 			{
-				/*for (auto& b : *Entities) 
+				bool enemy_pos_check{true};
+				for (auto& b : *Entities) 
 				{
 					sf::Vector2i check_pos = b->GetComponent<PositionC>()->Position;
-					if (!(check_pos.x == _temp->x + _pos->x && check_pos.y == _temp->y + _pos->y))
-					{*/
+					if ((check_pos.x == _temp->x + _pos->x && check_pos.y == _temp->y + _pos->y))
+					{
+						enemy_pos_check = false;
+						_temp->x = 0;
+						_temp->y = 0;
+						break;
+						
+					}
+				}
+				if (enemy_pos_check)
+				{
+					if(map.isPassable(_temp->x + _pos->x, _temp->y + _pos->y))
+					{
 						_pos->x = _temp->x + _pos->x;
 						_pos->y = _temp->y + _pos->y;
-						sf::Sprite* Egraphics = &e->GetComponent<GraphicC>()->sprite;
 
+						sf::Sprite* Egraphics = &e->GetComponent<GraphicC>()->sprite;
 						Egraphics->setPosition(_pos->x * 32, _pos->y * 32);
-					//}
-				//}
-				
+					}
+					
+				}		
 			}
 		}
-		PHealth->SetText("Health: "+std::to_string(player->GetComponent<HealthC>()->health));
 	}
+	PHealth->SetText("Health: " + std::to_string(player->GetComponent<HealthC>()->health));
+	if (player->GetComponent<InventoryC>()->armor == nullptr)
+	{
+		PArmor->SetText("Armor: 0");
+	}
+	else PArmor->SetText("Armor: " + std::to_string(static_cast<Armor*>(player->GetComponent<InventoryC>()->armor)->protection));
+	if ((player->GetComponent<InventoryC>()->hand == nullptr))
+	{
+		PDamage->SetText("Damage: 0");
+	}
+	else PDamage->SetText("Damage: " + std::to_string(static_cast<Weapon*>(player->GetComponent<InventoryC>()->hand)->damage));
+	
 }
 
 void PlayState::Input(Engine * engine)
@@ -297,12 +339,7 @@ void PlayState::Input(Engine * engine)
 				player->GetComponent<DirectionC>()->direction.x = 0;
 				player->GetComponent<DirectionC>()->direction.y = 0;
 				int temp = map.getBlock(player->GetComponent<PositionC>()->Position.x, player->GetComponent<PositionC>()->Position.y);
-				/*sf::Vector2i temp{ player->GetComponent<PositionC>()->Position };
-				sf::Vector2i temp2;
-				temp2.x = temp.x + 5;
-				temp2.y = temp.y ;
-				std::cout << temp.x << " P " << temp.y << std::endl;
-				pathfinding(Location(temp.x,temp.y),Location(temp2.x,temp2.y),map);*/
+				
 			}
 			else if (event.key.code == sf::Keyboard::G)
 			{
@@ -316,6 +353,8 @@ void PlayState::Input(Engine * engine)
 						Item * item = DungeonNode->GetItemForLvl()[i].items;
 						inv->inventory.push_back(item);
 						DungeonNode->GetItemForLvl().erase(DungeonNode->GetItemForLvl().begin() + i);
+						sound.setBuffer(AssetsManager::GetInstance()->GetSound("Pick"));
+						sound.play();
 					}
 				}
 			}
@@ -360,6 +399,30 @@ void PlayState::Input(Engine * engine)
 					delete list;
 					engine->gui->DeleteWidget("inv");
 					drop = false;
+				}
+			}
+			else if (event.key.code == sf::Keyboard::Q)
+			{
+				if (!_list)
+				{
+					list = new MenuList(0, 0, 8);
+					std::shared_ptr<InventoryC> inv = player->GetComponent<InventoryC>();
+					for (auto& c : inv->inventory)
+					{
+						if (c->Type == ITEM::ItemType::Potion) 
+						{
+							list->AddButton(c->name);
+						}	
+					}
+					engine->gui->AddWidget("inv", list);
+					_list = true;
+					drink = true;
+				}
+				else {
+					_list = false;
+					delete list;
+					engine->gui->DeleteWidget("inv");
+					drink = false;
 				}
 			}
 		}
@@ -428,6 +491,7 @@ void PlayState::Input(Engine * engine)
 											_list = false;
 											delete list;
 											engine->gui->DeleteWidget("inv");
+											input = true;
 											break;
 										}
 										else
@@ -439,6 +503,7 @@ void PlayState::Input(Engine * engine)
 											_list = false;
 											delete list;
 											engine->gui->DeleteWidget("inv");
+											input = true;
 											break;
 										}
 									}
@@ -462,6 +527,32 @@ void PlayState::Input(Engine * engine)
 									_list = false;
 									delete list;
 									engine->gui->DeleteWidget("inv");
+									input = true;
+									break;
+								}
+							}
+						}
+						else if (drink) 
+						{
+							sf::String find_item = list->GetString();
+							std::shared_ptr<InventoryC> inv = player->GetComponent<InventoryC>();
+							
+							for (int i = 0; i < inv->inventory.size(); i++)
+							{
+								if (inv->inventory[i]->name == find_item)
+								{
+									int* health = &player->GetComponent<HealthC>()->health;
+									*health += static_cast<Potion*>(inv->inventory[i])->amount;
+									if (*health > 100) 
+									{
+										*health = 100;
+									}
+									inv->inventory.erase(inv->inventory.begin() + i);
+									drink = false;
+									_list = false;
+									delete list;
+									engine->gui->DeleteWidget("inv");
+									input = true;
 									break;
 								}
 							}

@@ -15,6 +15,9 @@ AssetsManager * AssetsManager::GetInstance()
 		p_instance->GetInstance()->LoadTexture("potion", "potion.png");
 		p_instance->GetInstance()->LoadTexture("armor", "armor.png");
 		p_instance->GetInstance()->LoadTexture("weapon", "weapon.png");
+		p_instance->GetInstance()->LoadMusic("Hurt","hurt.wav");
+		p_instance->GetInstance()->LoadMusic("Hit", "hit.wav");
+		p_instance->GetInstance()->LoadMusic("Pick", "pickup.wav");
 		p_instance->GetInstance()->colorsheets[0].Normal = sf::Color::Green;
 		p_instance->GetInstance()->colorsheets[0].InView = sf::Color::Blue;
 		p_instance->GetInstance()->colorsheets[0].Clicked = sf::Color::Red;
@@ -36,6 +39,17 @@ void AssetsManager::LoadTexture(const std::string & name, const std::string & fi
 		std::cout << "Error loading texture" << std::endl;
 	}
 	this->data[name] = temp;
+}
+
+void AssetsManager::LoadMusic(const std::string & name, const std::string & filename)
+{
+
+	sf::SoundBuffer buffer;
+	if (!buffer.loadFromFile(filename))
+	{
+
+	}
+	this->sounds[name] = buffer;
 }
 
 sf::Texture & AssetsManager::GetRe(const std::string & texture)

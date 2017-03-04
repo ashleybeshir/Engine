@@ -3,6 +3,7 @@
 
 #pragma once
 #include <SFML\Graphics.hpp>
+#include <SFML\Audio.hpp>
 #include <map>
 #include <iostream>
 #include "MapNode.h"
@@ -22,6 +23,8 @@ struct ColorSheet
 class AssetsManager
 {
 	std::map<sf::String, sf::Texture> data;
+	std::map<sf::String, sf::SoundBuffer> sounds;
+	sf::SoundBuffer  buffer;
 	std::map<int, MapNode*> dungeons;
 	std::map<int, ColorSheet> colorsheets;
 	sf::Font font;
@@ -29,7 +32,12 @@ class AssetsManager
 public:
 	static AssetsManager* GetInstance();
 	void LoadTexture(const std::string& name, const std::string& filename);
+	void LoadMusic(const std::string& name, const std::string& filename);
 	sf::Texture& GetRe(const std::string& texture);
+	sf::SoundBuffer& GetSound(const std::string& sound)
+	{
+		return sounds[sound];
+	}
 	void AddDungeon(MapNode* node);
 	MapNode* GetDungeon(int seed);
 	sf::Font& GetFont()

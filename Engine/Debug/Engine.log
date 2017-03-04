@@ -21,15 +21,18 @@ c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(298): warning C4244: 'a
 c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(309): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(60): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(86): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(124): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(191): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(312): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(388): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(394): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(453): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(457): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(477): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(61): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(62): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(90): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(132): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(222): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(349): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(451): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(457): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(518): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(522): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(540): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(568): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\ashley\desktop\engine\engine\engine\widget.h(25): warning C4172: returning address of local variable or temporary
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)

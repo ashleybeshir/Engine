@@ -21,13 +21,15 @@ class PlayState : public GameState
 	Entity* player;
 	TileMap map;
 	sf::View view;
-	
+	sf::Sound sound;
 	MenuList* list;
 	Label* PHealth;
+	Label* PArmor;
+	Label* PDamage;
 	Console* console;
 	bool input;
 	bool _list{false};
-	bool wear{ false }, drop{ false };
+	bool wear{ false }, drop{ false }, drink{ false };
 public:
 
 	void Start();
