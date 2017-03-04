@@ -61,7 +61,7 @@ struct DamageC : public Component
 	{
 		this->damage = damage;
 	}
-	int damage;
+	int damage{0};
 };
 struct HealthC : public Component
 {

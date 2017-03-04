@@ -22,7 +22,10 @@ class Entity
 public:
 	
 	Entity() {};
-	~Entity() {};
+	~Entity()
+	{
+		Components.clear();
+	};
 
 	template<typename T, typename ...Args>
 	void AddComponent(Args... args)

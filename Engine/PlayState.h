@@ -23,6 +23,8 @@ class PlayState : public GameState
 	sf::View view;
 	
 	MenuList* list;
+	Label* PHealth;
+	Console* console;
 	bool input;
 	bool _list{false};
 	bool wear{ false }, drop{ false };

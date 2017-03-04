@@ -23,11 +23,13 @@ struct Console : public Widget
 		shape.setSize(sf::Vector2f(size_x,size_y));
 		shape.setFillColor(sf::Color(156,156,156,35));
 		log.resize(LogLimit);
+		int opacity{10};
 		for (size_t i = 0; i < log.size(); i++)
 		{
 			log[i].setFont(AssetsManager::GetInstance()->GetFont());
 			log[i].setCharacterSize(24);
-			log[i].setFillColor(sf::Color::White);
+			log[i].setFillColor(sf::Color(255,255,255,opacity));
+			opacity += 30;
 		}
 		size_y = 24 * loglimit;
 	}

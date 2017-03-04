@@ -58,7 +58,7 @@ void MenuState::Input(Engine * engine)
 			{
 				std::string temp = label->GetString();
 				
-				engine->ChangeState(new WorldState(stoi(temp)));
+				if(newgame)engine->ChangeState(new WorldState(stoi(temp)));
 			}
 		}else if (event.type == sf::Event::MouseButtonPressed)
 		{
@@ -88,7 +88,7 @@ void MenuState::Input(Engine * engine)
 			engine->gui->check(_position.x, _position.y);
 		}else if(event.type == sf::Event::TextEntered)
 		{
-			label->AddToString(static_cast<char>(event.text.unicode));
+			if(newgame)label->AddToString(static_cast<char>(event.text.unicode));
 		}
 	}
 }

@@ -154,6 +154,7 @@
     <ClCompile Include="AssetsManager.cpp" />
     <ClCompile Include="bspTree.cpp" />
     <ClCompile Include="CaveG.cpp" />
+    <ClCompile Include="EndState.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GUI.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="bspTree.h" />
     <ClInclude Include="CaveG.h" />
     <ClInclude Include="Components.h" />
+    <ClInclude Include="EndState.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameState.h" />

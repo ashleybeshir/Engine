@@ -43,6 +43,8 @@ PlayState::PlayState(MapNode * node)
 	player->AddComponent<GraphicC>();
 	player->GetComponent<GraphicC>()->sprite = sprite;
 	player->AddComponent<InventoryC>();
+	player->AddComponent<HealthC>(100);
+	
 }
 
 PlayState::~PlayState()
@@ -54,7 +56,10 @@ PlayState::~PlayState()
 void PlayState::Start()
 {
 	
-	
+	console = new Console(0, 0, 9);
+	PHealth = new Label(0,0.20,"Health: ",sf::Color::White);
+	engine->gui->AddWidget("health",PHealth);
+	engine->gui->AddWidget("console", console);
 	
 }
 
@@ -74,15 +79,53 @@ void PlayState::Run(Engine * engine)
 {
 	if (input == true)
 	{
-		std::vector<Entity*> Entities = DungeonNode->GetEntityForLvl();
+		std::vector<Entity*> *Entities = &DungeonNode->GetEntityForLvl();
 		sf::Vector2i* temp = &player->GetComponent<DirectionC>()->direction;
 		sf::Vector2i* pos = &player->GetComponent<PositionC>()->Position;
-		pos->x = temp->x + pos->x;
-		pos->y = temp->y + pos->y;
-		sf::Sprite* graphics = &player->GetComponent<GraphicC>()->sprite;
-		graphics->setPosition(pos->x * 32, pos->y * 32);
+		bool pos_check{true};
+		for (int i=0; i < Entities->size();i++) 
+		{
+			sf::Vector2i* _pos = &Entities->at(i)->GetComponent<PositionC>()->Position;
+			if ((temp->x + pos->x) == _pos->x && (temp->y + pos->y) == _pos->y)
+			{
+				std::shared_ptr<InventoryC> inv = player->GetComponent<InventoryC>();
+				int *health = &Entities->at(i)->GetComponent<HealthC>()->health;
+				
+		
+				if(inv->hand != nullptr)
+				{
+					*health -= static_cast<Weapon*>(inv->hand)->damage;
+					
+					if (*health <= 0)
+					{
+						console->AddLog("Enemy is killed");
+						delete Entities->at(i);
+						Entities->erase(Entities->begin() + i);
+						
+					}
+					else {
+						console->AddLog("Damage done to enemy " + std::to_string(static_cast<Weapon*>(inv->hand)->damage));
+						//console->AddLog("Remaining health: " + std::to_string(*health));
+					}
 
-		for (auto& e : Entities)
+				}else
+				{
+					console->AddLog("U need a weapon to do damage");
+				}
+				
+				pos_check = false;
+			}
+		}
+		if(pos_check)
+		{
+			pos->x = temp->x + pos->x;
+			pos->y = temp->y + pos->y;
+			sf::Sprite* graphics = &player->GetComponent<GraphicC>()->sprite;
+			graphics->setPosition(pos->x * 32, pos->y * 32);
+		}
+		
+
+		for (auto& e : *Entities)
 		{
 			sf::Vector2i* _temp = &e->GetComponent<DirectionC>()->direction;
 			sf::Vector2i* _pos = &e->GetComponent<PositionC>()->Position;
@@ -92,13 +135,10 @@ void PlayState::Run(Engine * engine)
 			{
 				std::string *path = &e->GetComponent<PathC>()->path;
 				
-				
 					*path = path::pathfinding(Location(_pos->x,_pos->y), Location(player->GetComponent<PositionC>()->Position.x, player->GetComponent<PositionC>()->Position.y), map);
 					_temp->x = 0;
 					_temp->y = 0;
 					
-				
-				
 					if (path->at(0) == 'R')
 					{
 						_temp->x = 1;
@@ -123,24 +163,38 @@ void PlayState::Run(Engine * engine)
 						_temp->y = 1;
 						path->erase(path->begin());
 					}
-				
 			}
 			if (_temp->x + _pos->x == pos->x && _temp->y + _pos->y == pos->y)
 			{
 				_temp->x = 0;
 				_temp->y = 0;
 				e->GetComponent<PathC>()->path = "";
+				int damage = e->GetComponent<DamageC>()->damage;
+				int *health = &player->GetComponent<HealthC>()->health;
+				*health -= damage;
+				if (*health > 0) 
+				{
+					console->AddLog("you have been damaged for: "+std::to_string(damage));
+				}
 			}
 			else
 			{
-				_pos->x = _temp->x + _pos->x;
-				_pos->y = _temp->y + _pos->y;
-				sf::Sprite* Egraphics = &e->GetComponent<GraphicC>()->sprite;
+				/*for (auto& b : *Entities) 
+				{
+					sf::Vector2i check_pos = b->GetComponent<PositionC>()->Position;
+					if (!(check_pos.x == _temp->x + _pos->x && check_pos.y == _temp->y + _pos->y))
+					{*/
+						_pos->x = _temp->x + _pos->x;
+						_pos->y = _temp->y + _pos->y;
+						sf::Sprite* Egraphics = &e->GetComponent<GraphicC>()->sprite;
 
-				Egraphics->setPosition(_pos->x * 32, _pos->y * 32);
+						Egraphics->setPosition(_pos->x * 32, _pos->y * 32);
+					//}
+				//}
+				
 			}
 		}
-
+		PHealth->SetText("Health: "+std::to_string(player->GetComponent<HealthC>()->health));
 	}
 }
 
@@ -287,6 +341,27 @@ void PlayState::Input(Engine * engine)
 				}
 
 			}
+			else if (event.key.code == sf::Keyboard::D) 
+			{
+				if (!_list)
+				{
+					list = new MenuList(0, 0, 8);
+					std::shared_ptr<InventoryC> inv = player->GetComponent<InventoryC>();
+					for (auto& c : inv->inventory)
+					{
+						list->AddButton(c->name);
+					}
+					engine->gui->AddWidget("inv", list);
+					_list = true;
+					drop = true;
+				}
+				else {
+					_list = false;
+					delete list;
+					engine->gui->DeleteWidget("inv");
+					drop = false;
+				}
+			}
 		}
 		else if (sf::Event::MouseWheelScrolled == event.type) {
 			if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
@@ -327,6 +402,9 @@ void PlayState::Input(Engine * engine)
 											inv->armor = inv->inventory[i];
 											inv->inventory.erase(inv->inventory.begin()+i);
 											wear = false;
+											_list = false;
+											delete list;
+											engine->gui->DeleteWidget("inv");
 											break;
 										}else
 										{
@@ -334,6 +412,9 @@ void PlayState::Input(Engine * engine)
 											inv->armor = inv->inventory[i];
 											inv->inventory.erase(inv->inventory.begin() + i);
 											wear = false;
+											_list = false;
+											delete list;
+											engine->gui->DeleteWidget("inv");
 											break;
 										}
 										
@@ -344,6 +425,9 @@ void PlayState::Input(Engine * engine)
 											inv->hand = inv->inventory[i];
 											inv->inventory.erase(inv->inventory.begin() + i);
 											wear = false;
+											_list = false;
+											delete list;
+											engine->gui->DeleteWidget("inv");
 											break;
 										}
 										else
@@ -352,6 +436,9 @@ void PlayState::Input(Engine * engine)
 											inv->hand = inv->inventory[i];
 											inv->inventory.erase(inv->inventory.begin() + i);
 											wear = false;
+											_list = false;
+											delete list;
+											engine->gui->DeleteWidget("inv");
 											break;
 										}
 									}
@@ -367,10 +454,14 @@ void PlayState::Input(Engine * engine)
 							{
 								if (inv->inventory[i]->name == find_item)
 								{
+									inv->inventory[i]->sprite.setPosition(player_pos.x*32,player_pos.y*32);
 									ItemBag bag(inv->inventory[i],player_pos);
 									DungeonNode->GetItemForLvl().push_back(bag);
 									inv->inventory.erase(inv->inventory.begin()+i);
 									drop = false;
+									_list = false;
+									delete list;
+									engine->gui->DeleteWidget("inv");
 									break;
 								}
 							}
