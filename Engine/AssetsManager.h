@@ -22,6 +22,7 @@ struct ColorSheet
 
 class AssetsManager
 {
+	std::vector<Item*> inventory;
 	std::map<sf::String, sf::Texture> data;
 	std::map<sf::String, sf::SoundBuffer> sounds;
 	sf::SoundBuffer  buffer;
@@ -43,6 +44,14 @@ public:
 	sf::Font& GetFont()
 	{
 		return font;
+	}
+	std::vector<Item*>& GetInventory()
+	{
+		return inventory;
+	}
+	void SetInventory(std::vector<Item*> inv)
+	{
+		inventory = inv;
 	}
 	ColorSheet& GetColorSheet(int type)
 	{

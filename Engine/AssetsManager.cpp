@@ -18,6 +18,7 @@ AssetsManager * AssetsManager::GetInstance()
 		p_instance->GetInstance()->LoadMusic("Hurt","hurt.wav");
 		p_instance->GetInstance()->LoadMusic("Hit", "hit.wav");
 		p_instance->GetInstance()->LoadMusic("Pick", "pickup.wav");
+		p_instance->GetInstance()->LoadMusic("death", "death.wav");
 		p_instance->GetInstance()->colorsheets[0].Normal = sf::Color::Green;
 		p_instance->GetInstance()->colorsheets[0].InView = sf::Color::Blue;
 		p_instance->GetInstance()->colorsheets[0].Clicked = sf::Color::Red;

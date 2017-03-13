@@ -42,7 +42,12 @@ PlayState::PlayState(MapNode * node)
 	sprite.setPosition(map.GetStairUp().x * 32, map.GetStairUp().y * 32);
 	player->AddComponent<GraphicC>();
 	player->GetComponent<GraphicC>()->sprite = sprite;
-	player->AddComponent<InventoryC>();
+	if(!AssetsManager::GetInstance()->GetInventory().empty())
+	{
+		player->AddComponent<InventoryC>(AssetsManager::GetInstance()->GetInventory());
+	}
+	else player->AddComponent<InventoryC>();
+	
 	player->AddComponent<HealthC>(100);
 	
 }
@@ -83,6 +88,19 @@ void PlayState::Run(Engine * engine)
 {
 	if (input == true)
 	{
+		int *health = &player->GetComponent<HealthC>()->health;
+		if (!potion_turns.empty())
+		{
+			if (std::get<0>(potion_turns[0]) > 0) 
+			{
+				*health += std::get<1>(potion_turns[0]);
+				std::get<0>(potion_turns[0]) = std::get<0>(potion_turns[0]) - 1;
+			}
+			else
+			{
+				potion_turns.erase(potion_turns.begin());
+			}
+		}
 		std::vector<Entity*> *Entities = &DungeonNode->GetEntityForLvl();
 		sf::Vector2i* temp = &player->GetComponent<DirectionC>()->direction;
 		sf::Vector2i* pos = &player->GetComponent<PositionC>()->Position;
@@ -105,7 +123,8 @@ void PlayState::Run(Engine * engine)
 						console->AddLog("Enemy is killed");
 						delete Entities->at(i);
 						Entities->erase(Entities->begin() + i);
-						
+						sound.setBuffer(AssetsManager::GetInstance()->GetSound("death"));
+						sound.play();
 					}
 					else {
 						console->AddLog("Damage done to enemy " + std::to_string(static_cast<Weapon*>(inv->hand)->damage));
@@ -193,7 +212,7 @@ void PlayState::Run(Engine * engine)
 				sound.play();
 				if(*health <= 0)
 				{
-
+					engine->ChangeState(new EndState("monster"));
 				}
 			}
 			else
@@ -316,6 +335,7 @@ void PlayState::Input(Engine * engine)
 				{
 					if (DungeonNode->GetLevel() == 0)
 					{
+						AssetsManager::GetInstance()->SetInventory(player->GetComponent<InventoryC>()->inventory);
 						engine->PopState();
 					}
 					else {
@@ -541,12 +561,7 @@ void PlayState::Input(Engine * engine)
 							{
 								if (inv->inventory[i]->name == find_item)
 								{
-									int* health = &player->GetComponent<HealthC>()->health;
-									*health += static_cast<Potion*>(inv->inventory[i])->amount;
-									if (*health > 100) 
-									{
-										*health = 100;
-									}
+									potion_turns.push_back(std::make_tuple(static_cast<Potion*>(inv->inventory[i])->turns, static_cast<Potion*>(inv->inventory[i])->amount));
 									inv->inventory.erase(inv->inventory.begin() + i);
 									drink = false;
 									_list = false;

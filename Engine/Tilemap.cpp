@@ -24,7 +24,7 @@ void TileMap::GenerateCave()
 	vertex.clear();
 	vertex.setPrimitiveType(sf::Quads);
 	vertex.resize(100 * 100 * 4);
-
+	int c1{ std::rand() % 220 + 10 }, c2{ std::rand() % 220 + 10 }, c3{ std::rand() % 220 + 10 };
 	for (size_t x = 0; x < 100; x++)
 	{
 		for (size_t y = 0; y < 100; y++)
@@ -87,7 +87,11 @@ void TileMap::GenerateCave()
 					quad[3].texCoords = sf::Vector2f(32, (0 + 32));
 				}
 			}
-
+			
+			quad[0].color = sf::Color(c1,c2,c3);
+			quad[1].color = sf::Color(c1, c2, c3);
+			quad[2].color = sf::Color(c1, c2, c3);
+			quad[3].color =  sf::Color(c1, c2, c3);
 		}
 	}
 }
@@ -138,7 +142,7 @@ void TileMap::GenerateDungeon()
 	vertex.clear();
 	vertex.setPrimitiveType(sf::Quads);
 	vertex.resize(100 * 100 * 4);
-
+	int c1{ std::rand() % 220 + 10 }, c2{ std::rand() % 220 + 10 }, c3{ std::rand() % 220 + 10 };
 	for (size_t x = 0; x < 100; x++)
 	{
 		for (size_t y = 0; y < 100; y++)
@@ -180,7 +184,11 @@ void TileMap::GenerateDungeon()
 				quad[2].texCoords = sf::Vector2f((0 + 32), (0 + 32));
 				quad[3].texCoords = sf::Vector2f(0, (0 + 32));
 			}
-
+			
+			quad[0].color = sf::Color(c1, c2, c3);
+			quad[1].color = sf::Color(c1, c2, c3);
+			quad[2].color = sf::Color(c1, c2, c3);
+			quad[3].color = sf::Color(c1, c2, c3);
 		}
 	}
 	delete tree;

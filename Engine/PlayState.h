@@ -13,8 +13,10 @@
 #include "Components.h"
 #include "AssetsManager.h"
 #include "MapNode.h"
+#include "EndState.h"
 
 
+typedef std::tuple<int, int> turn;
 class PlayState : public GameState
 {
 	MapNode* DungeonNode;
@@ -30,6 +32,7 @@ class PlayState : public GameState
 	bool input;
 	bool _list{false};
 	bool wear{ false }, drop{ false }, drink{ false };
+	std::vector<turn> potion_turns;
 public:
 
 	void Start();

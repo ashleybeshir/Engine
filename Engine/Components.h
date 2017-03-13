@@ -73,6 +73,13 @@ struct HealthC : public Component
 };
 struct InventoryC : public Component 
 {
+	InventoryC(std::vector<Item*>& inventory)
+	{
+		this->inventory = inventory;
+		armor = nullptr;
+		hand = nullptr;
+	}
+	InventoryC(){}
 	std::vector<Item*> inventory;
 	Item* hand{nullptr};
 	Item* armor{nullptr};

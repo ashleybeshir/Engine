@@ -2,14 +2,14 @@
 	<lvl>0</lvl>
 	<name>Very Cheap Health</name>
 	<amount>5</amount>
-	<perturn>1</perturn>
+	<perturn>3</perturn>
 	<sprite>0</sprite>
 </potion>
 <potion>	
 	<lvl>1</lvl>
 	<name>Cheap Health</name>
 	<amount>10</amount>
-	<perturn>1</perturn>
+	<perturn>3</perturn>
 	<sprite>1</sprite>
 </potion>
 <armor>
