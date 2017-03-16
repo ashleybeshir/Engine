@@ -45,8 +45,16 @@ PlayState::PlayState(MapNode * node)
 	if(!AssetsManager::GetInstance()->GetInventory().empty())
 	{
 		player->AddComponent<InventoryC>(AssetsManager::GetInstance()->GetInventory());
+		if(player->GetComponent<InventoryC>()->hand == nullptr)
+		{
+			player->GetComponent<InventoryC>()->hand = new Weapon("Fist",5);
+		}
 	}
-	else player->AddComponent<InventoryC>();
+	else 
+	{ 
+		player->AddComponent<InventoryC>(); 
+		player->GetComponent<InventoryC>()->hand = new Weapon("Fist", 5);
+	}
 	
 	player->AddComponent<HealthC>(100);
 	
@@ -65,10 +73,18 @@ void PlayState::Start()
 	PHealth = new Label(0,0.20,"Health: ",sf::Color::White);
 	PArmor = new Label(0, 0.22, "Armor: ", sf::Color::White);
 	PDamage = new Label(0, 0.24, "Damage: ", sf::Color::White);
+	Label* name = new Label(0.16,0.02, "",sf::Color::White);
+	Label* damage = new Label(0.16, 0.04, "", sf::Color::White);
+	Label* health = new Label(0.16, 0.06, "", sf::Color::White);
 	engine->gui->AddWidget("armor", PArmor);
 	engine->gui->AddWidget("damage", PDamage);
 	engine->gui->AddWidget("health",PHealth);
 	engine->gui->AddWidget("console", console);
+	engine->gui->AddWidget("ename", name);
+	engine->gui->AddWidget("edamage", damage);
+	engine->gui->AddWidget("ehealth", health);
+	engine->gui->AddWidget("enemyname", new Label(0.16, 0, "Enemy Info:", sf::Color::White));
+	
 	
 }
 
@@ -89,6 +105,8 @@ void PlayState::Run(Engine * engine)
 	if (input == true)
 	{
 		int *health = &player->GetComponent<HealthC>()->health;
+		if (*health < 100) *health += 1;
+		
 		if (!potion_turns.empty())
 		{
 			if (std::get<0>(potion_turns[0]) > 0) 
@@ -516,15 +534,29 @@ void PlayState::Input(Engine * engine)
 										}
 										else
 										{
-											inv->inventory.push_back(inv->hand);
-											inv->hand = inv->inventory[i];
-											inv->inventory.erase(inv->inventory.begin() + i);
-											wear = false;
-											_list = false;
-											delete list;
-											engine->gui->DeleteWidget("inv");
-											input = true;
-											break;
+											if (inv->hand->name.toAnsiString().compare("fist") == 0)
+											{
+												delete inv->hand;
+												inv->hand = inv->inventory[i];
+												inv->inventory.erase(inv->inventory.begin() + i);
+												wear = false;
+												_list = false;
+												delete list;
+												engine->gui->DeleteWidget("inv");
+												input = true;
+												break;
+											}
+											else {
+												inv->inventory.push_back(inv->hand);
+												inv->hand = inv->inventory[i];
+												inv->inventory.erase(inv->inventory.begin() + i);
+												wear = false;
+												_list = false;
+												delete list;
+												engine->gui->DeleteWidget("inv");
+												input = true;
+												break;
+											}
 										}
 									}
 								}
@@ -572,6 +604,35 @@ void PlayState::Input(Engine * engine)
 								}
 							}
 						}
+					}
+				}
+				else 
+				{
+					sf::Vector2f e_pos = engine->window.mapPixelToCoords(pixelPos, view);
+					sf::Vector2i clicked_pos;
+					clicked_pos.x = std::floor(e_pos.x/32);
+					clicked_pos.y = std::floor(e_pos.y/32);
+					//std::cout << clicked_pos.x << " " << clicked_pos.y << std::endl;
+					std::vector<Entity*> *Entities = &DungeonNode->GetEntityForLvl();
+					bool enemy_test{ false };
+					for (auto& c : *Entities) 
+					{
+						sf::Vector2i pos = c->GetComponent<PositionC>()->Position;
+						if (clicked_pos == pos) 
+						{
+							enemy_test = true;
+							static_cast<Label*>(engine->gui->GetWidget("ename"))->SetText("Name: "+c->GetComponent<NameC>()->name);
+							static_cast<Label*>(engine->gui->GetWidget("edamage"))->SetText("Damage: "+std::to_string(c->GetComponent<DamageC>()->damage));
+							static_cast<Label*>(engine->gui->GetWidget("ehealth"))->SetText("Health: "+std::to_string(c->GetComponent<HealthC>()->health));
+							break;
+						}
+						
+					}
+					if (!enemy_test)
+					{
+						static_cast<Label*>(engine->gui->GetWidget("ename"))->SetText("");
+						static_cast<Label*>(engine->gui->GetWidget("edamage"))->SetText("");
+						static_cast<Label*>(engine->gui->GetWidget("ehealth"))->SetText("");
 					}
 				}
 			}

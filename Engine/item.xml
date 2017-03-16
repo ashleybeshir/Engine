@@ -12,6 +12,20 @@
 	<perturn>3</perturn>
 	<sprite>1</sprite>
 </potion>
+<potion>	
+	<lvl>2</lvl>
+	<name>Health</name>
+	<amount>15</amount>
+	<perturn>3</perturn>
+	<sprite>2</sprite>
+</potion>
+<potion>	
+	<lvl>3</lvl>
+	<name>Health+</name>
+	<amount>20</amount>
+	<perturn>3</perturn>
+	<sprite>3</sprite>
+</potion>
 <armor>
 	<lvl>0</lvl>
 	<name>Cloth Armor</name>
@@ -21,8 +35,26 @@
 <armor>
 	<lvl>1</lvl>
 	<name>Premium Cloth Armor</name>
-	<amount>25</amount>
+	<amount>8</amount>
 	<sprite>1</sprite>
+</armor>
+<armor>
+	<lvl>2</lvl>
+	<name>Armor</name>
+	<amount>12</amount>
+	<sprite>3</sprite>
+</armor>
+<armor>
+	<lvl>3</lvl>
+	<name>leather Armor</name>
+	<amount>14</amount>
+	<sprite>4</sprite>
+</armor>
+<armor>
+	<lvl>5</lvl>
+	<name>Iron Armor</name>
+	<amount>20</amount>
+	<sprite>5</sprite>
 </armor>
 <weapon>
 	<lvl>0</lvl>
@@ -35,4 +67,28 @@
 	<name>Damaged Sword</name>
 	<amount>10</amount>
 	<sprite>1</sprite>
+</weapon>
+<weapon>
+	<lvl>2</lvl>
+	<name>Sword</name>
+	<amount>15</amount>
+	<sprite>2</sprite>
+</weapon>
+<weapon>
+	<lvl>3</lvl>
+	<name>Bronze Sword</name>
+	<amount>20</amount>
+	<sprite>3</sprite>
+</weapon>
+<weapon>
+	<lvl>4</lvl>
+	<name>Gold Sword</name>
+	<amount>25</amount>
+	<sprite>4</sprite>
+</weapon>
+<weapon>
+	<lvl>5</lvl>
+	<name>Iron Sword</name>
+	<amount>30</amount>
+	<sprite>5</sprite>
 </weapon>

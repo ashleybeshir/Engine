@@ -69,9 +69,9 @@ struct Weapon : public Item
 {
 	int damage;
 	
-	Weapon(const sf::String& name, ITEM::ItemType type, int damage)
+	Weapon(const sf::String& name, int damage)
 	{
-		Type = type;
+		Type = ITEM::ItemType::Weapon;
 		this->damage = damage;
 		this->name = name;
 	}

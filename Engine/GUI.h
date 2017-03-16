@@ -19,10 +19,10 @@ class GUI
 	int Res_x, Res_y;
 public:
 	void AddWidget(const std::string string, Widget* widget);
-	template<typename T>
-	T* GetWidget(const std::string string)
+	
+	Widget* GetWidget(const std::string string)
 	{
-		return std::dynamic_pointer_cast<T>(widgets[string]);
+		return widgets[string];
 	}
 	//Widget* GetButtom
 	void draw(sf::RenderWindow * window) 
