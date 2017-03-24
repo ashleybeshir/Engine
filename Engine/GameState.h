@@ -21,6 +21,8 @@ public:
 	virtual void Run(Engine* engine) = 0;
 	virtual void Input(Engine* engine)= 0;
 	virtual void Draw(Engine* engine)= 0;
+
+	virtual void ResetGraphics() = 0;
 	
 	void ChangeState(Engine* engine, GameState* State);
 	

@@ -61,6 +61,7 @@ void Engine::PopState()
 
 	
 	if (!states.empty()) {
+		states.back()->ResetGraphics();
 		states.back()->Resume();
 	}
 }

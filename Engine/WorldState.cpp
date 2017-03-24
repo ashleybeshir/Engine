@@ -107,8 +107,12 @@ void WorldState::Start()
 			}
 		}
 	}
+	name = new Label(0,0.0,"",sf::Color::White);
+	name->text.setCharacterSize(60);
+	engine->gui->AddWidget("name",name);
 	
 }
+
 
 void WorldState::Delete()
 {
@@ -132,6 +136,38 @@ void WorldState::Run(Engine * engine)
 	{
 		player.y = 0;
 	}
+	if (player.x >= 98)
+	{
+		player.x = 98;
+	}
+	else if (player.y >= 98)
+	{
+		player.y = 98;
+	}
+	if(Terrain[player.x][player.y] == TerrainType::cave)
+	{
+		name->SetText("Cave");
+	}else if(Terrain[player.x][player.y] == TerrainType::dungeon)
+	{
+		name->SetText("Dungeon");
+	}
+	else if (Terrain[player.x][player.y] == TerrainType::Forest)
+	{
+		name->SetText("Forest");
+	}
+	else if (Terrain[player.x][player.y] == TerrainType::Sand)
+	{
+		name->SetText("Sand");
+	}
+	else if (Terrain[player.x][player.y] == TerrainType::Ground)
+	{
+		name->SetText("Ground");
+	}
+	else if (Terrain[player.x][player.y] == TerrainType::Water)
+	{
+		name->SetText("Water");
+	}
+	
 }
 
 void WorldState::Input(Engine * engine)
@@ -249,4 +285,12 @@ void WorldState::Draw(Engine * engine)
 	engine->window.setView(view);
 	engine->window.draw(GTerrain,texture);
 	engine->window.draw(Gplayer,tplayer);
+}
+
+void WorldState::ResetGraphics()
+{
+	engine->gui->Clear();
+	name = new Label(0, 0.0, "", sf::Color::White);
+	name->text.setCharacterSize(60);
+	engine->gui->AddWidget("name", name);
 }

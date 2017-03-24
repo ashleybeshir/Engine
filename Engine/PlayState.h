@@ -46,6 +46,8 @@ public:
 	void Input(Engine* engine);
 	void Draw(Engine* engine);
 
+	void ResetGraphics();
+
 	PlayState();
 	PlayState(GenerationType type ,int seed);
 	PlayState(MapNode* node);

@@ -20,6 +20,8 @@ class WorldState : public GameState
 	sf::Vector2i player;
 	sf::Texture* texture;
 	sf::Texture* tplayer{ &AssetsManager::GetInstance()->GetRe("Entity") };
+
+	Label* name;
 public:
 	void Start();
 	void Delete();
@@ -31,6 +33,8 @@ public:
 	void Run(Engine* engine);
 	void Input(Engine* engine);
 	void Draw(Engine* engine);
+
+	void ResetGraphics();
 
 	WorldState(int seed);
 	WorldState();

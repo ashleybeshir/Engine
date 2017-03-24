@@ -76,3 +76,7 @@ void EndState::Input(Engine * engine)
 void EndState::Draw(Engine * engine)
 {
 }
+
+void EndState::ResetGraphics()
+{
+}

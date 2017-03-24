@@ -22,6 +22,9 @@ public:
 	void Run(Engine* engine);
 	void Input(Engine* engine);
 	void Draw(Engine* engine);
+
+	void ResetGraphics();
+
 	EndState();
 	EndState(const std::string string);
 	~EndState();

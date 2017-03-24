@@ -24,6 +24,8 @@ public:
 	void Input(Engine* engine);
 	void Draw(Engine* engine);
 
+	void ResetGraphics();
+
 	MenuState();
 	~MenuState();
 };

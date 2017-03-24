@@ -668,3 +668,23 @@ void PlayState::Draw(Engine * engine)
 	}
 	
 }
+
+void PlayState::ResetGraphics()
+{
+	engine->gui->Clear();
+	console = new Console(0, 0, 9);
+	PHealth = new Label(0, 0.20, "Health: ", sf::Color::White);
+	PArmor = new Label(0, 0.22, "Armor: ", sf::Color::White);
+	PDamage = new Label(0, 0.24, "Damage: ", sf::Color::White);
+	Label* name = new Label(0.16, 0.02, "", sf::Color::White);
+	Label* damage = new Label(0.16, 0.04, "", sf::Color::White);
+	Label* health = new Label(0.16, 0.06, "", sf::Color::White);
+	engine->gui->AddWidget("armor", PArmor);
+	engine->gui->AddWidget("damage", PDamage);
+	engine->gui->AddWidget("health", PHealth);
+	engine->gui->AddWidget("console", console);
+	engine->gui->AddWidget("ename", name);
+	engine->gui->AddWidget("edamage", damage);
+	engine->gui->AddWidget("ehealth", health);
+	engine->gui->AddWidget("enemyname", new Label(0.16, 0, "Enemy Info:", sf::Color::White));
+}

@@ -97,3 +97,7 @@ void MenuState::Draw(Engine * engine)
 {
 	
 }
+
+void MenuState::ResetGraphics()
+{
+}
