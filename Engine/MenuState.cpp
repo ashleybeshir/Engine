@@ -20,6 +20,16 @@ void MenuState::Start()
 	engine->gui->AddWidget("load",loadbutton);
 	engine->gui->AddWidget("exit",exitbutton);
 
+	Label* movement = new Label(0,0,"Movement: Left/Right/Up/Down",sf::Color::White);
+	Label* Drop = new Label(0,0.1,"Drop Item: D key",sf::Color::White);
+	Label* get = new Label(0, 0.2, "Get Item: G key", sf::Color::White);
+	Label* wear = new Label(0, 0.3, "Wear Item: W key", sf::Color::White);
+	Label* drink = new Label(0, 0.4, "Drink Potion: Q key", sf::Color::White);
+	engine->gui->AddWidget("move", movement);
+	engine->gui->AddWidget("drop", Drop);
+	engine->gui->AddWidget("get", get);
+	engine->gui->AddWidget("wear", wear);
+	engine->gui->AddWidget("drink", drink);
 }
 
 void MenuState::Delete()

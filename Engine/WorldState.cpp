@@ -6,13 +6,13 @@
 WorldState::WorldState(int seed)
 {
 	this->seed = seed;
-	
+	std::srand(seed);
 }
 
 WorldState::WorldState()
 {
 	seed = std::time(0);
-	std::srand(seed);
+	
 }
 
 

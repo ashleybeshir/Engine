@@ -123,6 +123,7 @@ void PlayState::Run(Engine * engine)
 		sf::Vector2i* temp = &player->GetComponent<DirectionC>()->direction;
 		sf::Vector2i* pos = &player->GetComponent<PositionC>()->Position;
 		bool pos_check{true};
+		pos_check = map.isPassable(temp->x + pos->x, temp->y + pos->y);
 		for (int i=0; i < Entities->size();i++) 
 		{
 			sf::Vector2i* _pos = &Entities->at(i)->GetComponent<PositionC>()->Position;
@@ -161,6 +162,7 @@ void PlayState::Run(Engine * engine)
 				pos_check = false;
 			}
 		}
+		
 		if(pos_check)
 		{
 			pos->x = temp->x + pos->x;
