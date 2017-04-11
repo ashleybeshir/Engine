@@ -70,6 +70,22 @@ struct HealthC : public Component
 		this->health = health;
 	}
 	int health;
+	int maxHealth{100};
+};
+struct ManaC : public Component
+{
+	ManaC(int mana): mana(mana)
+	{
+
+	}
+	int mana;
+	int maxMana{100};
+};
+struct LevelC : public Component
+{
+	int lvl;
+	int kill_count{0};
+	int kill_required{ 0 };
 };
 struct InventoryC : public Component 
 {

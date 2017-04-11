@@ -15,6 +15,8 @@ AssetsManager * AssetsManager::GetInstance()
 		p_instance->GetInstance()->LoadTexture("potion", "potion.png");
 		p_instance->GetInstance()->LoadTexture("armor", "armor.png");
 		p_instance->GetInstance()->LoadTexture("weapon", "weapon.png");
+		p_instance->GetInstance()->LoadTexture("stone", "stone.png");
+		p_instance->GetInstance()->LoadTexture("fire", "fire.png");
 		p_instance->GetInstance()->LoadMusic("Hurt","hurt.wav");
 		p_instance->GetInstance()->LoadMusic("Hit", "hit.wav");
 		p_instance->GetInstance()->LoadMusic("Pick", "pickup.wav");

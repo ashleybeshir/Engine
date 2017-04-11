@@ -14,7 +14,7 @@
 #include "AssetsManager.h"
 #include "MapNode.h"
 #include "EndState.h"
-
+#include "rangeWeapon.h"
 
 typedef std::tuple<int, int> turn;
 class PlayState : public GameState
@@ -28,11 +28,22 @@ class PlayState : public GameState
 	Label* PHealth;
 	Label* PArmor;
 	Label* PDamage;
+	Label* PStone;
+	Label* PMana;
 	Console* console;
 	bool input;
 	bool _list{false};
-	bool wear{ false }, drop{ false }, drink{ false };
+	bool throw_weapon{ false };
+	bool wear{ false }, drop{ false }, drink{ false }, spells{ false };
 	std::vector<turn> potion_turns;
+	std::vector<RangeWeapon> range_attacks;
+
+	sf::Vector2i weapon_direction{ 0,0 };
+	int stones{3};
+
+	int selected_spell{ 0 };
+	bool spell_chosen{ false };
+
 public:
 
 	void Start();

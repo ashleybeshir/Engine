@@ -24,7 +24,9 @@ void TileMap::GenerateCave()
 	vertex.clear();
 	vertex.setPrimitiveType(sf::Quads);
 	vertex.resize(100 * 100 * 4);
-	int c1{ std::rand() % 220 + 10 }, c2{ std::rand() % 220 + 10 }, c3{ std::rand() % 220 + 10 };
+	c1 = std::rand() % 220 + 10 ;
+	c2 = std::rand() % 220 + 10 ;
+	c3 = std::rand() % 220 + 10 ;
 	for (size_t x = 0; x < 100; x++)
 	{
 		for (size_t y = 0; y < 100; y++)
@@ -142,7 +144,9 @@ void TileMap::GenerateDungeon()
 	vertex.clear();
 	vertex.setPrimitiveType(sf::Quads);
 	vertex.resize(100 * 100 * 4);
-	int c1{ std::rand() % 220 + 10 }, c2{ std::rand() % 220 + 10 }, c3{ std::rand() % 220 + 10 };
+	c1 = std::rand() % 220 + 10;
+	c2 = std::rand() % 220 + 10;
+	c3 = std::rand() % 220 + 10;
 	for (size_t x = 0; x < 100; x++)
 	{
 		for (size_t y = 0; y < 100; y++)
@@ -197,6 +201,133 @@ void TileMap::GenerateDungeon()
 void TileMap::Draw(sf::RenderWindow & window)
 {
 	window.draw(vertex,texture);
+}
+
+void TileMap::refreshGraphics(GenerationType type)
+{
+	if (type != GenerationType::Cave)
+	{
+		for (size_t x = 0; x < 100; x++)
+		{
+			for (size_t y = 0; y < 100; y++)
+			{
+				MapType type = map[x][y];
+				sf::Vertex* quad = &vertex[(x + y * 100) * 4];
+
+				quad[0].position = sf::Vector2f(x * TileSize, y * TileSize);
+				quad[1].position = sf::Vector2f((x + 1) * TileSize, y * TileSize);
+				quad[2].position = sf::Vector2f((x + 1) * TileSize, (y + 1) * TileSize);
+				quad[3].position = sf::Vector2f(x * TileSize, (y + 1) * TileSize);
+
+				if (type == MapType::Floor)
+				{
+					quad[0].texCoords = sf::Vector2f(32, 0);
+					quad[1].texCoords = sf::Vector2f((32 + 32), 0);
+					quad[2].texCoords = sf::Vector2f((32 + 32), 32);
+					quad[3].texCoords = sf::Vector2f(32, 32);
+				}
+
+				else if (type == MapType::StairD)
+				{
+					quad[0].texCoords = sf::Vector2f(32, 32);
+					quad[1].texCoords = sf::Vector2f((32 + 32), 32);
+					quad[2].texCoords = sf::Vector2f((32 + 32), (32 + 32));
+					quad[3].texCoords = sf::Vector2f(32, (32 + 32));
+				}
+				else if (type == MapType::StairU)
+				{
+					quad[0].texCoords = sf::Vector2f(0, 32);
+					quad[1].texCoords = sf::Vector2f((0 + 32), 32);
+					quad[2].texCoords = sf::Vector2f((0 + 32), (32 + 32));
+					quad[3].texCoords = sf::Vector2f(0, (32 + 32));
+				}
+				else if (type == MapType::Wall)
+				{
+					quad[0].texCoords = sf::Vector2f(0, 0);
+					quad[1].texCoords = sf::Vector2f((0 + 32), 0);
+					quad[2].texCoords = sf::Vector2f((0 + 32), (0 + 32));
+					quad[3].texCoords = sf::Vector2f(0, (0 + 32));
+				}
+
+				quad[0].color = sf::Color(c1, c2, c3);
+				quad[1].color = sf::Color(c1, c2, c3);
+				quad[2].color = sf::Color(c1, c2, c3);
+				quad[3].color = sf::Color(c1, c2, c3);
+			}
+		}
+	}
+	else
+	{
+		for (size_t x = 0; x < 100; x++)
+		{
+			for (size_t y = 0; y < 100; y++)
+			{
+				MapType type = map[x][y];
+				sf::Vertex* quad = &vertex[(x + y * 100) * 4];
+
+				quad[0].position = sf::Vector2f(x * TileSize, y * TileSize);
+				quad[1].position = sf::Vector2f((x + 1) * TileSize, y * TileSize);
+				quad[2].position = sf::Vector2f((x + 1) * TileSize, (y + 1) * TileSize);
+				quad[3].position = sf::Vector2f(x * TileSize, (y + 1) * TileSize);
+
+				if (type == MapType::Floor)
+				{
+					quad[0].texCoords = sf::Vector2f(0, 0);
+					quad[1].texCoords = sf::Vector2f((0 + 32), 0);
+					quad[2].texCoords = sf::Vector2f((0 + 32), (0 + 32));
+					quad[3].texCoords = sf::Vector2f(0, (0 + 32));
+				}
+
+				else if (type == MapType::StairD)
+				{
+					quad[0].texCoords = sf::Vector2f(96, 0);
+					quad[1].texCoords = sf::Vector2f((96 + 32), 0);
+					quad[2].texCoords = sf::Vector2f((96 + 32), (0 + 32));
+					quad[3].texCoords = sf::Vector2f(96, (0 + 32));
+				}
+				else if (type == MapType::StairU)
+				{
+					quad[0].texCoords = sf::Vector2f(64, 0);
+					quad[1].texCoords = sf::Vector2f((64 + 32), 0);
+					quad[2].texCoords = sf::Vector2f((64 + 32), (0 + 32));
+					quad[3].texCoords = sf::Vector2f(64, (0 + 32));
+				}
+				else if (type == MapType::Wall)
+				{
+					if (x != 0 && y != 0 && x != 99 && y != 99)
+					{
+						if (map[x - 1][y] == MapType::Floor || map[x + 1][y] == MapType::Floor || map[x][y - 1] == MapType::Floor || map[x][y + 1] == MapType::Floor)
+						{
+
+							quad[0].texCoords = sf::Vector2f(128, 0);
+							quad[1].texCoords = sf::Vector2f((128 + 32), 0);
+							quad[2].texCoords = sf::Vector2f((128 + 32), (0 + 32));
+							quad[3].texCoords = sf::Vector2f(128, (0 + 32));
+						}
+						else
+						{
+							quad[0].texCoords = sf::Vector2f(32, 0);
+							quad[1].texCoords = sf::Vector2f((32 + 32), 0);
+							quad[2].texCoords = sf::Vector2f((32 + 32), (0 + 32));
+							quad[3].texCoords = sf::Vector2f(32, (0 + 32));
+						}
+					}
+					else
+					{
+						quad[0].texCoords = sf::Vector2f(32, 0);
+						quad[1].texCoords = sf::Vector2f((32 + 32), 0);
+						quad[2].texCoords = sf::Vector2f((32 + 32), (0 + 32));
+						quad[3].texCoords = sf::Vector2f(32, (0 + 32));
+					}
+				}
+
+				quad[0].color = sf::Color(c1, c2, c3);
+				quad[1].color = sf::Color(c1, c2, c3);
+				quad[2].color = sf::Color(c1, c2, c3);
+				quad[3].color = sf::Color(c1, c2, c3);
+			}
+		}
+	}
 }
 
 TileMap::TileMap()

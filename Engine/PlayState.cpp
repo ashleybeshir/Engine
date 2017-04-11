@@ -42,6 +42,8 @@ PlayState::PlayState(MapNode * node)
 	sprite.setPosition(map.GetStairUp().x * 32, map.GetStairUp().y * 32);
 	player->AddComponent<GraphicC>();
 	player->GetComponent<GraphicC>()->sprite = sprite;
+	player->AddComponent<ManaC>(100);
+	player->AddComponent<LevelC>();
 	if(!AssetsManager::GetInstance()->GetInventory().empty())
 	{
 		player->AddComponent<InventoryC>(AssetsManager::GetInstance()->GetInventory());
@@ -71,8 +73,10 @@ void PlayState::Start()
 	
 	console = new Console(0, 0, 9);
 	PHealth = new Label(0,0.20,"Health: ",sf::Color::White);
-	PArmor = new Label(0, 0.22, "Armor: ", sf::Color::White);
-	PDamage = new Label(0, 0.24, "Damage: ", sf::Color::White);
+	PMana = new Label(0, 0.22, "Mana: ", sf::Color::White);
+	PArmor = new Label(0, 0.24, "Armor: ", sf::Color::White);
+	PDamage = new Label(0, 0.26, "Damage: ", sf::Color::White);
+	PStone = new Label(0, 0.28, "Stones: ", sf::Color::White);
 	Label* name = new Label(0.16,0.02, "",sf::Color::White);
 	Label* damage = new Label(0.16, 0.04, "", sf::Color::White);
 	Label* health = new Label(0.16, 0.06, "", sf::Color::White);
@@ -84,7 +88,8 @@ void PlayState::Start()
 	engine->gui->AddWidget("edamage", damage);
 	engine->gui->AddWidget("ehealth", health);
 	engine->gui->AddWidget("enemyname", new Label(0.16, 0, "Enemy Info:", sf::Color::White));
-	
+	engine->gui->AddWidget("range",PStone);
+	engine->gui->AddWidget("mana", PMana);
 	
 }
 
@@ -105,8 +110,10 @@ void PlayState::Run(Engine * engine)
 	if (input == true)
 	{
 		int *health = &player->GetComponent<HealthC>()->health;
-		if (*health < 100) *health += 1;
+		if (*health < player->GetComponent<HealthC>()->maxHealth) *health += 1;
 		
+		int *mana = &player->GetComponent<ManaC>()->mana;
+		if (*mana < player->GetComponent<ManaC>()->maxMana) *mana += 1;
 		if (!potion_turns.empty())
 		{
 			if (std::get<0>(potion_turns[0]) > 0) 
@@ -171,11 +178,12 @@ void PlayState::Run(Engine * engine)
 			graphics->setPosition(pos->x * 32, pos->y * 32);
 		}
 		
-
+		int count{ 0 };
 		for (auto& e : *Entities)
 		{
 			sf::Vector2i* _temp = &e->GetComponent<DirectionC>()->direction;
 			sf::Vector2i* _pos = &e->GetComponent<PositionC>()->Position;
+			
 			int difference{ heuristic(*pos,*_pos) };
 			
 			if (difference < 10 && difference != 0) 
@@ -263,9 +271,59 @@ void PlayState::Run(Engine * engine)
 					
 				}		
 			}
+			int* Ehealth = &e->GetComponent<HealthC>()->health;
+			if (*Ehealth <= 0)
+			{
+				console->AddLog("Enemy is killed");
+				delete Entities->at(count);
+				Entities->erase(Entities->begin() + count);
+				sound.setBuffer(AssetsManager::GetInstance()->GetSound("death"));
+				sound.play();
+				break;
+			}
+			count++;
+		}
+		if (!range_attacks.empty())
+		{
+			std::cout << range_attacks.size() << std::endl;
+			bool stone_destroyed{ false };
+			for (int i=0; i < range_attacks.size();i++)
+			{
+				for(auto& e : *Entities)	
+				{
+					sf::Vector2i* _pos = &e->GetComponent<PositionC>()->Position;
+					if (range_attacks[i].position + range_attacks[i].direction == *_pos)
+					{
+						e->GetComponent<HealthC>()->health = e->GetComponent<HealthC>()->health - range_attacks[i].damage;
+						stone_destroyed = true;
+						break;
+					}
+				}
+				if (stone_destroyed)
+				{
+					range_attacks.erase(range_attacks.begin() + i);
+					break;
+				}
+				if (map.isPassable((range_attacks[i].position.x + range_attacks[i].direction.x), range_attacks[i].position.y + range_attacks[i].direction.y))
+				{
+					range_attacks[i].position += range_attacks[i].direction;
+					range_attacks[i].graphics.setPosition(range_attacks[i].position.x * 32, range_attacks[i].position.y * 32);
+				}else
+				{
+					range_attacks.erase(range_attacks.begin() + i);
+					break;
+				}
+				
+			}
+		}
+		if (((double)std::rand() / (RAND_MAX)) + 1 < 0.2)
+		{
+			stones++;
 		}
 	}
+	
 	PHealth->SetText("Health: " + std::to_string(player->GetComponent<HealthC>()->health));
+	PMana->SetText("Mana: " + std::to_string(player->GetComponent<ManaC>()->mana));
 	if (player->GetComponent<InventoryC>()->armor == nullptr)
 	{
 		PArmor->SetText("Armor: 0");
@@ -276,7 +334,7 @@ void PlayState::Run(Engine * engine)
 		PDamage->SetText("Damage: 0");
 	}
 	else PDamage->SetText("Damage: " + std::to_string(static_cast<Weapon*>(player->GetComponent<InventoryC>()->hand)->damage));
-	
+	PStone->SetText("Stones: "+ std::to_string(stones));
 }
 
 void PlayState::Input(Engine * engine)
@@ -299,26 +357,111 @@ void PlayState::Input(Engine * engine)
 			else if (event.key.code == sf::Keyboard::Up)
 			{
 				input = true;
-				player->GetComponent<DirectionC>()->direction.x = 0;
-				player->GetComponent<DirectionC>()->direction.y = -1;
+				if (!throw_weapon)
+				{
+					player->GetComponent<DirectionC>()->direction.x = 0;
+					player->GetComponent<DirectionC>()->direction.y = -1;
+				}
+				else
+				{
+					weapon_direction.x = 0;
+					weapon_direction.y = -1;
+					RangeWeapon _range{ player->GetComponent<PositionC>()->Position,weapon_direction,5 };
+					_range.graphics.setTexture(AssetsManager::GetInstance()->GetRe("stone"));
+					_range.graphics.setPosition(_range.position.x * 32, _range.position.y * 32);
+					range_attacks.push_back(_range);
+					weapon_direction.x = 0;
+					weapon_direction.y = 0;
+					throw_weapon = false;
+					stones--;
+				}
+				
 			}
 			else if (event.key.code == sf::Keyboard::Down)
 			{
 				input = true;
-				player->GetComponent<DirectionC>()->direction.x = 0;
-				player->GetComponent<DirectionC>()->direction.y = 1;
+				if (!throw_weapon)
+				{
+					player->GetComponent<DirectionC>()->direction.x = 0;
+					player->GetComponent<DirectionC>()->direction.y = 1;
+				}
+				else
+				{
+					weapon_direction.x = 0;
+					weapon_direction.y = 1;
+					RangeWeapon _range{ player->GetComponent<PositionC>()->Position,weapon_direction,5 };
+					_range.graphics.setTexture(AssetsManager::GetInstance()->GetRe("stone"));
+					_range.graphics.setPosition(_range.position.x * 32, _range.position.y * 32);
+					range_attacks.push_back(_range);
+					weapon_direction.x = 0;
+					weapon_direction.y = 0;
+					throw_weapon = false;
+					stones--;
+				}
 			}
 			else if (event.key.code == sf::Keyboard::Left)
 			{
 				input = true;
-				player->GetComponent<DirectionC>()->direction.x = -1;
-				player->GetComponent<DirectionC>()->direction.y = 0;
+				if (!throw_weapon)
+				{
+					player->GetComponent<DirectionC>()->direction.x = -1;
+					player->GetComponent<DirectionC>()->direction.y = 0;
+				}
+				else
+				{
+					weapon_direction.x = -1;
+					weapon_direction.y = 0;
+					RangeWeapon _range{ player->GetComponent<PositionC>()->Position,weapon_direction,5 };
+					_range.graphics.setTexture(AssetsManager::GetInstance()->GetRe("stone"));
+					_range.graphics.setPosition(_range.position.x * 32, _range.position.y * 32);
+					range_attacks.push_back(_range);
+					weapon_direction.x = 0;
+					weapon_direction.y = 0;
+					throw_weapon = false;
+					stones--;
+				}
+				
 			}
 			else if (event.key.code == sf::Keyboard::Right)
 			{
 				input = true;
-				player->GetComponent<DirectionC>()->direction.x = 1;
-				player->GetComponent<DirectionC>()->direction.y = 0;
+				if (!throw_weapon)
+				{
+					player->GetComponent<DirectionC>()->direction.x = 1;
+					player->GetComponent<DirectionC>()->direction.y = 0;
+				}
+				else
+				{
+					weapon_direction.x = 1;
+					weapon_direction.y = 0;
+					RangeWeapon _range{ player->GetComponent<PositionC>()->Position,weapon_direction,5 };
+					_range.graphics.setTexture(AssetsManager::GetInstance()->GetRe("stone"));
+					_range.graphics.setPosition(_range.position.x * 32, _range.position.y * 32);
+					range_attacks.push_back(_range);
+					weapon_direction.x = 0;
+					weapon_direction.y = 0;
+					throw_weapon = false;
+					stones--;
+				}
+				
+			}
+			else if(event.key.code == sf::Keyboard::F)
+			{
+				if (throw_weapon)
+				{
+					throw_weapon = false;
+				}
+				else if (stones != 0)
+				{
+					throw_weapon = true;
+					console->AddLog("Choose a direction");
+				}else
+				{
+					console->AddLog("Out of stones");
+					throw_weapon = false;
+				}
+					
+				
 			}
 			else if (event.key.code == sf::Keyboard::Return)
 			{
@@ -465,6 +608,25 @@ void PlayState::Input(Engine * engine)
 					drink = false;
 				}
 			}
+		}else if (event.key.code == sf::Keyboard::S)
+		{
+			if (!_list)
+			{
+				list = new MenuList(0, 0, 8);
+				
+				list->AddButton("Fire Column 10p");
+				list->AddButton("Teleport    30p");
+				list->AddButton("Place Wall  20p");
+				engine->gui->AddWidget("inv", list);
+				_list = true;
+				spells = true;
+			}
+			else {
+				_list = false;
+				delete list;
+				engine->gui->DeleteWidget("inv");
+				spells = false;
+			}
 		}
 		else if (sf::Event::MouseWheelScrolled == event.type) {
 			if (event.mouseWheelScroll.wheel == sf::Mouse::VerticalWheel)
@@ -605,6 +767,55 @@ void PlayState::Input(Engine * engine)
 									break;
 								}
 							}
+						}else if(spells)
+						{
+							spell_chosen = true;
+							sf::String find_item = list->GetString();
+							int* mana = &player->GetComponent<ManaC>()->mana;
+							if (find_item == "Fire Column 10p")
+							{
+								if (*mana >= 10)
+								{
+									selected_spell = 1;
+									*mana -= 10;
+								}
+								else
+								{
+									spell_chosen = false;
+									console->AddLog("Not enought mana");
+								}
+								
+							}
+							else if (find_item == "Teleport    30p")
+							{
+								if (*mana >= 30)
+								{
+									selected_spell = 2;
+									*mana -= 30;
+								}
+								else
+								{
+									spell_chosen = false;
+									console->AddLog("Not enought mana");
+								}
+							}
+							else if (find_item == "Place Wall  20p")
+							{
+								if (*mana >= 10)
+								{
+									selected_spell = 3;
+									*mana -= 10;
+								}
+								else 
+								{
+									spell_chosen = false;
+									console->AddLog("Not enought mana"); 
+								}
+							}
+							spells = false;
+							_list = false;
+							delete list;
+							engine->gui->DeleteWidget("inv");
 						}
 					}
 				}
@@ -614,6 +825,42 @@ void PlayState::Input(Engine * engine)
 					sf::Vector2i clicked_pos;
 					clicked_pos.x = std::floor(e_pos.x/32);
 					clicked_pos.y = std::floor(e_pos.y/32);
+					if (spell_chosen)
+					{
+						if (selected_spell == 1)
+						{
+							if (map.isPassable(clicked_pos.x,clicked_pos.y))
+							{
+								RangeWeapon _range{ clicked_pos,sf::Vector2i{ 0,0 },10 };
+								_range.graphics.setTexture(AssetsManager::GetInstance()->GetRe("fire"));
+								_range.graphics.setPosition(clicked_pos.x * 32, clicked_pos.y * 32);
+								range_attacks.push_back(_range);
+								console->AddLog("Casting Fire Column");
+							}
+							else console->AddLog("Spell failed path blocked");
+						}
+						else if (selected_spell == 2)
+						{
+							if (map.isPassable(clicked_pos.x, clicked_pos.y)) 
+							{
+								player->GetComponent<PositionC>()->Position = clicked_pos;
+								player->GetComponent<GraphicC>()->sprite.setPosition(clicked_pos.x*32,clicked_pos.y*32);
+								console->AddLog("Casting Teleport");
+							}
+							else console->AddLog("Spell failed path blocked");
+						}
+						else if (selected_spell == 3)
+						{
+							if (map.isPassable(clicked_pos.x, clicked_pos.y))
+							{
+								map.SetBlock(clicked_pos.x,clicked_pos.y,MapType::Wall);
+								map.refreshGraphics(DungeonNode->GetType());
+								console->AddLog("Casting Place Wall");
+							}
+							else console->AddLog("Spell failed path blocked");
+						}
+						spell_chosen = false;
+					}
 					//std::cout << clicked_pos.x << " " << clicked_pos.y << std::endl;
 					std::vector<Entity*> *Entities = &DungeonNode->GetEntityForLvl();
 					bool enemy_test{ false };
@@ -667,6 +914,10 @@ void PlayState::Draw(Engine * engine)
 	for (auto& e : DungeonNode->GetEntityForLvl())
 	{	
 		engine->window.draw(e->GetComponent<GraphicC>()->sprite);
+	}
+	for (size_t i = 0; i < range_attacks.size(); i++)
+	{
+		engine->window.draw(range_attacks[i].graphics);
 	}
 	
 }

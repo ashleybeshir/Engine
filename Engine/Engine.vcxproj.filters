@@ -155,6 +155,9 @@
     <ClInclude Include="EndState.h">
       <Filter>Header Files\HStates</Filter>
     </ClInclude>
+    <ClInclude Include="rangeWeapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Engine.rc">
