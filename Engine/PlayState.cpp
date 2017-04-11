@@ -42,8 +42,8 @@ PlayState::PlayState(MapNode * node)
 	sprite.setPosition(map.GetStairUp().x * 32, map.GetStairUp().y * 32);
 	player->AddComponent<GraphicC>();
 	player->GetComponent<GraphicC>()->sprite = sprite;
-	player->AddComponent<ManaC>(100);
-	player->AddComponent<LevelC>();
+	
+	player->AddComponent<LevelC>(AssetsManager::GetInstance()->player_level);
 	if(!AssetsManager::GetInstance()->GetInventory().empty())
 	{
 		player->AddComponent<InventoryC>(AssetsManager::GetInstance()->GetInventory());
@@ -57,8 +57,8 @@ PlayState::PlayState(MapNode * node)
 		player->AddComponent<InventoryC>(); 
 		player->GetComponent<InventoryC>()->hand = new Weapon("Fist", 5);
 	}
-	
-	player->AddComponent<HealthC>(100);
+	player->AddComponent<ManaC>(player->GetComponent<LevelC>()->lvl * 10 + 100);
+	player->AddComponent<HealthC>(player->GetComponent<LevelC>()->lvl*25+100);
 	
 }
 
@@ -137,20 +137,31 @@ void PlayState::Run(Engine * engine)
 			if ((temp->x + pos->x) == _pos->x && (temp->y + pos->y) == _pos->y)
 			{
 				std::shared_ptr<InventoryC> inv = player->GetComponent<InventoryC>();
-				int *health = &Entities->at(i)->GetComponent<HealthC>()->health;
+				int *_health = &Entities->at(i)->GetComponent<HealthC>()->health;
 				
 		
 				if(inv->hand != nullptr)
 				{
-					*health -= static_cast<Weapon*>(inv->hand)->damage;
+					*_health -= static_cast<Weapon*>(inv->hand)->damage;
 					
-					if (*health <= 0)
+					if (*_health <= 0)
 					{
 						console->AddLog("Enemy is killed");
 						delete Entities->at(i);
 						Entities->erase(Entities->begin() + i);
 						sound.setBuffer(AssetsManager::GetInstance()->GetSound("death"));
 						sound.play();
+						int * kill_count = &player->GetComponent<LevelC>()->kill_count;
+						if(*kill_count >= player->GetComponent<LevelC>()->kill_required)
+						{
+							int* PLevel = &player->GetComponent<LevelC>()->lvl;
+							int* PKrequired = &player->GetComponent<LevelC>()->kill_required;
+							*kill_count = 0;
+							*PLevel += 1;
+							*PKrequired += *PLevel * 3 + 3;
+							*health = 100 + *PLevel * 25;
+							*mana = 100 + *PLevel * 10;
+						}
 					}
 					else {
 						console->AddLog("Damage done to enemy " + std::to_string(static_cast<Weapon*>(inv->hand)->damage));
@@ -499,6 +510,7 @@ void PlayState::Input(Engine * engine)
 					if (DungeonNode->GetLevel() == 0)
 					{
 						AssetsManager::GetInstance()->SetInventory(player->GetComponent<InventoryC>()->inventory);
+						AssetsManager::GetInstance()->player_level = player->GetComponent<LevelC>()->lvl;
 						engine->PopState();
 					}
 					else {

@@ -83,6 +83,10 @@ struct ManaC : public Component
 };
 struct LevelC : public Component
 {
+	LevelC(int lvl):lvl(lvl)
+	{
+		kill_required = kill_required + lvl * 3  + 3;
+	}
 	int lvl;
 	int kill_count{0};
 	int kill_required{ 0 };

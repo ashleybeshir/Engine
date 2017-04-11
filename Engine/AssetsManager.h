@@ -32,6 +32,7 @@ class AssetsManager
 	static AssetsManager* p_instance;
 public:
 	static AssetsManager* GetInstance();
+	int player_level{ 0 };
 	void LoadTexture(const std::string& name, const std::string& filename);
 	void LoadMusic(const std::string& name, const std::string& filename);
 	sf::Texture& GetRe(const std::string& texture);
