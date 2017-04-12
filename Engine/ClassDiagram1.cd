@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Struct Name="PositionC" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="FreezeC">
+    <Position X="7.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAABAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="GraphicC" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DirectionC" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="EnergyC" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="PathC" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="NameC" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DamageC" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="HealthC" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAg=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ManaC" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAIAAAACA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="LevelC" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAEAAAAAAAAAAAAAAABAAAAAAAAAAE=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="InventoryC" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAACAAAAARAAAAA=</HashCode>
+      <FileName>Components.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

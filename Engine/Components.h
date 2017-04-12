@@ -17,6 +17,11 @@ struct PositionC : public Component
 	}
 	sf::Vector2i Position;
 };
+struct FreezeC : public Component
+{
+	int turns{0};
+	sf::Color color;
+};
 
 struct GraphicC : public Component
 {

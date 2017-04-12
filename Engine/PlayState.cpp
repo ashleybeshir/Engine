@@ -133,6 +133,7 @@ void PlayState::Run(Engine * engine)
 		pos_check = map.isPassable(temp->x + pos->x, temp->y + pos->y);
 		for (int i=0; i < Entities->size();i++) 
 		{
+			
 			sf::Vector2i* _pos = &Entities->at(i)->GetComponent<PositionC>()->Position;
 			if ((temp->x + pos->x) == _pos->x && (temp->y + pos->y) == _pos->y)
 			{
@@ -192,6 +193,16 @@ void PlayState::Run(Engine * engine)
 		int count{ 0 };
 		for (auto& e : *Entities)
 		{
+			int *freeze_turns = &e->GetComponent<FreezeC>()->turns;
+			if (*freeze_turns > 0)
+			{
+				*freeze_turns-=1;
+				if (*freeze_turns == 0)
+				{
+					e->GetComponent<GraphicC>()->sprite.setColor(e->GetComponent<FreezeC>()->color);
+				}
+				continue;
+			}
 			sf::Vector2i* _temp = &e->GetComponent<DirectionC>()->direction;
 			sf::Vector2i* _pos = &e->GetComponent<PositionC>()->Position;
 			
@@ -296,7 +307,6 @@ void PlayState::Run(Engine * engine)
 		}
 		if (!range_attacks.empty())
 		{
-			std::cout << range_attacks.size() << std::endl;
 			bool stone_destroyed{ false };
 			for (int i=0; i < range_attacks.size();i++)
 			{
@@ -629,6 +639,7 @@ void PlayState::Input(Engine * engine)
 				list->AddButton("Fire Column 10p");
 				list->AddButton("Teleport    30p");
 				list->AddButton("Place Wall  20p");
+				list->AddButton("Freeze       5p");
 				engine->gui->AddWidget("inv", list);
 				_list = true;
 				spells = true;
@@ -824,6 +835,19 @@ void PlayState::Input(Engine * engine)
 									console->AddLog("Not enought mana"); 
 								}
 							}
+							else if (find_item == "Freeze       5p")
+							{
+								if (*mana >= 10)
+								{
+									selected_spell = 4;
+									*mana -= 5;
+								}
+								else
+								{
+									spell_chosen = false;
+									console->AddLog("Not enought mana");
+								}
+							}
 							spells = false;
 							_list = false;
 							delete list;
@@ -870,6 +894,22 @@ void PlayState::Input(Engine * engine)
 								console->AddLog("Casting Place Wall");
 							}
 							else console->AddLog("Spell failed path blocked");
+						}
+						else if (selected_spell == 4)
+						{
+							std::vector<Entity*> *Entities = &DungeonNode->GetEntityForLvl();
+							for (auto& c : *Entities)
+							{
+								sf::Vector2i pos = c->GetComponent<PositionC>()->Position;
+								if (pos == clicked_pos)
+								{
+									c->GetComponent<FreezeC>()->turns = 5;
+									c->GetComponent<FreezeC>()->color = c->GetComponent<GraphicC>()->sprite.getColor();
+									c->GetComponent<GraphicC>()->sprite.setColor(sf::Color(94,155,255));
+									console->AddLog("Enemy frozen for 5 turns");
+									break;
+								}
+							}
 						}
 						spell_chosen = false;
 					}

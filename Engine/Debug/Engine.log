@@ -1,62 +1,62 @@
-﻿cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
-  PlayState.cpp
-c:\users\ashley\documents\github\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\guiconsole.h(38): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\xmlloader.h(25): warning C4800: 'tinyxml2::XMLDocument *': forcing value to bool 'true' or 'false' (performance warning)
-c:\users\ashley\documents\github\engine\engine\xmlloader.h(69): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ashley\documents\github\engine\engine\xmlloader.h(100): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\xmlloader.h(117): warning C4800: 'tinyxml2::XMLDocument *': forcing value to bool 'true' or 'false' (performance warning)
-c:\users\ashley\documents\github\engine\engine\xmlloader.h(177): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ashley\documents\github\engine\engine\xmlloader.h(205): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ashley\documents\github\engine\engine\xmlloader.h(233): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\ashley\documents\github\engine\engine\xmlloader.h(286): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\xmlloader.h(298): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\xmlloader.h(309): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(75): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(76): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(77): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(78): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(79): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(80): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(81): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(82): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(90): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(134): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(178): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(269): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(290): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(310): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(371): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(394): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(416): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(439): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(532): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(653): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(659): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(734): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(738): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(756): warning C4018: '<': signed/unsigned mismatch
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(826): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(827): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(836): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(847): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(893): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(929): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(930): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(931): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(932): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(933): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(934): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\playstate.cpp(942): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\ashley\documents\github\engine\engine\widget.h(25): warning C4172: returning address of local variable or temporary
-  Engine.vcxproj -> C:\Users\ashley\Documents\GitHub\Engine\Debug\Engine.exe
-  Engine.vcxproj -> C:\Users\ashley\Documents\GitHub\Engine\Debug\Engine.pdb (Full PDB)
+﻿  PlayState.cpp
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(25): warning C4800: 'tinyxml2::XMLDocument *': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(69): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(100): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(118): warning C4800: 'tinyxml2::XMLDocument *': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(178): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(206): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(234): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(287): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(299): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(310): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(75): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(76): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(77): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(78): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(79): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(80): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(81): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(82): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(90): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(134): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(190): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(291): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(311): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(331): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(392): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(415): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(437): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(460): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(554): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(676): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(682): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(757): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(761): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(779): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(862): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(863): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(872): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(883): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(945): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(981): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(982): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(983): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(984): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(985): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(986): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(994): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\widget.h(25): warning C4172: returning address of local variable or temporary
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
+  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)

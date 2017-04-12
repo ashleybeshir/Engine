@@ -101,6 +101,7 @@ bool LoadXmlEntity(std::vector<Entity*>& entities, int level, TileMap& map)
 		entity->AddComponent<PositionC>(loc.x,loc.y);
 		entity->AddComponent<DirectionC>();
 		entity->AddComponent<PathC>();
+		entity->AddComponent<FreezeC>();
 		entities.push_back(entity);
 	}
 	for (auto& c : temp) 
