@@ -14,10 +14,10 @@ MenuState::~MenuState()
 void MenuState::Start()
 {
 	Button* newbutton = new Button("New Game",0.45,0.2);
-	Button* loadbutton = new Button("Load Game",0.45,0.3);
-	Button* exitbutton = new Button("Exit Game",0.45,0.4);
+	
+	Button* exitbutton = new Button("Exit Game",0.45,0.3);
 	engine->gui->AddWidget("new",newbutton);
-	engine->gui->AddWidget("load",loadbutton);
+	
 	engine->gui->AddWidget("exit",exitbutton);
 
 	Label* movement = new Label(0,0,"Movement: Left/Right/Up/Down",sf::Color::White);
@@ -30,6 +30,9 @@ void MenuState::Start()
 	engine->gui->AddWidget("get", get);
 	engine->gui->AddWidget("wear", wear);
 	engine->gui->AddWidget("drink", drink);
+	engine->gui->AddWidget("range",new Label(0, 0.5, "Throw Stone: f key(Choose a direction after it)", sf::Color::White));
+	engine->gui->AddWidget("spells", new Label(0, 0.6, "Spell list: s key(Click where to fire)", sf::Color::White));
+
 }
 
 void MenuState::Delete()

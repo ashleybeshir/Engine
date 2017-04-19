@@ -77,9 +77,12 @@ void PlayState::Start()
 	PArmor = new Label(0, 0.24, "Armor: ", sf::Color::White);
 	PDamage = new Label(0, 0.26, "Damage: ", sf::Color::White);
 	PStone = new Label(0, 0.28, "Stones: ", sf::Color::White);
+	PLvl = new Label(0, 0.30, "Level: ", sf::Color::White);
 	Label* name = new Label(0.16,0.02, "",sf::Color::White);
 	Label* damage = new Label(0.16, 0.04, "", sf::Color::White);
 	Label* health = new Label(0.16, 0.06, "", sf::Color::White);
+	engine->gui->AddWidget("range", PStone);
+	engine->gui->AddWidget("mana", PMana);
 	engine->gui->AddWidget("armor", PArmor);
 	engine->gui->AddWidget("damage", PDamage);
 	engine->gui->AddWidget("health",PHealth);
@@ -88,8 +91,8 @@ void PlayState::Start()
 	engine->gui->AddWidget("edamage", damage);
 	engine->gui->AddWidget("ehealth", health);
 	engine->gui->AddWidget("enemyname", new Label(0.16, 0, "Enemy Info:", sf::Color::White));
-	engine->gui->AddWidget("range",PStone);
-	engine->gui->AddWidget("mana", PMana);
+	engine->gui->AddWidget("level",PLvl);
+	
 	
 }
 
@@ -153,6 +156,7 @@ void PlayState::Run(Engine * engine)
 						sound.setBuffer(AssetsManager::GetInstance()->GetSound("death"));
 						sound.play();
 						int * kill_count = &player->GetComponent<LevelC>()->kill_count;
+						*kill_count += 1;
 						if(*kill_count >= player->GetComponent<LevelC>()->kill_required)
 						{
 							int* PLevel = &player->GetComponent<LevelC>()->lvl;
@@ -160,8 +164,8 @@ void PlayState::Run(Engine * engine)
 							*kill_count = 0;
 							*PLevel += 1;
 							*PKrequired += *PLevel * 3 + 3;
-							*health = 100 + *PLevel * 25;
-							*mana = 100 + *PLevel * 10;
+							player->GetComponent<HealthC>()->maxHealth = 100 + *PLevel * 25;
+							player->GetComponent<ManaC>()->maxMana = 100 + *PLevel * 10;
 						}
 					}
 					else {
@@ -262,7 +266,7 @@ void PlayState::Run(Engine * engine)
 				sound.play();
 				if(*health <= 0)
 				{
-					engine->ChangeState(new EndState("monster"));
+					engine->ChangeState(new EndState(e->GetComponent<NameC>()->name));
 				}
 			}
 			else
@@ -342,7 +346,7 @@ void PlayState::Run(Engine * engine)
 			stones++;
 		}
 	}
-	
+	PLvl->SetText("Level: "+std::to_string(player->GetComponent<LevelC>()->lvl));
 	PHealth->SetText("Health: " + std::to_string(player->GetComponent<HealthC>()->health));
 	PMana->SetText("Mana: " + std::to_string(player->GetComponent<ManaC>()->mana));
 	if (player->GetComponent<InventoryC>()->armor == nullptr)

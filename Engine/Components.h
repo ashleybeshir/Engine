@@ -75,7 +75,7 @@ struct HealthC : public Component
 		this->health = health;
 	}
 	int health;
-	int maxHealth{100};
+	int maxHealth{103};
 };
 struct ManaC : public Component
 {

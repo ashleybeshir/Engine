@@ -2,6 +2,7 @@
 
 std::string path::pathfinding(Location start, Location end, TileMap & map)
 {
+	int safety{ 0 };
 	PriorityQueue<Location, double> frontier;
 	std::unordered_map<Location, Location> came_from;
 	std::unordered_map<Location, double> cost_so_far;
@@ -11,6 +12,11 @@ std::string path::pathfinding(Location start, Location end, TileMap & map)
 
 	while (!frontier.empty())
 	{
+		safety++;
+		if (safety > 25)
+		{
+			return "q";
+		}
 		auto current = frontier.get();
 		if (current == end) break;
 
@@ -119,6 +125,7 @@ void path::pathfindingC(Location start, Location end, std::vector<std::vector<in
 
 	while (!frontier.empty())
 	{
+		
 		auto current = frontier.get();
 		if (current == end) break;
 

@@ -30,6 +30,7 @@ class PlayState : public GameState
 	Label* PDamage;
 	Label* PStone;
 	Label* PMana;
+	Label* PLvl;
 	Console* console;
 	bool input;
 	bool _list{false};

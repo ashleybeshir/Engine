@@ -38,7 +38,7 @@ public:
 	}
 	inline bool isPassable(int x,int y)
 	{
-		if (x <= 0 || y <= 0 || x >= 99 || y >= 99) return false;
+		if (x < 0 || y < 0 || x > 99 || y > 99) return false;
 		
 		if (map[x][y] == MapType::Wall) return false;
 		else if (map[x][y] == MapType::Empty) return false;
