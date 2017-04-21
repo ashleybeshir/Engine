@@ -49,13 +49,13 @@ PlayState::PlayState(MapNode * node)
 		player->AddComponent<InventoryC>(AssetsManager::GetInstance()->GetInventory());
 		if(player->GetComponent<InventoryC>()->hand == nullptr)
 		{
-			player->GetComponent<InventoryC>()->hand = new Weapon("Fist",5);
+			player->GetComponent<InventoryC>()->hand = new Weapon("Fist",1);
 		}
 	}
 	else 
 	{ 
 		player->AddComponent<InventoryC>(); 
-		player->GetComponent<InventoryC>()->hand = new Weapon("Fist", 5);
+		player->GetComponent<InventoryC>()->hand = new Weapon("Fist", 1);
 	}
 	player->AddComponent<ManaC>(player->GetComponent<LevelC>()->lvl * 10 + 100);
 	player->AddComponent<HealthC>(player->GetComponent<LevelC>()->lvl*25+100);
@@ -505,11 +505,13 @@ void PlayState::Input(Engine * engine)
 						else map.GenerateDungeon();
 						if (DungeonNode->GetEntityForLvl(DungeonNode->GetLevel()).empty())
 						{
+							
 							LoadXmlEntity(DungeonNode->GetEntityForLvl(DungeonNode->GetLevel()), DungeonNode->GetLevel(), map);
 
 						}
-						else if (DungeonNode->GetItemForLvl(DungeonNode->GetLevel()).empty())
+						if (DungeonNode->GetItemForLvl(DungeonNode->GetLevel()).empty())
 						{
+							
 							LoadXmlItems(DungeonNode->GetItemForLvl(DungeonNode->GetLevel()), DungeonNode->GetLevel(), map);
 						}
 

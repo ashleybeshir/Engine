@@ -18,7 +18,7 @@
 	<name>Nathan</name>
 	<health>20</health>
 	<energy>100</energy>
-	<damage>1</damage>
+	<damage>3</damage>
 	<level>0</level>
 	<sprite>10</sprite>
 </entity>
@@ -39,4 +39,36 @@
 	<damage>5</damage>
 	<level>2</level>
 	<sprite>7</sprite>
+</entity>
+<entity>
+	<name>Bandit</name>
+	<health>30</health>
+	<energy>300</energy>
+	<damage>8</damage>
+	<level>2</level>
+	<sprite>9</sprite>
+</entity>
+<entity>
+	<name>Evil Man</name>
+	<health>20</health>
+	<energy>300</energy>
+	<damage>5</damage>
+	<level>2</level>
+	<sprite>8</sprite>
+</entity>
+<entity>
+	<name>Warrior</name>
+	<health>10</health>
+	<energy>300</energy>
+	<damage>5</damage>
+	<level>1</level>
+	<sprite>10</sprite>
+</entity>
+<entity>
+	<name>Fighter</name>
+	<health>30</health>
+	<energy>300</energy>
+	<damage>15</damage>
+	<level>0</level>
+	<sprite>13</sprite>
 </entity>

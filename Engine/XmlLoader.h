@@ -311,6 +311,7 @@ bool LoadXmlItems(std::vector<ItemBag>& items,int level, TileMap& map)
 			items.push_back(ItemBag(nitem, loc));
 		}
 	}
+	
 	for (auto& c: temp) 
 	{
 		delete c;

@@ -1,2 +1,62 @@
-﻿  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
+﻿  PlayState.cpp
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guibutton.h(93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guiconsole.h(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(39): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guilist.h(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\guiinput.h(22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(25): warning C4800: 'tinyxml2::XMLDocument *': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(69): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(100): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(118): warning C4800: 'tinyxml2::XMLDocument *': forcing value to bool 'true' or 'false' (performance warning)
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(178): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(206): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(234): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(287): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(299): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\xmlloader.h(310): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(42): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(75): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(76): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(77): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(78): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(79): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(80): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(81): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(82): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(83): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(93): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(137): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(194): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(295): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(315): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(335): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(396): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(419): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(441): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(464): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(560): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(682): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(688): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(763): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(767): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(785): warning C4018: '<': signed/unsigned mismatch
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(868): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(869): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(878): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(889): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(951): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(987): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(988): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(989): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(990): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(991): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(992): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\playstate.cpp(1000): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\ashley\desktop\engine\engine\engine\widget.h(25): warning C4172: returning address of local variable or temporary
+  Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\ashley\Desktop\Engine\Engine\Debug\Engine.pdb (Full PDB)
